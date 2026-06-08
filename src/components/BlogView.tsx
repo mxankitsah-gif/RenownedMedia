@@ -29,21 +29,28 @@ export default function BlogView({ onTabChange, onRequestQuote }: BlogViewProps)
 
   useEffect(() => {
     let active = true;
+    const callbackName = `blogger_jsonp_callback_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
 
-    async function fetchBloggerPosts() {
-      setLoading(true);
-      setError(null);
+    setLoading(true);
+    setError(null);
+
+    // Timeout safety fallback
+    const timeoutId = setTimeout(() => {
+      if (active) {
+        setLoading(false);
+        setError('timeout');
+      }
+    }, 8500);
+
+    // Define the global JSONP callback handler
+    (window as any)[callbackName] = (data: any) => {
+      clearTimeout(timeoutId);
+      if (!active) {
+        cleanup();
+        return;
+      }
+
       try {
-        const response = await fetch(
-          'https://renownedmedia.blogspot.com/feeds/posts/default?alt=json'
-        );
-        if (!response.ok) {
-          throw new Error(`Technical HTTP status response: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        if (!active) return;
-
         const entries = data.feed?.entry || [];
         const parsed: BlogPost[] = entries.map((entry: any, idx: number) => {
           const id = entry.id?.$t || `post-${idx}`;
@@ -86,7 +93,7 @@ export default function BlogView({ onTabChange, onRequestQuote }: BlogViewProps)
               .replace(/\/s72-c(-[a-z]+)?\//, '/s1600/')
               .replace(/=s72-c/, '=s1600');
           } else {
-            // Backup Scrapper regex for inline image inside content string
+            // Backup scrapper regex for inline image inside content string
             const imgMatch = rawContent.match(/<img[^>]+src="([^">]+)"/);
             if (imgMatch && imgMatch[1]) {
               image = imgMatch[1];
@@ -106,23 +113,49 @@ export default function BlogView({ onTabChange, onRequestQuote }: BlogViewProps)
 
         setPosts(parsed);
       } catch (err: any) {
-        if (active) {
-          console.error('Error fetching blog items:', err);
-          setError(
-            err?.message || 'Unable to establish stable synchronization with our publication feed.'
-          );
-        }
+        console.error('Error parsing Blogger response:', err);
+        setError('parse_error');
       } finally {
-        if (active) {
-          setLoading(false);
+        setLoading(false);
+      }
+      cleanup();
+    };
+
+    // Instantiate and inject the JSONP script
+    const script = document.createElement('script');
+    script.src = `https://renownedmedia.blogspot.com/feeds/posts/default?alt=json-in-script&callback=${callbackName}`;
+    script.async = true;
+
+    script.onerror = () => {
+      clearTimeout(timeoutId);
+      if (active) {
+        setError('network_error');
+        setLoading(false);
+      }
+      cleanup();
+    };
+
+    document.body.appendChild(script);
+
+    function cleanup() {
+      try {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
         }
+      } catch {
+        // Safe skip
+      }
+      try {
+        delete (window as any)[callbackName];
+      } catch {
+        // Safe skip
       }
     }
 
-    fetchBloggerPosts();
-
     return () => {
       active = false;
+      clearTimeout(timeoutId);
+      cleanup();
     };
   }, []);
 
@@ -202,25 +235,25 @@ export default function BlogView({ onTabChange, onRequestQuote }: BlogViewProps)
 
         {/* State 2: Error fallback state */}
         {!loading && error && (
-          <div className="bg-[#111111]/80 border border-[#D4AF37]/30 rounded-xl p-8 md:p-12 text-center max-w-xl mx-auto space-y-6 shadow-2xl">
-            <div className="w-12 h-12 bg-red-950/40 text-red-400 border border-red-500/30 rounded-full flex items-center justify-center mx-auto">
-              <RefreshCw className="w-5 h-5 animate-spin" />
+          <div className="bg-gradient-to-b from-[#111111] to-black border border-[#D4AF37]/20 rounded-xl p-8 md:p-12 text-center max-w-lg mx-auto space-y-6 shadow-[0_10px_35px_rgba(212,175,55,0.02)]">
+            <div className="w-12 h-12 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 rounded-full flex items-center justify-center mx-auto shadow-sm">
+              <BookOpen className="w-5 h-5 stroke-[1.5]" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-white font-bold text-lg">Direct Synchronized Channel Closed</h3>
-              <p className="text-xs text-[#BFB9AF]/85 leading-relaxed">
-                The browser was blocked by restrictive local client network layers or CORS configurations. You can always view all the live tactical publishing reports directly on our main platform.
+              <h3 className="text-white font-serif font-extrabold text-xl tracking-tight">Visit Our Official Blog</h3>
+              <p className="text-xs text-[#BFB9AF] leading-relaxed max-w-sm mx-auto">
+                Read our latest expert-level insights, SEO directories, and performance marketing analyses directly on the publisher platform.
               </p>
             </div>
-            <div>
+            <div className="pt-2 mx-auto">
               <a
                 href="https://renownedmedia.blogspot.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-white text-black px-6 py-3 rounded font-mono text-[10.5px] font-bold uppercase tracking-wider transition-all"
+                className="inline-flex items-center gap-2.5 bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/25 hover:border-[#D4AF37] px-8 py-4 rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 shadow-sm hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] cursor-pointer"
                 id="error-fallback-link-btn"
               >
-                Access Official Blogger <ExternalLink className="w-3.5 h-3.5" />
+                Access Official Blog <ExternalLink className="w-4 h-4 text-black" />
               </a>
             </div>
           </div>

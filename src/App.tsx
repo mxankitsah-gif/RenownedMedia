@@ -26,10 +26,49 @@ export default function App() {
     initGA();
   }, []);
 
-  // Auto-scroll to top and track SPA page views when activeTab changes
+  // Auto-scroll to top, track SPA page views, and update SEO metadata when activeTab changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     trackPageView(activeTab);
+
+    // Dynamic SEO metadata mapping
+    const seoMeta: Record<ActiveTab, { title: string; description: string }> = {
+      home: {
+        title: 'Renowned Media | Digital Marketing, SEO & Content Production Agency',
+        description: 'Premium digital marketing, SEO, video production, social media growth and branding services.',
+      },
+      about: {
+        title: 'About Renowned Media',
+        description: "Learn about Renowned Media's expertise in SEO, branding, content production and growth strategy.",
+      },
+      services: {
+        title: 'Digital Marketing Services | Renowned Media',
+        description: 'SEO, social media marketing, video production, website development, branding and advertising solutions.',
+      },
+      portfolio: {
+        title: 'Portfolio | Renowned Media',
+        description: 'Explore our client success stories, campaigns and digital growth projects.',
+      },
+      contact: {
+        title: 'Contact Renowned Media',
+        description: 'Connect with our team for SEO, branding, content production and digital growth solutions.',
+      },
+      blog: {
+        title: 'Digital Marketing Blog | Renowned Media',
+        description: 'SEO guides, marketing insights, content strategy and digital growth resources.',
+      },
+    };
+
+    const pageSeo = seoMeta[activeTab] || seoMeta.home;
+    document.title = pageSeo.title;
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', pageSeo.description);
   }, [activeTab]);
 
   const handleTabChange = (tab: ActiveTab) => {

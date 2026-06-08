@@ -15,14 +15,21 @@ import ContactView from './components/ContactView';
 import BlogView from './components/BlogView';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import { ActiveTab, ProjectItem } from './types';
+import { initGA, trackPageView, trackQuoteClick } from './lib/analytics';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
-  // Auto-scroll to top when screen tab changes for consistent user experience
+  // Load Google Analytics 4 tag script globally on mount
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  // Auto-scroll to top and track SPA page views when activeTab changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    trackPageView(activeTab);
   }, [activeTab]);
 
   const handleTabChange = (tab: ActiveTab) => {
@@ -30,10 +37,12 @@ export default function App() {
   };
 
   const handleSelectServiceForQuote = (serviceId: string) => {
+    trackQuoteClick(`service_request_${serviceId}`);
     setActiveTab('contact');
   };
 
   const handleRequestQuoteGeneral = () => {
+    trackQuoteClick('general_cta');
     setActiveTab('contact');
   };
 

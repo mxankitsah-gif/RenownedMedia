@@ -7,10 +7,12 @@ import { useState } from 'react';
 import { Mail, Phone, MapPin, HelpCircle, ChevronDown, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AGENCY_DETAILS } from '../data';
+import { trackFormSubmission } from '../lib/analytics';
 
 export default function ContactView() {
   // FAQ states
   const [expandedFaqIdx, setExpandedFaqIdx] = useState<number | null>(0);
+  const [iframeLoadCount, setIframeLoadCount] = useState(0);
 
   const faqs = [
     {
@@ -124,6 +126,7 @@ export default function ContactView() {
               href="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?usp=header" 
               target="_blank" 
               rel="noreferrer" 
+              onClick={() => trackFormSubmission('direct_form_link_click')}
               className="text-xs text-[#D4AF37] hover:text-[#F0CE62] font-mono font-bold uppercase tracking-widest flex items-center gap-2 underline shrink-0 cursor-pointer self-start sm:self-auto transition-colors"
             >
               Open Direct Form <ExternalLink className="w-4 h-4" />
@@ -147,6 +150,15 @@ export default function ContactView() {
               className="absolute left-0 top-[-135px] w-full h-[calc(100%+145px)] bg-transparent border-none filter-contact-iframe z-10"
               title="Request a Consultation Secure Form"
               referrerPolicy="no-referrer"
+              onLoad={() => {
+                setIframeLoadCount(prev => {
+                  const nextCount = prev + 1;
+                  if (nextCount > 1) {
+                    trackFormSubmission('embedded_iframe_submit');
+                  }
+                  return nextCount;
+                });
+              }}
             >
               Loading…
             </iframe>

@@ -18,7 +18,7 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
   const [activeExpandedId, setActiveExpandedId] = useState<string | null>(null);
 
   // Calculator interactive state
-  const [calcChannels, setCalcChannels] = useState<string[]>(['video-editing']);
+  const [calcChannels, setCalcChannels] = useState<string[]>(['digital-marketing']);
   const [calcTier, setCalcTier] = useState<'standard' | 'high-velocity'>('standard');
   const [calcScale, setCalcScale] = useState<number>(3); // 1 to 10 scale of content size
 
@@ -84,19 +84,16 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
           <div className="space-y-3.5" id="services-playbook">
             {SERVICES.map((srv) => {
               const isExpanded = activeExpandedId === srv.id;
-              const isSeo = srv.id === 'seo-strategy';
+              const isFeatured = srv.id === 'digital-marketing';
               return (
                 <motion.div
                   key={srv.id}
-                  whileHover={isSeo ? {
-                    scale: 1.015,
-                    boxShadow: '0 12px 30px -10px rgba(212, 175, 55, 0.25)',
-                    borderColor: '#D4AF37'
-                  } : {
-                    scale: 1.005,
-                    borderColor: 'rgba(212, 175, 55, 0.4)'
+                  whileHover={{
+                    scale: 1.008,
+                    borderColor: isFeatured ? '#D4AF37' : 'rgba(212, 175, 55, 0.4)',
+                    boxShadow: isFeatured ? '0 8px 25px -8px rgba(212, 175, 55, 0.2)' : '0 4px 15px -8px rgba(212, 175, 55, 0.1)'
                   }}
-                  whileTap={isSeo ? { scale: 0.995 } : { scale: 0.998 }}
+                  whileTap={{ scale: 0.998 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 28 }}
                   className={`border rounded-xl transition-all overflow-hidden ${
                     isExpanded 
@@ -144,7 +141,7 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                           {/* Deliverables lists */}
                           <div className="space-y-2">
                             <span className="font-mono text-[9px] text-[#D4AF37] font-bold tracking-wider uppercase block">
-                              What you get (Core Deliverables)
+                              Key Deliverables & Sub-Services
                             </span>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {srv.deliverables.map((deliv, dIdx) => (
@@ -157,17 +154,17 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                           </div>
 
                           {/* Logistics metrics */}
-                          <div className="flex items-center justify-between pt-2 border-t border-[#D4AF37]/10 text-[11px] font-mono">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 border-t border-[#D4AF37]/10 text-[11px] font-mono gap-3">
                             <div className="text-[#BFB9AF]">
-                              Turnaround target: <strong className="text-white font-bold">{srv.duration}</strong>
+                              Estimated Turnaround: <strong className="text-white font-bold">{srv.duration}</strong>
                             </div>
                             <button
                               onClick={() => onSelectServiceForQuote(srv.id)}
-                              className="text-[#D4AF37] hover:text-[#F5D76E] font-extrabold flex items-center gap-1 cursor-pointer transition-colors"
+                              className="px-4 py-2 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-black border border-[#D4AF37]/30 hover:border-[#D4AF37] rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer inline-flex items-center gap-1.5 self-start sm:self-auto"
                               id={`quote-link-${srv.id}`}
                             >
-                              Get exact quote
-                              <ChevronRight className="w-3.5 h-3.5" />
+                              Request Quote
+                              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
                             </button>
                           </div>
                         </div>

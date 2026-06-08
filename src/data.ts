@@ -3,119 +3,221 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ServiceItem, ProjectItem, TeamMember, TestimonialItem } from './types';
+import { ServiceItem, ProjectItem, TeamMember } from './types';
 
 export const HERO_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuCWJLef5fVy7vHZ1E-eIdQ6UwhZkeN3-gLFg4J0IuH31XvANDjVvwLD8kIdBYuqF6vzB9lZ8wQ4ikKkMDugpdwk7usGvM_Jo4eUNdO1SswzBh8Bf0eZ3TczCEUX39273s3QDMwHoFhWoxWQ_sK5ZRXeJ8G_pkVJK_3bRJMAM9HxbRGaRsxvR-enHoBgBBy_M4_RHlxAMJDaStdAhc6QlXRU-E5T7QxpGxSNTycDGwNMHTZS_wvL784yP3wvWgkjL-UpR7tWQZrE9A";
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: 'video-editing',
-    title: 'Video Editing',
-    description: 'High-quality edits, reels, shorts and cinematic content designed for maximum engagement.',
-    iconName: 'movie_edit',
-    deliverables: ['Custom color grading', 'Sound design & mixing', 'Dynamic subtitling', 'Platform formatting (9:16 & 16:9)'],
-    duration: '2-4 business days'
-  },
-  {
-    id: 'seo-strategy',
-    title: 'SEO Strategy',
-    description: 'Boost search visibility with modern SEO strategies, keyword optimization and content ranking.',
-    iconName: 'troubleshoot',
-    isWide: true,
-    deliverables: ['On-page auditing', 'Keyword gap analysis', 'Technical SEO configuration', 'Monthly rank tracking'],
-    duration: 'Continuous / Monthly'
-  },
-  {
     id: 'digital-marketing',
-    title: 'Digital Marketing',
-    description: 'Performance-driven campaigns that help brands reach the right audience faster.',
+    title: 'Digital Marketing Services',
+    description: 'Performance-driven marketing campaigns, brand placement, and local search systems engineered to capture direct market authority.',
     iconName: 'campaign',
-    deliverables: ['Paid advertising strategy', 'Funnel mapping', 'PPC management', 'A/B landing page testing'],
-    duration: 'Ongoing campaign setup'
-  },
-  {
-    id: 'social-media',
-    title: 'Social Media Growth',
-    description: 'Content strategies built to increase reach, followers and audience engagement.',
-    iconName: 'trending_up',
-    deliverables: ['Profile optimization', 'Daily engagement workflows', 'Content calendar curation', 'Audience growth analysis'],
-    duration: 'Monthly management'
+    deliverables: [
+      'SEO Strategy & Optimization',
+      'Local SEO',
+      'Google Business Profile Management',
+      'Social Media Management',
+      'Social Media Marketing',
+      'Influencer Marketing',
+      'Email Marketing',
+      'WhatsApp Marketing',
+      'SMS Marketing',
+      'Online Reputation Management (ORM)'
+    ],
+    duration: 'Setup: 3-7 Business Days | Ongoing Management'
   },
   {
     id: 'content-production',
     title: 'Content Production',
-    description: 'Professional shooting, studio production and branded content creation for modern platforms.',
+    description: 'Cinematic editing, short-form creative loops, script engineering, and end-to-end studio video/audio storytelling pipelines.',
     iconName: 'videocam',
-    deliverables: ['Studio camera shoots', 'Creative direction', 'Script & storyboard generation', 'Asset organization'],
-    duration: 'By project roadmap'
+    deliverables: [
+      'Video Editing',
+      'Short Form Content (Reels & Shorts)',
+      'Long Form Video Production',
+      'Podcast Production',
+      'Photography',
+      'Product Shoots',
+      'Content Strategy',
+      'Script Writing',
+      'Copywriting'
+    ],
+    duration: '2-5 Business Days / Asset Delivery'
   },
   {
-    id: 'brand-strategy',
-    title: 'Brand Strategy',
-    description: 'Build a strong digital identity with modern branding, positioning and creative direction.',
+    id: 'design-branding',
+    title: 'Design & Branding',
+    description: 'High-prestige visual style frameworks, core monograms, brand identities, and high-CTR custom digital banners.',
     iconName: 'lightbulb',
-    deliverables: ['Brand positioning playbook', 'Logo & color palette system', 'Typography hierarchy guidelines', 'Voice and tone statement'],
-    duration: '2-3 weeks core phase'
+    deliverables: [
+      'Graphic Design',
+      'Logo Design',
+      'Brand Identity Design',
+      'Thumbnail Design'
+    ],
+    duration: '4-8 Business Days Core Phase'
+  },
+  {
+    id: 'website-development',
+    title: 'Website & Development',
+    description: 'Speed-optimized, responsive, and custom-styled web systems designed to maximize user engagement and intake conversions.',
+    iconName: 'important_devices',
+    deliverables: [
+      'Website Design',
+      'Website Development',
+      'WordPress Development',
+      'Landing Page Design',
+      'E-commerce Website Development',
+      'Website Maintenance',
+      'UI/UX Design'
+    ],
+    duration: '7-14 Business Days Launch Schedule'
+  },
+  {
+    id: 'paid-advertising',
+    title: 'Paid Advertising',
+    description: 'Strategic multi-channel paid ad management designed to acquire high-intent users with absolute budget transparency.',
+    iconName: 'analytics',
+    deliverables: [
+      'Google Ads Management',
+      'Meta Ads Management',
+      'YouTube Ads',
+      'LinkedIn Ads',
+      'Remarketing Campaigns'
+    ],
+    duration: 'Campaign Setup: 3-5 Business Days'
+  },
+  {
+    id: 'analytics-reporting',
+    title: 'Analytics & Reporting',
+    description: 'Granular tracking instrumentation, visitor heat-mapping logs, and clear ROI attribution reporting models.',
+    iconName: 'timeline',
+    deliverables: [
+      'Website Analytics',
+      'SEO Reporting',
+      'Social Media Analytics',
+      'Campaign Performance Reports',
+      'Conversion Tracking'
+    ],
+    duration: 'Bi-Weekly Logs & Real-Time Dashboards'
   }
 ];
 
 export const PROJECTS: ProjectItem[] = [
   {
-    id: 'product-shoot',
-    title: 'Product Shoot Campaign',
-    description: 'Full production, shooting and editing for a product launch campaign.',
-    category: 'Video Production',
-    img: 'https://lh3.googleusercontent.com/aida/AP1WRLsJQiKymeJ9sY42aLaBfyiI5LC4Bq5WYkfP5Q7nZIPvxpwAUQ_JLGekjCYvQaZQGWKRzjyt7_CuRjp1800szvG3926IZLlvcStUbx-q18-_wzzBVnTNc8n0CvBbmUPyzbgOt30CPoWt5Ebb2qbZR_sYEOGw29CWOCV1_Kc4PU0fO7DjbKv2vAwZTHapj-D_a97qSeyEJz4jt9E2weyx1xZeaKODPBWhgMKhL6lFu2dHxSR9ER_0TUNc',
-    client: 'Velo Apparel',
+    id: 'seo-local-pack',
+    title: 'Regional Dominance SEO Blueprint',
+    description: 'Multi-location local SEO campaign optimizing regional search rankings and map pack dominance for leading healthcare facilities.',
+    category: 'SEO & Local SEO',
+    img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80',
+    client: 'Apex Healthcare Group',
+    year: '2026',
+    metrics: '+245% Search Leads',
+    challenge: 'Apex Healthcare operated 12 premium clinics but had low Google Map rankings and keyphrase visibility against large corporate networks.',
+    solution: 'Configured optimized address directory alignments, established high-authority local citations, structured medical service content pillars, and streamlined active patient reviews funnels.',
+    clientIndustry: 'Healthcare & Wellbeing',
+    servicesDelivered: ['GBP Optimization', 'Local SEO Citations', 'Pillar Content Development', 'Maps Rank Tracking']
+  },
+  {
+    id: 'luxury-ecom-web',
+    title: 'Immersive E-commerce Flagship',
+    description: 'A high-performance WebGL-infused luxury e-commerce platform designed to showcase bespoke jewelry collections with ultra-fluid layouts.',
+    category: 'Website Design & Development',
+    img: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=80',
+    client: 'Vespera Lux',
     year: '2025',
-    metrics: '+240% Engagement',
-    challenge: 'Velo Apparel needed to launch their premium street line with an aesthetic that resonated with urban runners and enthusiasts, but faced a compressed timeline and a lack of authentic lookbooks.',
-    solution: 'We ran an intense 2-day on-site production shoot focusing on high-speed kinetic filming, followed by a cinematic color grade and high-energy motion graphics tailored specifically for Reels, Shorts, and premium web displays.'
+    metrics: '+52% Conversion Rate',
+    challenge: 'Vespera Lux relied on a slow Shopify template that diluted their high-end branding with choppy animations and slow load times.',
+    solution: 'Engineered a headless custom architecture with Next.js and animated page states, maintaining average load speeds under 1.5 seconds worldwide.',
+    clientIndustry: 'High-End Fashion & Jewelry',
+    servicesDelivered: ['UI/UX Design', 'Next.js Development', 'Speed Optimization', 'Custom Checkout Flows']
   },
   {
-    id: 'instagram-growth',
-    title: 'Instagram Growth Strategy',
-    description: 'Social media strategy and content planning that increased engagement by 300%.',
-    category: 'Social Media',
-    img: 'https://lh3.googleusercontent.com/aida/AP1WRLsVMklzr4YbGtbKKW6VHkhnXi3zULnY4vth09XEGkxn4F4D5c9nMlJNEZ94pjTCY0Pdt1gE_nVYsq28FQL5pYYCepivQp3b4fsTlZVax42s1jVNZ2TpnBjb5Fb2c5ymefQDfvJehR3U85aSkV4ElvwhZFGn0SyC9HaSuxwLfHyjs82tErPW3_lodmpm0LVqNivmmxtkwRCLMKxrn2Qg02KY9kwdQLu83v5-pe7Jdnx-z8tHz6s2cuJRdw',
-    client: 'Aurora Tech',
+    id: 'reels-momentum',
+    title: 'Momentum High-Octane Reel Campaign',
+    description: 'Cinematic micro-reels highlighting elite athletic trainers in high-motion environments engineered for immediate retention spikes.',
+    category: 'Video Editing & Content Production',
+    img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80',
+    client: 'Catalyst Sports',
+    year: '2026',
+    metrics: '4.8M Organic Views',
+    challenge: 'Catalyst Sports struggled to capture immediate viewer attention in the first 3 seconds of their vertical content.',
+    solution: 'Deployed high-cadence kinetic sound hooks, bespoke cinematic color grading, and stylized motion captions with optimized algorithmic formatting.',
+    clientIndustry: 'Premium Athletic Apparel',
+    servicesDelivered: ['Video Editing', 'Short Form Content Curation', 'Script Engineering', 'Audio Design']
+  },
+  {
+    id: 'executive-podcast',
+    title: 'Prime Podcast Syndicate',
+    description: 'End-to-end launch and production syndication of a high-tier executive podcast interviewing venture capital founders.',
+    category: 'Podcast Production',
+    img: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop&q=80',
+    client: 'Founders & Builders',
     year: '2025',
-    metrics: '+300% Engagement',
-    challenge: 'Aurora Tech had high-end consumer hardware but low-key community engagement. Their Instagram layout looked static, like a stock library with little interaction.',
-    solution: 'We reconstructed their account with interactive educational reels, bold custom product mockups, and structured carousels highlighting micro-features, while driving organic community conversations.'
+    metrics: 'Top 10 Business Chart',
+    challenge: 'Founders & Builders needed studio-quality audio-visual capture and a reliable multi-channel distribution model to match their high-status executive guests.',
+    solution: 'Orchestrated professional microphones and cameras in a soundproofed custom studio, mastered dialogue levels, and automated clean snippet exports.',
+    clientIndustry: 'Executive Venture Capital',
+    servicesDelivered: ['Multi-Cam Recording', 'Dialogue Mastering', 'Distribution Setup', 'Social Snippet Crops']
   },
   {
-    id: 'brand-identity',
-    title: 'Brand Identity Design',
-    description: 'Complete brand identity design including logo, guidelines and brand assets.',
-    category: 'Branding',
-    img: 'https://lh3.googleusercontent.com/aida/AP1WRLti6zxr2ib0PJQnYKU6qmzGY5Hvxnvim6mHYM4SnBCVN8U8s5SZ4JgxdSzUpwEgER3TTMm9EmU6WE4NdEm8XAkAo_ZlD0cacBKFY3mJy8IksktL0EDtzgXpjWVfrsmLK4I8iZNc3_EPQChVzMcl9regg2CVMFGoSrvgNc9GQVflMH3svEsnZBMHVv6f8j4XL60ac3M2Cp0f9s7XOcbKenuO1GaiOOf-jJKFgNopu3x9SfMsMtQTK0eAfw',
-    client: 'Aurora Space',
-    year: '2024',
-    metrics: 'Brand Launch Ready',
-    challenge: 'Aurora Space wanted a powerful identity that communicates futuristic deep-tech aerospace solutions, while maintaining developer-friendly warmth and modern simplicity.',
-    solution: 'We designed a complete system with an iconic monogram logo, a bright luminous accent theme with cosmic slate deep tones, custom typography rules, and interactive slide templates.'
+    id: 'aesthetic-grid',
+    title: 'Aesthetic Grid Supremacy',
+    description: 'Visual identity and growth campaign elevating skin science and premium cosmetics to drive high-intent product sales.',
+    category: 'Social Media Management',
+    img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=80',
+    client: 'Luminary Skincare',
+    year: '2026',
+    metrics: '+310% Active Reach',
+    challenge: 'Luminary had premium formulas but their grid lacked visual coherence, looking disorganized and failing to convert profile visitors.',
+    solution: 'Curated a pristine 3-grid editorial aesthetic style, automated localized community interaction prompts, and published weekly interactive education guides.',
+    clientIndustry: 'Premium Beauty & Cosmetics',
+    servicesDelivered: ['Grid Aesthetic Architecture', 'Content Calendar Planning', 'Active Community Outreach']
   },
   {
-    id: 'seo-optimization',
-    title: 'SEO Optimization Campaign',
-    description: 'Advanced SEO strategy that improved search rankings and organic traffic by 180%.',
-    category: 'SEO & Marketing',
-    img: 'https://lh3.googleusercontent.com/aida/AP1WRLv5Ct_cZ44BpohgN_uOtPiYl5Usn4U0rcLE2TekG2WwpNebex9xLMKhloKyVKNACUn4E-rP7QE_nu6b_887IfCb3IWWmj5W4XuPCregxta_e8sdPzDNqwAhuuqQ5uJnJBKpCRk3X5DgEaQSX6DtLuNY4Ok3Uxb41i6anNweAaBcMNmA3_JJd4IoDOEqWkItK8kcwWzchNTYPlLbUVtFTw30UKZ7xpYL9zqpQobNULLRA47CvepTxKzEAg',
-    client: 'FinSphere',
-    year: '2024',
-    metrics: '+180% Traffic Growth',
-    challenge: 'FinSphere is a fast-growing fintech company, but they relied almost entirely on costly search Ads for customer acquisition, lacking organic discoverability.',
-    solution: 'We optimized 45 of their primary high-intent landing pages, solved deep technical crawling bottlenecks, structured key-term pillar clusters, and captured featured snippet positions.'
+    id: 'residential-launch',
+    title: 'Elite Residential Launch Network',
+    description: 'High-conversion lead capture strategy leveraging automated drip campaigns and webhook instant responses for premium property sales.',
+    category: 'Digital Marketing Campaigns',
+    img: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&auto=format&fit=crop&q=80',
+    client: 'Elevate Group',
+    year: '2025',
+    metrics: '42 Premium Villa Sales',
+    challenge: 'Elevate was generating a high volume of cold, unqualified inquiries that drained in-house sales team resources.',
+    solution: 'Structured a qualifying chatbot workflow connected with real-time CRM webhooks, combined with highly targeted high-intent email newsletter drip runs.',
+    clientIndustry: 'Luxury Property & Real Estate',
+    servicesDelivered: ['Full-Funnel Campaign Strategy', 'WhatsApp Bot Workflows', 'Email Automation']
+  },
+  {
+    id: 'aerospace-brand',
+    title: 'Brand Identity Systems & Design Suite',
+    description: 'High-prestige corporate visual guidelines and iconic monogram logo suite built for an aerospace research firm.',
+    category: 'Branding & Design',
+    img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80',
+    client: 'Aether Systems',
+    year: '2026',
+    metrics: 'Unified Brand Launch',
+    challenge: 'Aether Systems was launching a major funding round but lacked a polished corporate visual signature, relying on inconsistent, basic typography.',
+    solution: 'Devised a clean geometric monogram representational of orbital paths, formulated a detailed style guide, and produced presentation slide designs.',
+    clientIndustry: 'Aerospace Deep Tech',
+    servicesDelivered: ['Logo Design Suite', 'Brand Guidelines Manual', 'Investor Slide Designs']
+  },
+  {
+    id: 'performance-ads',
+    title: 'Performance PPC Conquests',
+    description: 'High-intent pay-per-click and retargeting ads optimized to capture and nurture financial services leads.',
+    category: 'Paid Advertising',
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
+    client: 'FinNexus Wealth',
+    year: '2025',
+    metrics: '6.5x Ad Spend ROI',
+    challenge: 'FinNexus was experiencing extremely high cost-per-lead rates on general Google search ads with low-quality submission rates.',
+    solution: 'Implemented precise negative keyword siloing, restructured exact-match ad segments, and directed traffic to high-performance landing pages.',
+    clientIndustry: 'Fintech & Asset Management',
+    servicesDelivered: ['Google & Meta Ads Management', 'Retargeting Funnels', 'PPC Silo Architectures']
   }
 ];
-
-export const TESTIMONIAL: TestimonialItem = {
-  quote: "Nam at congue diam. Etiam erat lectus, finibus eget commodo quis, tincidunt eget leo. Nullam quis vulputate orci, ac accumsan quam. Morbi fringilla congue libero, ac malesuada vulputate pharetra.",
-  author: "John Doe",
-  role: "CEO, ACME INC.",
-  img: "https://lh3.googleusercontent.com/aida-public/AB6AXuC7NztPGqoHiVTpmS0p_Qj4jCitZhzC6wbcWukzOj01RKp4EsmlDcftcpQHe61VxaIta3r86nDnJ1OCumDUnBGSWNBDcoazHOIxDk2AcwaOq8Ij6SdhdZdPizifxs9iKeBu7c1BK78VjITVMqPZi_DWi9jKZA02fN6Zk59D_iCcfDHthyb17BCqVb-72MT-2Jcc8_Q_uvqMhth_zg596ueRCt1PjaEonPYjgKym43hz4y9G30KkRNDQcdEkGNQuBli3l6oyc3z2aQ"
-};
 
 export const TEAM: TeamMember[] = [
   {

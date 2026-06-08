@@ -14,14 +14,11 @@ import PortfolioView from './components/PortfolioView';
 import ContactView from './components/ContactView';
 import BlogView from './components/BlogView';
 import ProjectDetailModal from './components/ProjectDetailModal';
-import QuoteRequestModal from './components/QuoteRequestModal';
 import { ActiveTab, ProjectItem } from './types';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [preselectedService, setPreselectedService] = useState<string | undefined>(undefined);
 
   // Auto-scroll to top when screen tab changes for consistent user experience
   useEffect(() => {
@@ -33,13 +30,11 @@ export default function App() {
   };
 
   const handleSelectServiceForQuote = (serviceId: string) => {
-    setPreselectedService(serviceId);
-    setIsQuoteOpen(true);
+    setActiveTab('contact');
   };
 
   const handleRequestQuoteGeneral = () => {
-    setPreselectedService(undefined);
-    setIsQuoteOpen(true);
+    setActiveTab('contact');
   };
 
   // Select view renderer
@@ -157,17 +152,6 @@ export default function App() {
           <ProjectDetailModal
             project={selectedProject}
             onClose={() => setSelectedProject(null)}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* Interactive Quotation Form Modal */}
-      <AnimatePresence>
-        {isQuoteOpen && (
-          <QuoteRequestModal
-            isOpen={isQuoteOpen}
-            onClose={() => setIsQuoteOpen(false)}
-            preselectedServiceId={preselectedService}
           />
         )}
       </AnimatePresence>

@@ -76,3 +76,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-primary);
 }
+
+/* Elite premium styling to convert bright white embedded Google Forms to dark theme with gold/bronze accents */
+.filter-contact-iframe {
+  filter: invert(0.93) hue-rotate(185deg) saturate(155%) brightness(105%) contrast(102%);
+  transition: opacity 0.3s ease;
+}
+

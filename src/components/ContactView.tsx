@@ -45,7 +45,7 @@ export default function ContactView() {
       {/* Main Form & details blocks */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Contact details & Map block */}
-        <div className="lg:col-span-5 space-y-8">
+        <div className="lg:col-span-4 space-y-8">
           <div className="bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 space-y-6">
             <h3 className="font-sans font-extrabold text-lg text-white">Direct Inquiry Channels</h3>
             
@@ -105,35 +105,47 @@ export default function ContactView() {
           </div>
         </div>
 
-        {/* Contact Form block */}
-        <div className="lg:col-span-7 bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
-          
+        {/* Contact Form block - Redesigned Gold Glassmorphism */}
+        <div 
+          className="lg:col-span-8 bg-black/40 backdrop-blur-xl border border-[#D4AF37]/30 shadow-[0_15px_50px_rgba(212,175,55,0.06)] p-6 sm:p-10 space-y-8 hover:border-[#D4AF37]/50 transition-colors duration-300"
+          style={{ borderRadius: '20px' }}
+        >
           {/* Form Header */}
-          <div className="border-b border-[#D4AF37]/10 pb-5 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-              <h3 className="font-sans font-extrabold text-lg text-white">
-                Secure Strategic Intake
+          <div className="border-b border-[#D4AF37]/20 pb-6 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <h3 className="font-serif font-extrabold text-2xl text-white tracking-tight">
+                Request a Consultation
               </h3>
-              <p className="text-[11px] text-[#BFB9AF] mt-1">
-                Complete and submit our secure strategic specifications questionnaire directly inside the portal below.
+              <p className="text-xs text-[#BFB9AF] leading-relaxed">
+                Tell us about your project and our team will get back to you.
               </p>
             </div>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?usp=header" 
               target="_blank" 
               rel="noreferrer" 
-              className="text-[10.5px] text-[#D4AF37] hover:text-[#F5D76E] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 underline shrink-0 cursor-pointer"
+              className="text-xs text-[#D4AF37] hover:text-[#F0CE62] font-mono font-bold uppercase tracking-widest flex items-center gap-2 underline shrink-0 cursor-pointer self-start sm:self-auto transition-colors"
             >
-              Open Form <ExternalLink className="w-3.5 h-3.5" />
+              Open Direct Form <ExternalLink className="w-4 h-4" />
             </a>
           </div>
 
-          {/* Secure embedded Google Form */}
-          <div className="relative w-full bg-[#111111] border border-[#D4AF37]/10 rounded-lg overflow-hidden h-[820px] sm:h-[900px]">
+          {/* Secure embedded Google Form customized to blend perfectly */}
+          <div 
+            className="relative w-full bg-[#0a0a0a]/80 border border-[#D4AF37]/15 overflow-hidden h-[740px] sm:h-[840px] shadow-2xl"
+            style={{ borderRadius: '15px' }}
+          >
+            {/* Elegant premium loading background */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0d0d0d] gap-4 text-xs text-[#BFB9AF]">
+              <div className="w-8 h-8 rounded-full border-2 border-[#D4AF37]/20 border-t-[#D4AF37] animate-spin" />
+              <span className="font-mono tracking-widest text-[10px] text-[#D4AF37]/80 uppercase">Establishing Encrypted Connection...</span>
+            </div>
+
+            {/* Shift and wrap iframe to hide the header of the Google Form, inverted color scheme via custom CSS */}
             <iframe 
               src="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?embedded=true"
-              className="w-full h-full bg-[#111111] border-none"
-              title="Secure Strategic Intake Questionnaire"
+              className="absolute left-0 top-[-135px] w-full h-[calc(100%+145px)] bg-transparent border-none filter-contact-iframe z-10"
+              title="Request a Consultation Secure Form"
               referrerPolicy="no-referrer"
             >
               Loading…

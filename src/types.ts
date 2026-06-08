@@ -26,6 +26,8 @@ export interface ProjectItem {
   metrics: string;
   challenge: string;
   solution: string;
+  clientIndustry?: string;
+  servicesDelivered?: string[];
 }
 
 export interface TeamMember {

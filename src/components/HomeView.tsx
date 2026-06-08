@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowRight, Quote, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset, BookOpen, ExternalLink, Calendar, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset, BookOpen, ExternalLink, Calendar, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import { SERVICES, PROJECTS, TESTIMONIAL, HERO_IMAGE } from '../data';
+import { SERVICES, PROJECTS, HERO_IMAGE } from '../data';
 import { ProjectItem, ActiveTab } from '../types';
 import ServiceIcon from './ServiceIcon';
 
@@ -25,17 +25,9 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
   // - SEO Strategy (col-span-2)
   // - Digital Marketing (col-span-1)
   // - Social Media Growth (col-span-1)
-  // - Content Production (col-span-1)
-  // - Brand Strategy (col-span-3, flex row list style)
+  // - Symmetric modern layout for key capabilities
   const getBentoClasses = (id: string) => {
-    switch (id) {
-      case 'seo-strategy':
-        return 'md:col-span-2';
-      case 'brand-strategy':
-        return 'md:col-span-3 flex flex-col md:flex-row items-start md:items-center gap-8';
-      default:
-        return 'col-span-1';
-    }
+    return 'col-span-1';
   };
 
   return (
@@ -119,7 +111,7 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {SERVICES.map((srv) => {
               const bentoClass = getBentoClasses(srv.id);
-              const isSpecialBrand = srv.id === 'brand-strategy';
+              const isSpecialBrand = false;
 
               return (
                 <div
@@ -157,48 +149,85 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
               Selected Showcase
             </span>
             <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Featured Client <span className="text-[#D4AF37]">Major Campaigns</span>
+              Featured Client <span className="text-[#D4AF37]">Projects & Success Stories</span>
             </h2>
             <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
-              A curated selection of pristine campaign roadmaps, high-energy productions, and SEO conquests designed for premium visibility.
+              Explore our tactical organic achievements, cinematic campaigns, and conversion-optimized systems engineered for market leaders.
             </p>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {PROJECTS.map((proj) => (
               <div
                 key={proj.id}
                 onClick={() => onSelectProject(proj)}
-                className="group relative rounded-xl overflow-hidden border border-[#D4AF37]/15 aspect-[0.67] hover:border-[#D4AF37]/60 hover:shadow-[0_0_25px_rgba(212,175,55,0.15)] transition-all duration-500 ease-out cursor-pointer bg-white/[0.01]"
+                className="group relative rounded-xl overflow-hidden border border-[#D4AF37]/20 hover:border-[#D4AF37]/80 hover:shadow-[0_12px_35px_rgba(212,175,55,0.12)] transition-all duration-500 ease-out cursor-pointer bg-black/40 flex flex-col justify-between"
                 id={`home-project-card-${proj.id}`}
+                style={{ height: '520px' }}
               >
-                <img
-                  alt={proj.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  src={proj.img}
-                  referrerPolicy="no-referrer"
-                />
-                
-                {/* Visual shade gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
-
-                <div className="absolute bottom-0 left-0 p-6 w-full space-y-2 text-left">
-                  <span className="font-mono text-[9px] text-[#D4AF37] block font-bold uppercase tracking-widest">
+                {/* Image Section with Overlay */}
+                <div className="relative h-48 overflow-hidden shrink-0">
+                  <img
+                    alt={proj.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    src={proj.img}
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent" />
+                  <span className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#D4AF37] border border-[#D4AF37]/30 text-[9px] font-mono font-bold uppercase py-1 px-3 rounded-full shadow-lg">
                     {proj.category}
                   </span>
-                  <h3 className="font-sans text-base font-extrabold text-white leading-tight group-hover:text-[#D4AF37] transition-colors">
-                    {proj.title}
-                  </h3>
-                  <p className="font-sans text-xs text-[#BFB9AF] line-clamp-2 leading-relaxed">
-                    {proj.description}
-                  </p>
-                  <button
-                    className="inline-flex items-center text-[#D4AF37] text-xs font-bold gap-1 mt-1 group-hover:underline cursor-pointer"
-                    id={`view-project-label-${proj.id}`}
-                  >
-                    View Project <ArrowRight className="w-3 h-3 ml-1" />
-                  </button>
+                </div>
+
+                {/* Content Space */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="space-y-2 text-left">
+                    {/* Industry */}
+                    <span className="font-mono text-[9px] text-[#BFB9AF]/75 uppercase tracking-widest block">
+                      {proj.clientIndustry || 'B2B Enterprise'}
+                    </span>
+                    
+                    {/* Title */}
+                    <h3 className="font-sans text-base font-extrabold text-white leading-snug tracking-tight group-hover:text-[#D4AF37] transition-colors duration-200 line-clamp-2">
+                      {proj.title}
+                    </h3>
+
+                    {/* Brief description */}
+                    <p className="font-sans text-xs text-[#BFB9AF] line-clamp-2 leading-relaxed">
+                      {proj.description}
+                    </p>
+
+                    {/* Services Delivered */}
+                    {proj.servicesDelivered && proj.servicesDelivered.length > 0 && (
+                      <div className="space-y-1 pt-1">
+                        <span className="text-[9px] font-mono text-[#D4AF37]/70 uppercase tracking-wider block">Services Delivered:</span>
+                        <div className="flex flex-wrap gap-1 leading-none">
+                          {proj.servicesDelivered.slice(0, 3).map((sd, sIdx) => (
+                            <span key={sIdx} className="bg-white/[0.03] border border-[#D4AF37]/10 text-[#BFB9AF] text-[9px] px-1.5 py-0.5 rounded">
+                              {sd}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Performance metric and CTA tag */}
+                  <div className="space-y-3 pt-3 border-t border-[#D4AF37]/10 text-left">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[9px] font-mono text-[#BFB9AF] uppercase">Key Results</span>
+                      <span className="bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 font-mono text-[10px] font-extrabold px-2 py-0.5 rounded">
+                        {proj.metrics}
+                      </span>
+                    </div>
+
+                    <div 
+                      className="w-full text-center bg-white/[0.02] group-hover:bg-[#D4AF37] text-white group-hover:text-black border border-[#D4AF37]/30 group-hover:border-[#D4AF37] py-2.5 rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 inline-flex items-center justify-center gap-1.5"
+                    >
+                      View Project <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -210,34 +239,8 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
               className="bg-transparent hover:bg-white text-white hover:text-[#0A0A0A] border border-[#D4AF37]/50 hover:border-white px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-[0_2px_15px_rgba(212,175,55,0.05)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.15)]"
               id="explore-more-projects-btn"
             >
-              Explore More
+              Explore Full Case Studies
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. TESTIMONIAL SECTION */}
-      <section className="py-24 bg-[#0f0f0f] border-y border-[#D4AF37]/15" id="home-quote-section">
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
-          <Quote className="w-12 h-12 text-[#D4AF37] mx-auto opacity-70" />
-          
-          <h3 className="font-sans text-2xl sm:text-3xl font-light italic text-white tracking-normal max-w-2xl mx-auto leading-relaxed">
-            "{TESTIMONIAL.quote}"
-          </h3>
-
-          <div className="flex flex-col items-center justify-center">
-            <img
-              alt={TESTIMONIAL.author}
-              className="w-16 h-16 rounded-full border-2 border-[#D4AF37]/50 shadow-lg mb-4 object-cover"
-              src={TESTIMONIAL.img}
-              referrerPolicy="no-referrer"
-            />
-            <h5 className="font-sans font-bold text-base text-white tracking-wide">
-              {TESTIMONIAL.author}
-            </h5>
-            <p className="font-mono text-[9px] text-[#D4AF37] uppercase mt-1 tracking-widest font-semibold bg-[#D4AF37]/10 px-2.5 py-0.5 rounded">
-              {TESTIMONIAL.role}
-            </p>
           </div>
         </div>
       </section>
@@ -304,101 +307,30 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
         </div>
       </section>
 
-      {/* 5.5 NEW LATEST ARTICLES FROM BLOGGER SECTION */}
-      <section className="py-24 bg-[#0a0a0a] border-t border-[#D4AF37]/10" id="home-latest-articles">
-        <div className="max-w-7xl mx-auto px-6 space-y-16 animate-fade-in">
-          
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pb-2">
-            <div className="text-left space-y-4 max-w-2xl">
-              <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1">
-                <BookOpen className="w-3 h-3" /> OFFICIAL CHANNELS STREAM
-              </span>
-              <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Latest Articles <span className="text-[#D4AF37]">& Case Studies</span>
-              </h2>
-              <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
-                Direct updates and authoritative insight campaigns broadcasted live from our official Blogger timeline for local businesses and builders in India.
-              </p>
-            </div>
-            
-            <button
-              onClick={() => onTabChange('blog')}
-              className="bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/30 hover:border-[#D4AF37] px-6 py-3 rounded font-mono text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer inline-flex items-center gap-1.5 self-start md:self-auto shadow-sm"
-              id="home-view-more-blog-btn"
+      {/* 5.5 READ OUR LATEST INSIGHTS CTA SECTION */}
+      <section className="py-20 bg-[#0c0c0c] border-t border-[#D4AF37]/10 relative overflow-hidden" id="home-latest-insights-cta">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4AF37]/3 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-6">
+          <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+            <BookOpen className="w-3.5 h-3.5" /> Direct Industry Insights
+          </span>
+          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Read Our Latest Insights
+          </h2>
+          <p className="font-sans text-sm text-[#BFB9AF] max-w-xl mx-auto leading-relaxed">
+            Delve deeper into our official publications, strategic advice, and comprehensive case studies updated regularly on our official publishing stream.
+          </p>
+          <div className="pt-2">
+            <a
+              href="https://renownedmedia.blogspot.com"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/30 hover:border-[#D4AF37] px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_20px_rgba(255,255,255,0.05)] hover:shadow-[0_6px_25px_rgba(212,175,55,0.25)] cursor-pointer"
+              id="visit-blog-cta-btn"
             >
-              Read Our Blog <ArrowUpRight className="w-4 h-4 text-[#0A0A0A]" />
-            </button>
+              Visit Our Blog <ExternalLink className="w-4 h-4 text-black" />
+            </a>
           </div>
-
-          {/* Core articles showcase cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'How Indian Creators are Unlocking Dynamic Reach with Micro-Reels',
-                desc: 'Vertical formatting, immediate visual triggers, and localized hooks tailored to capture mass audience cohorts in Delhi NCR, Bangalore, and Mumbai.',
-                date: 'June 01, 2026',
-                category: 'Content Strategy',
-                img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80',
-              },
-              {
-                title: 'Ghaziabad & Delhi NCR Local SEO Guide for SME Growth',
-                desc: 'Optimize maps ranking directories, eliminate keyphrase siloing, and maximize Google Maps visibility parameters to land customers with active intent without massive ad spend.',
-                date: 'June 05, 2026',
-                category: 'Local SEO',
-                img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
-              },
-              {
-                title: 'Leveraging WhatsApp Automation for Indian Storefront Conversions',
-                desc: 'Switch from inactive email protocols to real-time webhook chatbots and catalogs that capture consumer curiosity instantly and drive 90%+ immediate read benchmarks.',
-                date: 'June 07, 2026',
-                category: 'Growth Marketing',
-                img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=80',
-              }
-            ].map((art, idx) => (
-              <div
-                key={idx}
-                onClick={() => onTabChange('blog')}
-                className="bg-white/[0.012] hover:bg-white/[0.02] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 hover:border-[#D4AF37]/50 p-0 overflow-hidden transition-all duration-300 group flex flex-col justify-between cursor-pointer text-left"
-                id={`article-card-${idx}`}
-              >
-                <div className="relative h-44 overflow-hidden bg-[#121212]">
-                  <img
-                    src={art.img}
-                    alt={art.title}
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-102 transition-all duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 left-3 bg-[#0a0a0a]/90 text-[#D4AF37] border border-[#D4AF37]/35 text-[9px] font-mono px-2.5 py-0.5 rounded tracking-wider uppercase font-bold">
-                    {art.category}
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 font-mono text-[10px] text-[#BFB9AF]/70">
-                      <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" />
-                      <span>{art.date}</span>
-                      <span>·</span>
-                      <span className="text-white">Admin</span>
-                    </div>
-                    <h4 className="font-sans font-extrabold text-[#D4AF37] text-base group-hover:text-white transition-colors duration-200 line-clamp-2 leading-snug">
-                      {art.title}
-                    </h4>
-                    <p className="font-sans text-xs text-[#BFB9AF] leading-relaxed line-clamp-3">
-                      {art.desc}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-[#D4AF37]/10 flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-[#D4AF37] group-hover:underline flex items-center gap-1">
-                      Read on Blogger <ArrowUpRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
         </div>
       </section>
 

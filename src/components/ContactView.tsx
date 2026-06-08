@@ -3,76 +3,65 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Send, Loader2, Check, Clock, HelpCircle, ChevronDown } from 'lucide-react';
+import { useState, FormEvent, useRef } from 'react';
+import { Mail, Phone, MapPin, Send, Loader2, Check, Clock, HelpCircle, ChevronDown, AlertTriangle, ExternalLink, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AGENCY_DETAILS } from '../data';
 
 export default function ContactView() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('General Partnership');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [subject, setSubject] = useState('Digital Marketing Services');
   const [message, setMessage] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const hasSubmittedRef = useRef(false);
+
   // FAQ states
   const [expandedFaqIdx, setExpandedFaqIdx] = useState<number | null>(0);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent) => {
     setError(null);
     
-    // Strict validations
+    // Strict client-side validations prior to form post
     if (!name.trim()) {
+      e.preventDefault();
       setError('Please provide your Full Name.');
       return;
     }
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      e.preventDefault();
       setError('Please provide a valid Email Address.');
       return;
     }
     if (!message.trim()) {
+      e.preventDefault();
       setError('Please provide a Detailed Message.');
       return;
     }
 
     setIsSubmitting(true);
-    try {
-      const response = await fetch('https://formspree.io/renownedmedia@outlook.in', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          subject: subject,
-          message: message.trim(),
-        }),
-      });
+    hasSubmittedRef.current = true;
+    // Form proceeds with native submission mapped to target hidden_iframe
+  };
 
-      if (response.ok) {
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-      } else {
-        const data = await response.json().catch(() => ({}));
-        setIsSubmitting(false);
-        setError(data.error || 'Failed to submit transmission. Please verify your details and try again.');
-      }
-    } catch (err) {
+  const handleIframeLoaded = () => {
+    if (hasSubmittedRef.current) {
       setIsSubmitting(false);
-      setError('A connection failure occurred. Please check your network and attempt submission again.');
+      setSubmitSuccess(true);
+      hasSubmittedRef.current = false;
     }
   };
 
   const handleReset = () => {
     setName('');
     setEmail('');
-    setSubject('General Partnership');
+    setPhoneNumber('');
+    setSubject('Digital Marketing Services');
     setMessage('');
     setError(null);
     setSubmitSuccess(false);
@@ -172,20 +161,42 @@ export default function ContactView() {
         </div>
 
         {/* Contact Form block */}
-        <div className="lg:col-span-7 bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 shadow-xl">
+        <div className="lg:col-span-7 bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 shadow-xl space-y-6">
+          
+          {/* Form Header */}
+          <div className="border-b border-[#D4AF37]/10 pb-5 text-left">
+            <h3 className="font-sans font-extrabold text-lg text-white">
+              Secure Strategic Intake
+            </h3>
+            <p className="text-[11px] text-[#BFB9AF] mt-1">
+              Submit your project specifications directly to our pipeline. Powered by Google Forms.
+            </p>
+          </div>
+
+          {/* Hidden Iframe to buffer Google Form response without page redirect */}
+          <iframe
+            name="hidden_iframe"
+            id="hidden_iframe"
+            className="hidden"
+            style={{ display: 'none' }}
+            onLoad={handleIframeLoaded}
+            title="hidden-form-carrier"
+          />
+
           <AnimatePresence mode="wait">
             {!submitSuccess ? (
               <motion.form
                 key="contact-form"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
                 onSubmit={handleSubmit}
-                className="space-y-5"
+                action="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/formResponse"
+                method="POST"
+                target="hidden_iframe"
+                className="space-y-5 text-left"
                 id="contact-form-element"
               >
-                <h3 className="font-sans font-extrabold text-xl text-white">Secure Strategic Intake</h3>
-                
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="contact-name-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
@@ -193,6 +204,7 @@ export default function ContactView() {
                     </label>
                     <input
                       id="contact-name-input"
+                      name="entry.2005620554"
                       type="text"
                       required
                       value={name}
@@ -208,6 +220,7 @@ export default function ContactView() {
                     </label>
                     <input
                       id="contact-email-input"
+                      name="entry.1045781291"
                       type="email"
                       required
                       value={email}
@@ -218,21 +231,42 @@ export default function ContactView() {
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="contact-subject-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
-                    Inquiry Vector
-                  </label>
-                  <select
-                    id="contact-subject-input"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-3 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-[#0d0d0d] text-white font-sans"
-                  >
-                    <option value="General Partnership" className="bg-[#0d0d0d] text-white">General Business / Partnership</option>
-                    <option value="Video Shoot Booking" className="bg-[#0d0d0d] text-white">Video Shoot Production</option>
-                    <option value="Technical SEO Retainer" className="bg-[#0d0d0d] text-white">Technical SEO Auditing</option>
-                    <option value="Press Visibility" className="bg-[#0d0d0d] text-white">Digital PR & Placement</option>
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="contact-phone-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      id="contact-phone-input"
+                      name="entry.1166974658"
+                      type="tel"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      placeholder="e.g. +91 98765 43210"
+                      className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-black/40 text-white font-sans"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-subject-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
+                      Inquiry Vector *
+                    </label>
+                    <select
+                      id="contact-subject-input"
+                      name="entry.918346751"
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      className="w-full px-3 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-[#0d0d0d] text-white font-sans cursor-pointer"
+                    >
+                      <option value="Digital Marketing Services" className="bg-[#0d0d0d] text-white">Digital Marketing Strategy</option>
+                      <option value="SEO Strategy & Optimization" className="bg-[#0d0d0d] text-white">SEO Strategy & Optimization</option>
+                      <option value="Local SEO" className="bg-[#0d0d0d] text-white">Local SEO & Map Search</option>
+                      <option value="Short Form Content (Reels & Shorts)" className="bg-[#0d0d0d] text-white">Short Form Reels & Shorts</option>
+                      <option value="Content Production" className="bg-[#0d0d0d] text-white">Content Production & Video editing</option>
+                      <option value="Website & Development" className="bg-[#0d0d0d] text-white">Website Design & Dev</option>
+                      <option value="Paid Advertising" className="bg-[#0d0d0d] text-white">Paid Advertising Ads</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -241,18 +275,19 @@ export default function ContactView() {
                   </label>
                   <textarea
                     id="contact-message-input"
+                    name="entry.839337160"
                     rows={4}
                     required
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Provide your target milestones, timeline limitations, and brand parameters..."
-                    className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-black/40 text-white font-sans"
+                    className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-black/40 text-white font-sans whitespace-pre-wrap"
                   />
                 </div>
 
                 {error && (
                   <div className="p-3 bg-red-950/20 border border-red-500/20 text-red-300 rounded text-xs font-sans text-left" id="contact-form-error-banner">
-                    <strong className="text-red-400">Submission Error:</strong> {error}
+                    <strong className="text-red-400">ValidationError:</strong> {error}
                   </div>
                 )}
 
@@ -279,35 +314,37 @@ export default function ContactView() {
                 key="contact-success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-8 space-y-5"
+                className="text-center py-8 space-y-5 text-left"
                 id="contact-success-state"
               >
                 <div className="w-14 h-14 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#D4AF37]/10">
                   <Check className="w-6 h-6 stroke-[3]" />
                 </div>
                 
-                <div className="space-y-1.5">
+                <div className="space-y-1.5 text-center">
                   <h4 className="font-sans text-lg sm:text-xl font-extrabold text-white">Thank you! Your message has been sent successfully.</h4>
                   <p className="text-xs text-[#BFB9AF] max-w-sm mx-auto">
-                    We will analyze your parameters and allocate the key operations squad to your ticket within 12 hours.
+                    We have securely logged your parameters on our Google Form intake backend. A strategic squad will review your payload within 12 hours.
                   </p>
                 </div>
 
                 <div className="p-4 bg-black/40 rounded border border-[#D4AF37]/15 text-left text-xs font-sans max-w-sm mx-auto space-y-1.5">
-                  <span className="font-bold block text-[#D4AF37] border-b border-[#D4AF37]/10 pb-1 uppercase tracking-wider font-mono text-[9px]">Ticket Receipt Logged</span>
+                  <span className="font-bold block text-[#D4AF37] border-b border-[#D4AF37]/10 pb-1 uppercase tracking-wider font-mono text-[9px]">G-Form Log Entry ID</span>
                   <div>Client: <strong className="text-white">{name}</strong></div>
-                  <div>Subject: <strong className="text-white">{subject}</strong></div>
-                  <div>Status: <strong className="text-[#D4AF37]">Processing</strong></div>
+                  <div>Inquiry: <strong className="text-white">{subject}</strong></div>
+                  <div>Status: <strong className="text-emerald-400">Directly Recorded</strong></div>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="px-6 py-2.5 bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/25 text-xs font-sans uppercase tracking-wider rounded transition-all cursor-pointer"
-                  id="reset-contact-form-btn"
-                >
-                  Send Another Inquiry
-                </button>
+                <div className="text-center">
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="px-6 py-2.5 bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/25 text-xs font-sans uppercase tracking-wider rounded transition-all cursor-pointer"
+                    id="reset-contact-form-btn"
+                  >
+                    Send Another Inquiry
+                  </button>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

@@ -1,0 +1,6 @@
+{
+  "name": "Renowned Media",
+  "description": "Premium modern media agency helping brands grow search visibility, capture audiences, and build digital authority.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

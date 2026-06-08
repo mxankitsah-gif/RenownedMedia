@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface-container-high: #1a1a1a;
+  --color-on-primary-container: #050505;
+  --color-tertiary-container: #1c1c1c;
+  --color-surface-tint: #d4af37;
+  --color-primary-fixed-dim: #bf9f30;
+  --color-primary-fixed: #e5cf85;
+  --color-on-tertiary-container: #f5f2ed;
+  --color-secondary-container: #1a1a1a;
+  --color-on-secondary: #050505;
+  --color-primary: #d4af37;
+  --color-surface-container: #121212;
+  --color-background: #050505;
+  --color-tertiary: #d4af37;
+  --color-inverse-on-surface: #0a0a0a;
+  --color-on-tertiary-fixed-variant: #f5f2ed;
+  --color-inverse-primary: #050505;
+  --color-surface-container-low: #0d0d0d;
+  --color-secondary-fixed-dim: #ebdcb2;
+  --color-surface-container-lowest: #050505;
+  --color-surface: #0a0a0a;
+  --color-on-surface: #f5f2ed;
+  --color-error-container: #4c1110;
+  --color-tertiary-fixed: #fbefa8;
+  --color-inverse-surface: #f5f2ed;
+  --color-on-error: #ffffff;
+  --color-surface-bright: #121212;
+  --color-on-primary-fixed-variant: #bfb9af;
+  --color-outline-variant: rgba(255, 255, 255, 0.08);
+  --color-on-tertiary: #050505;
+  --color-on-primary-fixed: #050505;
+  --color-on-secondary-fixed: #050505;
+  --color-on-background: #f5f2ed;
+  --color-on-error-container: #ffdad6;
+  --color-primary-container: #d4af37;
+  --color-outline: rgba(255, 255, 255, 0.25);
+  --color-error: #ffb4ab;
+  --color-on-surface-variant: #aba59a;
+  --color-surface-container-highest: #252525;
+  --color-tertiary-fixed-dim: #e5cf85;
+  --color-surface-dim: #050505;
+  --color-on-secondary-container: #ebdcb2;
+  --color-secondary: #ebdcb2;
+  --color-on-primary: #050505;
+  --color-secondary-fixed: #fbf5e1;
+  --color-surface-variant: #1a1a1a;
+  --color-on-secondary-fixed-variant: #0a0a0a;
+  --color-on-tertiary-fixed: #050505;
+
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+}
+
+/* Elegant scrollbar styling for Sophisticated Dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-container-highest);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}

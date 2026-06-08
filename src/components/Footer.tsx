@@ -5,6 +5,8 @@
 
 import { AGENCY_DETAILS } from '../data';
 import { ActiveTab } from '../types';
+import RenownedLogo from './RenownedLogo';
+import { Instagram, Youtube, Facebook, BookOpen, MapPin } from 'lucide-react';
 
 interface FooterProps {
   onTabChange: (tab: ActiveTab) => void;
@@ -19,11 +21,27 @@ export default function Footer({ onTabChange }: FooterProps) {
     { label: 'Contact', id: 'contact' },
   ];
 
-  const businessLinks: { label: string; id: ActiveTab }[] = [
-    { label: 'Project', id: 'portfolio' },
-    { label: 'Our Team', id: 'about' },
-    { label: 'Facts', id: 'about' },
-    { label: 'Customers', id: 'home' },
+  const socialLinks = [
+    {
+      name: 'Instagram',
+      url: '#',
+      icon: Instagram,
+    },
+    {
+      name: 'YouTube',
+      url: '#',
+      icon: Youtube,
+    },
+    {
+      name: 'Facebook',
+      url: '#',
+      icon: Facebook,
+    },
+    {
+      name: 'Blog',
+      url: 'https://renownedmedia.blogspot.com',
+      icon: BookOpen,
+    },
   ];
 
   return (
@@ -34,10 +52,10 @@ export default function Footer({ onTabChange }: FooterProps) {
         <div className="space-y-4">
           <button
             onClick={() => onTabChange('home')}
-            className="font-sans text-xl font-extrabold text-white tracking-tight block text-left cursor-pointer hover:text-[#D4AF37] transition-colors"
+            className="flex items-center justify-start cursor-pointer transition-all hover:opacity-80 pb-2"
             id="footer-logo-btn"
           >
-            Renowned<span className="text-[#D4AF37]">.</span>
+            <RenownedLogo className="h-10 w-auto text-white" />
           </button>
           <p className="font-sans text-xs text-[#BFB9AF] leading-relaxed">
             {AGENCY_DETAILS.fullSummary}
@@ -64,24 +82,29 @@ export default function Footer({ onTabChange }: FooterProps) {
           </ul>
         </div>
 
-        {/* Business Links */}
+        {/* Follow Us */}
         <div className="space-y-4">
-          <h4 className="font-sans font-bold text-xs text-white uppercase tracking-wider">
-            Business
+          <h4 className="font-sans font-extrabold text-xs text-white uppercase tracking-wider">
+            Follow Us
           </h4>
-          <ul className="space-y-2.5 text-xs font-sans">
-            {businessLinks.map((link, idx) => (
-              <li key={idx}>
-                <button
-                  onClick={() => onTabChange(link.id)}
-                  className="text-[#BFB9AF] hover:text-[#D4AF37] transition-colors cursor-pointer text-left focus:outline-none"
-                  id={`footer-business-link-${idx}`}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target={social.url.startsWith('http') ? '_blank' : undefined}
+                  rel={social.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group flex items-center justify-center gap-2.5 h-12 w-full rounded-lg border border-[#D4AF37]/20 hover:border-[#D4AF37] text-[#BFB9AF] hover:text-[#D4AF37] bg-white/[0.01] hover:bg-[#D4AF37]/10 transition-all transform hover:-translate-y-0.5 shadow-sm duration-300"
+                  id={`footer-social-${social.name.toLowerCase()}`}
                 >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-          </ul>
+                  <Icon className="w-4 h-4 stroke-[1.5] text-[#D4AF37] group-hover:scale-110 transition-transform duration-300" />
+                  <span className="font-mono text-[9px] uppercase tracking-wider font-semibold">{social.name}</span>
+                </a>
+              );
+            })}
+          </div>
         </div>
 
         {/* Get In Touch */}
@@ -89,30 +112,48 @@ export default function Footer({ onTabChange }: FooterProps) {
           <h4 className="font-sans font-extrabold text-xs text-white uppercase tracking-wider">
             Get In Touch
           </h4>
-          <address className="font-sans text-xs text-[#BFB9AF] not-italic space-y-2.5">
-            <p className="leading-relaxed font-semibold text-[#BFB9AF]">{AGENCY_DETAILS.address}</p>
-            <p className="block">
-              <a
-                href={`mailto:${AGENCY_DETAILS.email}`}
-                className="text-[#D4AF37] hover:text-[#F5D76E] transition-all font-bold"
-              >
-                {AGENCY_DETAILS.email}
-              </a>
-            </p>
-            <p className="space-y-1 block">
-              <a
-                href={`tel:${AGENCY_DETAILS.phone1}`}
-                className="hover:text-[#D4AF37] transition-colors block font-mono font-medium"
-              >
-                {AGENCY_DETAILS.phone1}
-              </a>
-              <a
-                href={`tel:${AGENCY_DETAILS.phone2}`}
-                className="hover:text-[#D4AF37] transition-colors block font-mono font-medium"
-              >
-                {AGENCY_DETAILS.phone2}
-              </a>
-            </p>
+          <address className="font-sans text-xs text-[#BFB9AF] not-italic space-y-3.5">
+            <a
+              href="https://maps.google.com/?q=887+Nitikhand-1+Indirapuram+Ghaziabad+201014"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/loc flex flex-col gap-1.5 p-3.5 rounded-lg border border-[#D4AF37]/20 hover:border-[#D4AF37] bg-white/[0.01] hover:bg-[#D4AF37]/5 transition-all duration-300 block text-left cursor-pointer"
+              id="footer-location-card"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-mono text-[#D4AF37] uppercase tracking-wider font-bold">Office Address</span>
+                <MapPin className="w-3.5 h-3.5 text-[#D4AF37] group-hover/loc:scale-110 transition-transform duration-300 stroke-[2]" />
+              </div>
+              <p className="leading-relaxed font-sans text-xs text-[#BFB9AF] group-hover/loc:text-white transition-colors">
+                887, Nitikhand-1, Indirapuram,<br />
+                Ghaziabad, Uttar Pradesh 201014
+              </p>
+            </a>
+            
+            <div className="space-y-2 pt-1">
+              <p className="block">
+                <a
+                  href={`mailto:${AGENCY_DETAILS.email}`}
+                  className="text-[#D4AF37] hover:text-[#F1E0A8] transition-all font-bold block"
+                >
+                  {AGENCY_DETAILS.email}
+                </a>
+              </p>
+              <p className="space-y-1 block">
+                <a
+                  href={`tel:${AGENCY_DETAILS.phone1}`}
+                  className="hover:text-[#D4AF37] transition-colors block font-mono font-medium"
+                >
+                  {AGENCY_DETAILS.phone1}
+                </a>
+                <a
+                  href={`tel:${AGENCY_DETAILS.phone2}`}
+                  className="hover:text-[#D4AF37] transition-colors block font-mono font-medium"
+                >
+                  {AGENCY_DETAILS.phone2}
+                </a>
+              </p>
+            </div>
           </address>
         </div>
 

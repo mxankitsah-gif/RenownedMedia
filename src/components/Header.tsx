@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ActiveTab } from '../types';
+import RenownedLogo from './RenownedLogo';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -35,10 +36,10 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
             onTabChange('home');
             setIsMobileMenuOpen(false);
           }}
-          className="font-serif text-2xl font-black text-[#D4AF37] hover:text-white tracking-wide cursor-pointer active:scale-95 transition-all"
+          className="flex items-center justify-start cursor-pointer active:scale-95 transition-all text-white hover:text-[#D4AF37]"
           id="brand-logo-btn"
         >
-          Renowned <span className="text-white font-sans font-extrabold uppercase text-[15px] tracking-widest pl-1">Media</span>
+          <RenownedLogo className="h-9 sm:h-11 w-auto" />
         </button>
 
         {/* Desktop Navigation */}

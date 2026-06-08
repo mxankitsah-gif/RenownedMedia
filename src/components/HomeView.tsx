@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowRight, Quote, Sparkles, Award, Star, Trophy, Users } from 'lucide-react';
+import { ArrowRight, Quote, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset } from 'lucide-react';
 import { motion } from 'motion/react';
-import { SERVICES, PROJECTS, TESTIMONIAL, TEAM, HERO_IMAGE } from '../data';
-import { ProjectItem } from '../types';
+import { SERVICES, PROJECTS, TESTIMONIAL, HERO_IMAGE } from '../data';
+import { ProjectItem, ActiveTab } from '../types';
 import ServiceIcon from './ServiceIcon';
 
 interface HomeViewProps {
-  onTabChange: (tab: 'home' | 'about' | 'services' | 'portfolio' | 'contact') => void;
+  onTabChange: (tab: ActiveTab) => void;
   onSelectProject: (project: ProjectItem) => void;
   onRequestQuote: () => void;
 }
@@ -233,46 +233,63 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
         </div>
       </section>
 
-      {/* 5. TEAM LEADERSHIP SECTION */}
-      <section className="py-24 bg-[#0a0a0a]" id="home-leadership">
+      {/* 5. WHY CHOOSE RENOWNED MEDIA SECTION */}
+      <section className="py-24 bg-[#0a0a0a]" id="home-why-choose">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
             <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-              Expert Partners
+              Exclusive Value Proposition
             </span>
             <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Prestige <span className="text-[#D4AF37]">Leadership</span>
+              Why Choose <span className="text-[#D4AF37]">Renowned Media</span>
             </h2>
             <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
-              A bespoke team of global digital strategists, cinematography artists, and content executors.
+              We engineer premier growth and content experiences for leading Indian creators, startups, local businesses, and SMEs.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TEAM.map((member) => (
-              <div
-                key={member.id}
-                onClick={() => onTabChange('about')}
-                className="bg-white/[0.01] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 overflow-hidden group hover:border-[#D4AF37]/65 transition-all duration-500 hover:shadow-[0_0_25px_rgba(212,175,55,0.12)] cursor-pointer"
-                id={`home-team-card-${member.id}`}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {[
+              {
+                title: 'Fast Delivery',
+                icon: <Clock className="w-5 h-5 text-[#D4AF37]" />,
+                desc: 'Rapid execution with cinematic quality within standard turnaround guidelines.',
+              },
+              {
+                title: 'Affordable Pricing',
+                icon: <Coins className="w-5 h-5 text-[#D4AF37]" />,
+                desc: 'Transparent localized price tiers starting scaling dynamically from ₹5,000 to ₹50,000/month.',
+              },
+              {
+                title: 'Creative Content',
+                icon: <Flame className="w-5 h-5 text-[#D4AF37]" />,
+                desc: 'Reject generic templates. Custom visual assets crafted to lock in consumer memory.',
+              },
+              {
+                title: 'SEO Focus',
+                icon: <TrendingUp className="w-5 h-5 text-[#D4AF37]" />,
+                desc: 'Rigorous technical and keyphrase audits to build resilient, compound search traffic assets.',
+              },
+              {
+                title: 'Dedicated Support',
+                icon: <Headset className="w-5 h-5 text-[#D4AF37]" />,
+                desc: 'Direct comms channel with lead campaign coordinators to supervise your strategy.',
+              }
+            ].map((item, idx) => (
+              <motion.div
+                whileHover={{ y: -5, borderColor: 'rgba(212, 175, 55, 0.45)', boxShadow: '0 0 25px rgba(212,175,55,0.1)' }}
+                key={idx}
+                className="bg-white/[0.02] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 p-6 flex flex-col justify-between space-y-4 transition-all duration-300"
+                id={`why-choose-card-${idx}`}
               >
-                <div className="aspect-square overflow-hidden bg-white/[0.02]">
-                  <img
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 hover:scale-105"
-                    src={member.img}
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="space-y-3">
+                  <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-[#D4AF37]/25 flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <h4 className="font-sans font-extrabold text-base text-white">{item.title}</h4>
+                  <p className="font-sans text-xs text-[#BFB9AF] leading-relaxed">{item.desc}</p>
                 </div>
-                <div className="p-6 text-center border-t border-[#D4AF37]/15">
-                  <h4 className="font-sans font-extrabold text-lg text-white mb-1 group-hover:text-[#D4AF37] transition-colors">
-                    {member.name}
-                  </h4>
-                  <p className="font-mono text-[9px] text-[#D4AF37] uppercase font-bold tracking-widest">
-                    {member.role === 'Founder & CEO' ? 'Founder' : member.role}
-                  </p>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

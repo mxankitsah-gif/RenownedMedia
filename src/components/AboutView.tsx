@@ -4,9 +4,9 @@
  */
 
 import { useState } from 'react';
-import { Award, Zap, Heart, Sparkles, Clock, Globe, ArrowRight } from 'lucide-react';
+import { Award, Zap, Sparkles, Clock, Globe, ArrowRight, Coins, Flame, TrendingUp, Headset } from 'lucide-react';
 import { motion } from 'motion/react';
-import { TEAM, AGENCY_DETAILS } from '../data';
+import { AGENCY_DETAILS } from '../data';
 
 export default function AboutView() {
   const [selectedCoreValue, setSelectedCoreValue] = useState<number | null>(null);
@@ -172,52 +172,57 @@ export default function AboutView() {
         </div>
       </section>
 
-      {/* Leadership Section */}
-      <section className="space-y-10 pt-8" id="about-leadership">
-        <div className="text-center max-w-md mx-auto space-y-2">
-          <h3 className="font-sans text-2xl font-extrabold text-white">Meet Our Leadership</h3>
-          <p className="text-sm text-[#BFB9AF]">The minds orchestrating your multi-channel digital authority campaigns.</p>
+      {/* Why Choose Renowned Media Section */}
+      <section className="space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <h3 className="font-sans text-2xl font-extrabold text-white">Why Choose Renowned Media</h3>
+          <p className="text-sm text-[#BFB9AF]">
+            We engineer premier growth and content experiences tailored for leading Indian creators, startups, local businesses, and SMEs.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TEAM.map((member) => (
-            <div
-              key={member.id}
-              className="bg-white/[0.02] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 overflow-hidden hover:border-[#D4AF37]/60 hover:shadow-[0_0_25px_rgba(212,175,55,0.12)] transition-all duration-500 flex flex-col"
-              id={`team-member-${member.id}`}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {[
+            {
+              title: 'Fast Delivery',
+              icon: <Clock className="w-5 h-5 text-[#D4AF37]" />,
+              desc: 'Rapid execution with cinematic quality within standard turnaround guidelines.',
+            },
+            {
+              title: 'Affordable Pricing',
+              icon: <Coins className="w-5 h-5 text-[#D4AF37]" />,
+              desc: 'Transparent localized price tiers starting scaling dynamically from ₹5,000 to ₹50,000/month.',
+            },
+            {
+              title: 'Creative Content',
+              icon: <Flame className="w-5 h-5 text-[#D4AF37]" />,
+              desc: 'Reject generic templates. Custom visual assets crafted to lock in consumer memory.',
+            },
+            {
+              title: 'SEO Focus',
+              icon: <TrendingUp className="w-5 h-5 text-[#D4AF37]" />,
+              desc: 'Rigorous technical and keyphrase audits to build resilient, compound search traffic assets.',
+            },
+            {
+              title: 'Dedicated Support',
+              icon: <Headset className="w-5 h-5 text-[#D4AF37]" />,
+              desc: 'Direct comms channel with lead campaign coordinators to supervise your strategy.',
+            }
+          ].map((item, idx) => (
+            <motion.div
+              whileHover={{ y: -5, borderColor: 'rgba(212, 175, 55, 0.45)', boxShadow: '0 0 25px rgba(212,175,55,0.1)' }}
+              key={idx}
+              className="bg-white/[0.02] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 p-6 flex flex-col justify-between space-y-4 transition-all duration-300"
+              id={`about-why-choose-card-${idx}`}
             >
-              <div className="aspect-square w-full bg-[#141414] overflow-hidden group">
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-full h-full object-cover grayscale md:hover:grayscale-0 transition-all duration-700 hover:scale-105"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
-                  <div className="text-center md:text-left">
-                    <h4 className="font-sans font-extrabold text-base text-white">{member.name}</h4>
-                    <span className="font-mono text-[9px] text-[#D4AF37] uppercase font-bold tracking-widest">{member.role}</span>
-                  </div>
-                  <p className="font-sans text-xs text-[#BFB9AF] leading-relaxed">
-                    {member.bio}
-                  </p>
+              <div className="space-y-3">
+                <div className="w-10 h-10 rounded-lg bg-white/[0.04] border border-[#D4AF37]/25 flex items-center justify-center">
+                  {item.icon}
                 </div>
-                
-                {/* Specialties list */}
-                <div className="pt-2 border-t border-[#D4AF37]/10 space-y-1.5">
-                  <span className="font-mono text-[9px] text-[#BFB9AF] uppercase tracking-wider block font-bold">CORE DOMAINS</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {member.specialties.map((spec, sidx) => (
-                      <span key={sidx} className="bg-white/[0.04] text-[#D4AF37] border border-[#D4AF37]/20 font-sans text-[10px] px-2.5 py-0.5 rounded">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <h4 className="font-sans font-extrabold text-base text-white">{item.title}</h4>
+                <p className="font-sans text-xs text-[#BFB9AF] leading-relaxed">{item.desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

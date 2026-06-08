@@ -65,7 +65,7 @@ export default function ContactView() {
           Initiate Your Growth Routine
         </h2>
         <p className="font-sans text-base text-[#BFB9AF] leading-relaxed">
-          Ready to elevate your digital presence, coordinate premium photography shoots, or establish organic search authority? Connect with us to orchestrate your brand parameters.
+          Ready to elevate your digital presence, coordinate premium photography shoots, or establish organic search authority? We partner with leading Indian creators, startups, coaches, local businesses, and SMEs to orchestrate elite digital growth channels.
         </p>
       </section>
 

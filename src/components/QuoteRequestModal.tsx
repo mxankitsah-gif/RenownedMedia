@@ -23,6 +23,16 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
   const [company, setCompany] = useState('');
   const [budget, setBudget] = useState('medium'); // low | medium | premium | enterprise
   const [message, setMessage] = useState('');
+
+  const getBudgetLabel = (b: string) => {
+    switch (b) {
+      case 'low': return 'Starter Growth (₹5,000 - ₹15,000 / mo)';
+      case 'medium': return 'Growth Package (₹15,000 - ₹25,000 / mo)';
+      case 'premium': return 'Business Package (₹25,000 - ₹50,000 / mo)';
+      case 'enterprise': return 'Custom Quote (Contact for pricing)';
+      default: return b;
+    }
+  };
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -213,10 +223,10 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                         onChange={(e) => setBudget(e.target.value)}
                         className="w-full px-3 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                       >
-                        <option value="low" className="bg-[#0G0G0G] text-white">Growth Phase ($1K - $3K / mo)</option>
-                        <option value="medium" className="bg-[#0G0G0G] text-white">Standard Retainer ($3K - $7K / mo)</option>
-                        <option value="premium" className="bg-[#0G0G0G] text-white">Enterprise Authority ($7K - $15K / mo)</option>
-                        <option value="enterprise" className="bg-[#0G0G0G] text-white">Custom Multi-Channel Campaign</option>
+                        <option value="low" className="bg-[#0d0d0d] text-white">Starter Growth (₹5,000 - ₹15,000 / mo)</option>
+                        <option value="medium" className="bg-[#0d0d0d] text-white">Growth Package (₹15,000 - ₹25,000 / mo)</option>
+                        <option value="premium" className="bg-[#0d0d0d] text-white">Business Package (₹25,000 - ₹50,000 / mo)</option>
+                        <option value="enterprise" className="bg-[#0d0d0d] text-white">Custom Quote (Contact for pricing)</option>
                       </select>
                     </div>
                   </div>
@@ -297,7 +307,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#BFB9AF]">Scope Tier:</span>
-                    <span className="font-semibold text-[#D4AF37] capitalize">{budget} Scale</span>
+                    <span className="font-semibold text-[#D4AF37]">{getBudgetLabel(budget)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-[#BFB9AF]">Contact Response:</span>

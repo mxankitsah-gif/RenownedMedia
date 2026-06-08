@@ -23,6 +23,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
     { label: 'Services', id: 'services' },
     { label: 'Portfolio', id: 'portfolio' },
     { label: 'Contact', id: 'contact' },
+    { label: 'Blog & CMS', id: 'blog' },
   ];
 
   return (
@@ -42,27 +43,30 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 items-center" id="desktop-nav">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onTabChange(item.id)}
-              className={`font-sans text-[15px] font-medium transition-all py-1 relative cursor-pointer ${
-                activeTab === item.id
-                  ? 'text-primary font-bold'
-                  : 'text-on-surface-variant hover:text-primary'
-              }`}
-              id={`nav-item-${item.id}`}
-            >
-              {item.label}
-              {activeTab === item.id && (
-                <motion.div
-                  layoutId="activeNavIndicator"
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const isTabActive = activeTab === item.id || (item.id === 'blog' && activeTab === 'cms');
+            return (
+              <button
+                key={item.id}
+                onClick={() => onTabChange(item.id)}
+                className={`font-sans text-[15px] font-medium transition-all py-1 relative cursor-pointer ${
+                  isTabActive
+                    ? 'text-[#D4AF37] font-bold'
+                    : 'text-[#BFB9AF] hover:text-[#D4AF37]'
+                }`}
+                id={`nav-item-${item.id}`}
+              >
+                {item.label}
+                {isTabActive && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37] rounded-full"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA */}
@@ -99,21 +103,24 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
             id="mobile-menu-drawer"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => {
-                    onTabChange(item.id);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`text-left font-sans text-base py-2 font-medium ${
-                    activeTab === item.id ? 'text-primary font-bold' : 'text-on-surface-variant'
-                  }`}
-                  id={`mobile-nav-${item.id}`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isTabActive = activeTab === item.id || (item.id === 'blog' && activeTab === 'cms');
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      onTabChange(item.id);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`text-left font-sans text-base py-2 font-medium ${
+                      isTabActive ? 'text-[#D4AF37] font-bold' : 'text-[#BFB9AF]'
+                    }`}
+                    id={`mobile-nav-${item.id}`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
               <hr className="border-outline-variant/20 my-1" />
               <button
                 onClick={() => {

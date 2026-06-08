@@ -32,9 +32,28 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
     }
   };
 
-  // Calculate recommendation metrics
-  const calculatedHours = (calcChannels.length * 15 * calcScale * (calcTier === 'high-velocity' ? 1.4 : 1.0)).toFixed(0);
-  const calculatedPriceEstimate = (calcChannels.length * 450 * calcScale * (calcTier === 'high-velocity' ? 1.3 : 1.0)).toFixed(0);
+  // Calculate recommendation metrics in INR
+  // Starter Projects: ₹5,000 - ₹15,000
+  // Medium Projects: ₹15,000 - ₹25,000
+  // Advanced Projects: ₹25,000 - ₹50,000
+  // Maximum budget should not exceed ₹50,000/month.
+  const calculatedHours = (calcChannels.length * 12 * calcScale * (calcTier === 'high-velocity' ? 1.3 : 1.0)).toFixed(0);
+  
+  // Custom localized calculation targeting a max of ₹50,000
+  const baseEstimate = 3500 + (calcChannels.length * 1100 * calcScale * (calcTier === 'high-velocity' ? 1.25 : 1.0));
+  const calculatedPriceEstimate = Math.min(Math.max(Math.round(baseEstimate / 500) * 500, 5000), 50000);
+
+  let projectAllocationName = 'Starter Projects';
+  let projectAllocationRange = '₹5,000 - ₹15,000';
+  if (calculatedPriceEstimate > 25000) {
+    projectAllocationName = 'Advanced Projects';
+    projectAllocationRange = '₹25,000 - ₹50,000';
+  } else if (calculatedPriceEstimate > 15000) {
+    projectAllocationName = 'Medium Projects';
+    projectAllocationRange = '₹15,000 - ₹25,000';
+  }
+
+  const formattedPriceEstimate = `₹${calculatedPriceEstimate.toLocaleString('en-IN')}`;
 
   return (
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
@@ -47,7 +66,7 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
           Services That Build Direct <span className="text-[#D4AF37]">Leverage</span>
         </h2>
         <p className="font-sans text-body-lg text-[#BFB9AF] leading-relaxed">
-          We do not deliver superficial vanity stats. Our systems are engineered to capture consumer focus, secure high-recall memory slots, and translate search visibility into revenue assets.
+          We do not deliver superficial vanity stats. Our systems are engineered to help Indian creators, startups, local businesses, coaches, consultants, and SMEs capture consumer focus, secure high-recall mindshare, and transform digital presence into recurring growth assets.
         </p>
       </section>
 
@@ -264,16 +283,21 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
 
           {/* Results Summary Box */}
           <div className="bg-[#0A0A0A]/60 rounded-lg p-5 border border-[#D4AF37]/15 shadow-sm space-y-4 mt-6">
-            <span className="font-mono text-[9px] text-[#BFB9AF] uppercase tracking-widest font-bold block text-center">
-              ESTIMATED PROJECT ALLOCATION
-            </span>
+            <div className="text-center space-y-1 pb-1 border-b border-[#D4AF37]/10">
+              <span className="font-mono text-[9px] text-[#BFB9AF] uppercase tracking-widest font-bold block">
+                ESTIMATED PROJECT ALLOCATION
+              </span>
+              <span className="font-sans text-xs text-[#D4AF37] font-bold block uppercase tracking-wide">
+                {projectAllocationName} List ({projectAllocationRange})
+              </span>
+            </div>
             <div className="grid grid-cols-2 gap-4 text-center divide-x divide-[#D4AF37]/15">
               <div>
                 <span className="text-xl font-extrabold text-white tracking-tight font-mono">{calculatedHours} hrs</span>
                 <p className="text-[9px] font-sans text-[#BFB9AF] uppercase block mt-1">Operational Hours</p>
               </div>
               <div>
-                <span className="text-xl font-extrabold text-[#D4AF37] tracking-tight font-mono">${calculatedPriceEstimate}</span>
+                <span className="text-xl font-extrabold text-[#D4AF37] tracking-tight font-mono">{formattedPriceEstimate}</span>
                 <p className="text-[10px] font-sans text-[#BFB9AF] uppercase block mt-1">Est. Retainer / mo</p>
               </div>
             </div>

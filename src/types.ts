@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type ActiveTab = 'home' | 'about' | 'services' | 'portfolio' | 'contact';
+export type ActiveTab = 'home' | 'about' | 'services' | 'portfolio' | 'contact' | 'blog' | 'cms';
 
 export interface ServiceItem {
   id: string;
@@ -43,3 +43,17 @@ export interface TestimonialItem {
   role: string;
   img: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  category: string;
+  featuredImage: string;
+  seoTitle: string;
+  metaDesc: string;
+  status: 'draft' | 'published';
+  createdAt: string;
+}
+

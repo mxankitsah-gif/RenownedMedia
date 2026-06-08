@@ -12,6 +12,7 @@ import AboutView from './components/AboutView';
 import ServicesView from './components/ServicesView';
 import PortfolioView from './components/PortfolioView';
 import ContactView from './components/ContactView';
+import BlogView from './components/BlogView';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import QuoteRequestModal from './components/QuoteRequestModal';
 import { ActiveTab, ProjectItem } from './types';
@@ -94,6 +95,20 @@ export default function App() {
             className="pt-24 min-h-[80vh]"
           >
             <ContactView />
+          </motion.div>
+        );
+      case 'blog':
+      case 'cms':
+        return (
+          <motion.div
+            key="blog-view"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="pt-24 min-h-[80vh]"
+          >
+            <BlogView onTabChange={handleTabChange} onRequestQuote={handleRequestQuoteGeneral} />
           </motion.div>
         );
       case 'home':

@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowRight, Quote } from 'lucide-react';
+import { ArrowRight, Quote, Sparkles, Award, Star, Trophy, Users } from 'lucide-react';
 import { motion } from 'motion/react';
 import { SERVICES, PROJECTS, TESTIMONIAL, TEAM, HERO_IMAGE } from '../data';
 import { ProjectItem } from '../types';
+import ServiceIcon from './ServiceIcon';
 
 interface HomeViewProps {
   onTabChange: (tab: 'home' | 'about' | 'services' | 'portfolio' | 'contact') => void;
@@ -43,18 +44,18 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
       <section 
         className="relative min-h-[92vh] flex items-center pt-24 pb-16 bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(5, 5, 5, 0.72), #050505), url(${HERO_IMAGE})`,
+          backgroundImage: `linear-gradient(to bottom, rgba(10, 10, 10, 0.75), #0a0a0a), url(${HERO_IMAGE})`,
         }}
         id="home-hero-section"
       >
         <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
           <div className="max-w-3xl space-y-8">
-            <span className="font-serif text-xl lg:text-2xl text-primary font-bold tracking-normal italic block animate-pulse">
+            <span className="font-serif text-xl lg:text-2xl text-[#D4AF37] font-medium tracking-normal italic block">
               Visibility Is The New Currency.
             </span>
             
-            <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-extrabold text-on-surface leading-[1.1] tracking-tight">
-              Grow Faster In The Digital World
+            <h1 className="font-sans text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+              Grow <span className="text-[#D4AF37] relative inline-block">Faster<span className="absolute bottom-1.5 left-0 w-full h-[3px] bg-gradient-to-r from-[#D4AF37] to-[#F5D76E] opacity-65"></span></span> In The Digital World
             </h1>
 
             {/* Tags array */}
@@ -62,7 +63,7 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
               {heroTags.map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-[10px] font-bold bg-surface-container-high/90 text-primary border border-primary/20 px-3.5 py-1.5 rounded-full uppercase"
+                  className="font-mono text-[9px] font-bold bg-white/[0.04] text-[#D4AF37] border border-[#D4AF37]/35 px-4 py-1.5 rounded-full uppercase tracking-wider"
                 >
                   {tag}
                 </span>
@@ -70,17 +71,17 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
             </div>
 
             <div className="space-y-4">
-              <p className="font-sans text-body-lg text-primary font-extrabold italic">
-                No cap, your brand needs to be seen.
+              <p className="font-sans text-lg text-[#F5D76E] font-medium tracking-wide">
+                No compromise. Your brand deserves elite representation.
               </p>
-              <p className="font-sans text-sm sm:text-base text-on-surface-variant max-w-2xl leading-relaxed">
-                At Renowned Media, we combine strategy, creativity and execution — helping modern brands dominate search, captivate audiences and grow their digital authority.
+              <p className="font-sans text-sm sm:text-base text-[#BFB9AF] max-w-2xl leading-relaxed">
+                At Renowned Media, we combine strategy, execution, and master craftsmanship — helping modern brands dominate search, captivate audiences, and secure their digital authority with high-recall prestige.
               </p>
             </div>
 
             <button
               onClick={onRequestQuote}
-              className="bg-primary-container text-on-primary-container px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-widest hover:scale-105 transition-all duration-200 active:scale-95 shadow-xl hover:shadow-2xl ring-2 ring-primary-container/30 ring-offset-4 ring-offset-background cursor-pointer"
+              className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.35)] cursor-pointer"
               id="hero-growing-btn"
             >
               Let's Grow Together
@@ -92,14 +93,17 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
       </section>
 
       {/* 2. SERVICES BENTO GRID */}
-      <section className="py-24 bg-surface-dim" id="home-bento-services">
+      <section className="py-24 bg-[#0a0a0a]" id="home-bento-services">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
-              Services That Build Influence
+            <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+              Bespoke Creative Capabilities
+            </span>
+            <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Services That Build <span className="text-[#D4AF37]">Prestige</span>
             </h2>
-            <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
-              From digital PR to content production, Renowned Media helps brands grow visibility, authority and audience engagement across modern platforms.
+            <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
+              From digital PR to cinematic content production, Renowned Media helps premium brands grow visibility and authority with extreme precision.
             </p>
           </div>
 
@@ -112,22 +116,20 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
                 <div
                   key={srv.id}
                   onClick={() => onTabChange('services')}
-                  className={`bg-surface-container-low border border-outline-variant/30 rounded-xl p-8 hover:-translate-y-2 transition-all duration-300 group hover:shadow-lg hover:border-primary/30 cursor-pointer ${bentoClass}`}
+                  className={`bg-white/[0.02] backdrop-blur-md border border-[#D4AF37]/15 hover:border-[#D4AF37]/60 rounded-xl p-8 hover:-translate-y-2.5 transition-all duration-500 ease-out group cursor-pointer hover:shadow-[0_0_30px_rgba(212,175,55,0.12)] ${bentoClass}`}
                   id={`home-service-card-${srv.id}`}
                 >
-                  <div className={`rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-primary-container group-hover:text-on-primary-container transition-all shrink-0 ${
+                  <div className={`rounded-lg bg-white/[0.04] border border-[#D4AF37]/25 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#0A0A0A] transition-all duration-300 shrink-0 ${
                     isSpecialBrand ? 'w-16 h-16' : 'w-12 h-12 mb-6'
                   }`}>
-                    <span className={`material-symbols-outlined ${isSpecialBrand ? 'text-4xl' : 'text-3xl'}`} data-icon={srv.iconName}>
-                      {srv.iconName}
-                    </span>
+                    <ServiceIcon id={srv.id} className={isSpecialBrand ? 'w-8 h-8' : 'w-6 h-6'} />
                   </div>
 
                   <div className="space-y-2">
-                    <h4 className="font-sans font-extrabold text-lg text-on-surface">
+                    <h4 className="font-sans font-extrabold text-lg text-white group-hover:text-[#D4AF37] transition-colors duration-200">
                       {srv.title}
                     </h4>
-                    <p className="font-sans text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+                    <p className="font-sans text-xs sm:text-sm text-[#BFB9AF] leading-relaxed">
                       {srv.description}
                     </p>
                   </div>
@@ -139,14 +141,17 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
       </section>
 
       {/* 3. FEATURED PROJECTS SECTION */}
-      <section className="py-24 bg-background" id="home-projects">
+      <section className="py-24 bg-[#0a0a0a]" id="home-projects">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
-              Featured Projects
+            <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+              Selected Showcase
+            </span>
+            <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Featured Client <span className="text-[#D4AF37]">Major Campaigns</span>
             </h2>
-            <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
-              A showcase of content, campaigns and digital experiences created for modern brands and creators.
+            <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
+              A curated selection of pristine campaign roadmaps, high-energy productions, and SEO conquests designed for premium visibility.
             </p>
           </div>
 
@@ -156,34 +161,34 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
               <div
                 key={proj.id}
                 onClick={() => onSelectProject(proj)}
-                className="group relative rounded-xl overflow-hidden border border-outline-variant/30 aspect-[0.67] hover:border-primary/50 hover:shadow-xl transition-all cursor-pointer"
+                className="group relative rounded-xl overflow-hidden border border-[#D4AF37]/15 aspect-[0.67] hover:border-[#D4AF37]/60 hover:shadow-[0_0_25px_rgba(212,175,55,0.15)] transition-all duration-500 ease-out cursor-pointer bg-white/[0.01]"
                 id={`home-project-card-${proj.id}`}
               >
                 <img
                   alt={proj.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   src={proj.img}
                   referrerPolicy="no-referrer"
                 />
                 
                 {/* Visual shade gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="absolute bottom-0 left-0 p-6 w-full space-y-2 text-left">
-                  <span className="font-mono text-[9px] text-primary block font-bold uppercase tracking-wider">
+                  <span className="font-mono text-[9px] text-[#D4AF37] block font-bold uppercase tracking-widest">
                     {proj.category}
                   </span>
-                  <h3 className="font-sans text-base font-extrabold text-on-surface leading-tight">
+                  <h3 className="font-sans text-base font-extrabold text-white leading-tight group-hover:text-[#D4AF37] transition-colors">
                     {proj.title}
                   </h3>
-                  <p className="font-sans text-xs text-on-surface-variant line-clamp-2 leading-relaxed">
+                  <p className="font-sans text-xs text-[#BFB9AF] line-clamp-2 leading-relaxed">
                     {proj.description}
                   </p>
                   <button
-                    className="inline-flex items-center text-primary text-xs font-bold gap-1 mt-1 group-hover:underline"
+                    className="inline-flex items-center text-[#D4AF37] text-xs font-bold gap-1 mt-1 group-hover:underline cursor-pointer"
                     id={`view-project-label-${proj.id}`}
                   >
-                    View Project <span className="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+                    View Project <ArrowRight className="w-3 h-3 ml-1" />
                   </button>
                 </div>
               </div>
@@ -193,7 +198,7 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
           <div className="text-center">
             <button
               onClick={() => onTabChange('portfolio')}
-              className="bg-transparent border-2 border-primary-container text-primary px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 cursor-pointer"
+              className="bg-transparent hover:bg-white text-white hover:text-[#0A0A0A] border border-[#D4AF37]/50 hover:border-white px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-[0_2px_15px_rgba(212,175,55,0.05)] hover:shadow-[0_4px_25px_rgba(255,255,255,0.15)]"
               id="explore-more-projects-btn"
             >
               Explore More
@@ -203,25 +208,25 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
       </section>
 
       {/* 4. TESTIMONIAL SECTION */}
-      <section className="py-24 bg-surface-container-low border-y border-outline-variant/20" id="home-quote-section">
+      <section className="py-24 bg-[#0f0f0f] border-y border-[#D4AF37]/15" id="home-quote-section">
         <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
-          <Quote className="w-12 h-12 text-primary mx-auto opacity-80" />
+          <Quote className="w-12 h-12 text-[#D4AF37] mx-auto opacity-70" />
           
-          <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-on-surface tracking-tight max-w-2xl mx-auto leading-snug">
+          <h3 className="font-sans text-2xl sm:text-3xl font-light italic text-white tracking-normal max-w-2xl mx-auto leading-relaxed">
             "{TESTIMONIAL.quote}"
           </h3>
 
           <div className="flex flex-col items-center justify-center">
             <img
               alt={TESTIMONIAL.author}
-              className="w-16 h-16 rounded-full border-2 border-primary-container shadow-md mb-4 object-cover"
+              className="w-16 h-16 rounded-full border-2 border-[#D4AF37]/50 shadow-lg mb-4 object-cover"
               src={TESTIMONIAL.img}
               referrerPolicy="no-referrer"
             />
-            <h5 className="font-sans font-extrabold text-base text-on-surface">
+            <h5 className="font-sans font-bold text-base text-white tracking-wide">
               {TESTIMONIAL.author}
             </h5>
-            <p className="font-mono text-[10px] text-on-surface-variant uppercase mt-1 tracking-widest font-bold">
+            <p className="font-mono text-[9px] text-[#D4AF37] uppercase mt-1 tracking-widest font-semibold bg-[#D4AF37]/10 px-2.5 py-0.5 rounded">
               {TESTIMONIAL.role}
             </p>
           </div>
@@ -229,14 +234,17 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
       </section>
 
       {/* 5. TEAM LEADERSHIP SECTION */}
-      <section className="py-24 bg-background" id="home-leadership">
+      <section className="py-24 bg-[#0a0a0a]" id="home-leadership">
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           <div className="text-center max-w-2xl mx-auto space-y-4">
-            <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
-              Meet Our Leadership
+            <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+              Expert Partners
+            </span>
+            <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Prestige <span className="text-[#D4AF37]">Leadership</span>
             </h2>
-            <p className="font-sans text-sm text-on-surface-variant leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et justo. Praesent mattis commodo augue.
+            <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
+              A bespoke team of global digital strategists, cinematography artists, and content executors.
             </p>
           </div>
 
@@ -245,22 +253,22 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
               <div
                 key={member.id}
                 onClick={() => onTabChange('about')}
-                className="bg-surface-container rounded-xl border border-outline-variant/30 overflow-hidden group hover:border-primary/30 transition-all shadow-sm hover:shadow-lg cursor-pointer"
+                className="bg-white/[0.01] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 overflow-hidden group hover:border-[#D4AF37]/65 transition-all duration-500 hover:shadow-[0_0_25px_rgba(212,175,55,0.12)] cursor-pointer"
                 id={`home-team-card-${member.id}`}
               >
-                <div className="aspect-square overflow-hidden bg-surface-container-high">
+                <div className="aspect-square overflow-hidden bg-white/[0.02]">
                   <img
                     alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 hover:scale-105"
+                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 hover:scale-105"
                     src={member.img}
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="p-6 text-center border-t border-outline-variant/20">
-                  <h4 className="font-sans font-extrabold text-lg text-on-surface mb-1">
+                <div className="p-6 text-center border-t border-[#D4AF37]/15">
+                  <h4 className="font-sans font-extrabold text-lg text-white mb-1 group-hover:text-[#D4AF37] transition-colors">
                     {member.name}
                   </h4>
-                  <p className="font-mono text-[10px] text-primary uppercase font-bold tracking-widest">
+                  <p className="font-mono text-[9px] text-[#D4AF37] uppercase font-bold tracking-widest">
                     {member.role === 'Founder & CEO' ? 'Founder' : member.role}
                   </p>
                 </div>
@@ -271,21 +279,21 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
       </section>
 
       {/* 6. CALL TO ACTION SECTION */}
-      <section className="py-24 bg-surface-container-low relative overflow-hidden" id="home-cta-block">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary-container/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#D4AF37]/15 relative overflow-hidden" id="home-cta-block">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-8">
-          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-on-surface tracking-tight">
-            Would you like to start a project with us?
+          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Elevate Your Brand's Digital Authority
           </h2>
-          <p className="font-sans text-sm sm:text-base text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-            Etiam erat lectus, finibus eget commodo quis, tincidunt eget leo. Nullam quis vulputate orci, ac accumsan quam. Morbi fringilla congue libero.
+          <p className="font-sans text-sm sm:text-base text-[#BFB9AF] max-w-2xl mx-auto leading-relaxed">
+            Partner with us to create a bespoke, high-authority digital strategy that captures target mindshare and creates long-term commercial value.
           </p>
 
           <button
             onClick={onRequestQuote}
-            className="bg-primary-container text-on-primary-container px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-widest hover:scale-105 transition-all duration-200 active:scale-95 shadow-lg hover:shadow-xl ring-2 ring-primary-container/30 ring-offset-4 ring-offset-surface-container-low cursor-pointer"
+            className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/35 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.35)] cursor-pointer"
             id="cta-bottom-quote-btn"
           >
             Get a Quote

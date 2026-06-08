@@ -68,7 +68,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 bg-inverse-surface/85 backdrop-blur-md cursor-zoom-out"
+        className="fixed inset-0 bg-black/90 backdrop-blur-md cursor-zoom-out"
         id="quote-modal-backdrop"
       />
 
@@ -78,25 +78,25 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-        className="relative bg-surface-container text-on-surface rounded-xl overflow-hidden shadow-2xl max-w-2xl w-full max-h-[92vh] flex flex-col z-10 border border-outline-variant/30"
+        className="relative bg-[#0d0d0d] text-white rounded-xl overflow-hidden shadow-2xl max-w-2xl w-full max-h-[92vh] flex flex-col z-10 border border-[#D4AF37]/25"
         id="quote-request-modal"
       >
         {/* Sticky Header */}
-        <div className="flex justify-between items-center px-6 py-4.5 border-b border-outline-variant/20 bg-surface-container-low sticky top-0 z-20">
+        <div className="flex justify-between items-center px-6 py-4.5 border-b border-[#D4AF37]/15 bg-[#141414] sticky top-0 z-20">
           <div className="flex items-center gap-2">
-            <span className="p-2 bg-primary/10 text-primary rounded">
+            <span className="p-2 bg-[#D4AF37]/10 text-[#D4AF37] rounded">
               <FileText className="w-5 h-5" />
             </span>
             <div>
-              <h3 className="font-sans text-lg font-extrabold text-on-surface leading-tight">
+              <h3 className="font-sans text-lg font-extrabold text-white leading-tight">
                 Request Consultation & Quote
               </h3>
-              <p className="text-xs text-on-surface-variant">Let's blueprint your growth formula.</p>
+              <p className="text-xs text-[#BFB9AF]">Let's blueprint your growth formula.</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-on-surface cursor-pointer"
+            className="p-1.5 rounded-full hover:bg-white/[0.05] transition-colors text-[#BFB9AF] hover:text-white cursor-pointer"
             id="close-quote-modal-btn"
             aria-label="Close modal"
           >
@@ -118,7 +118,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
               >
                 {/* Step 1: Select Services */}
                 <div className="space-y-3">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-primary">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
                     1. Select Target Service Channels
                   </label>
                   <div className="grid grid-cols-2 gap-2.5">
@@ -131,20 +131,20 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                           onClick={() => toggleService(srv.id)}
                           className={`p-3 text-left border rounded-lg transition-all text-xs font-sans flex flex-col justify-between h-20 relative cursor-pointer group ${
                             selected
-                              ? 'border-primary bg-primary/5 text-primary ring-2 ring-primary/20'
-                              : 'border-outline-variant/40 hover:border-outline hover:bg-surface-container-low'
+                              ? 'border-[#D4AF37] bg-[#D4AF37]/5 text-[#D4AF37] ring-2 ring-[#D4AF37]/20 font-bold shadow-[0_0_15px_rgba(212,175,55,0.08)]'
+                              : 'border-[#D4AF37]/15 bg-white/[0.01] text-[#BFB9AF] hover:border-[#D4AF37]/45 hover:bg-white/[0.03]'
                           }`}
                           id={`service-select-${srv.id}`}
                         >
                           <div className="font-bold flex items-center justify-between w-full">
                             <span>{srv.title}</span>
                             <span className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${
-                              selected ? 'bg-primary border-primary text-white scale-110' : 'border-outline-variant'
+                              selected ? 'bg-[#D4AF37] border-[#D4AF37] text-[#0a0a0a] scale-110' : 'border-[#D4AF37]/20 bg-transparent'
                             }`}>
-                              {selected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
+                              {selected && <Check className="w-2.5 h-2.5 stroke-[3] text-[#0a0a0a]" />}
                             </span>
                           </div>
-                          <span className="text-[10px] text-on-surface-variant group-hover:text-on-surface truncate w-full">
+                          <span className="text-[10px] text-[#BFB9AF] group-hover:text-white truncate w-full">
                             {srv.description}
                           </span>
                         </button>
@@ -155,12 +155,12 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
 
                 {/* Step 2: Contact Info */}
                 <div className="space-y-4">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-primary">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
                     2. Primary Details
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="quote-name-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                      <label htmlFor="quote-name-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                         Your Name *
                       </label>
                       <input
@@ -170,11 +170,11 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="e.g. Joanne Carter"
-                        className="w-full px-3 py-2 border border-outline-variant rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                        className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                       />
                     </div>
                     <div>
-                      <label htmlFor="quote-email-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                      <label htmlFor="quote-email-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                         Professional Email *
                       </label>
                       <input
@@ -184,14 +184,14 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="e.g. joanne@company.com"
-                        className="w-full px-3 py-2 border border-outline-variant rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                        className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="quote-company-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                      <label htmlFor="quote-company-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                         Company Name
                       </label>
                       <input
@@ -200,23 +200,23 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
                         placeholder="e.g. Acme Tech Inc"
-                        className="w-full px-3 py-2 border border-outline-variant rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                        className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                       />
                     </div>
                     <div>
-                      <label htmlFor="quote-budget-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                      <label htmlFor="quote-budget-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                         Estimated Budget Scale
                       </label>
                       <select
                         id="quote-budget-input"
                         value={budget}
                         onChange={(e) => setBudget(e.target.value)}
-                        className="w-full px-3 py-2.5 border border-outline-variant rounded focus:outline-none focus:border-primary text-sm font-sans bg-background text-on-surface"
+                        className="w-full px-3 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                       >
-                        <option value="low" className="bg-background text-on-surface">Growth Phase ($1K - $3K / mo)</option>
-                        <option value="medium" className="bg-background text-on-surface">Standard Retainer ($3K - $7K / mo)</option>
-                        <option value="premium" className="bg-background text-on-surface">Enterprise Authority ($7K - $15K / mo)</option>
-                        <option value="enterprise" className="bg-background text-on-surface">Custom Multi-Channel Campaign</option>
+                        <option value="low" className="bg-[#0G0G0G] text-white">Growth Phase ($1K - $3K / mo)</option>
+                        <option value="medium" className="bg-[#0G0G0G] text-white">Standard Retainer ($3K - $7K / mo)</option>
+                        <option value="premium" className="bg-[#0G0G0G] text-white">Enterprise Authority ($7K - $15K / mo)</option>
+                        <option value="enterprise" className="bg-[#0G0G0G] text-white">Custom Multi-Channel Campaign</option>
                       </select>
                     </div>
                   </div>
@@ -224,7 +224,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
 
                 {/* Step 3: Message / Scope */}
                 <div className="space-y-2">
-                  <label htmlFor="quote-message-input" className="block text-xs font-bold uppercase tracking-wider text-primary">
+                  <label htmlFor="quote-message-input" className="block text-xs font-bold uppercase tracking-wider text-[#D4AF37]">
                     3. Project Summary & Parameters
                   </label>
                   <textarea
@@ -233,7 +233,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Describe your current targets, hurdles, and desired timelines..."
-                    className="w-full px-3 py-2 border border-outline-variant rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                    className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                   />
                 </div>
 
@@ -241,7 +241,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                 <button
                   type="submit"
                   disabled={isSubmitting || !name.trim() || !email.trim()}
-                  className="w-full py-3.5 px-6 rounded bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-primary/95 transition-colors cursor-pointer shadow-lg hover:shadow-primary/20 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3.5 px-6 rounded bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:shadow-[0_4px_25px_rgba(212,175,55,0.25)] transition-colors cursor-pointer shadow-lg active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                   id="submit-quote-request-btn"
                 >
                   {isSubmitting ? (
@@ -264,57 +264,57 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                 className="text-center py-6 md:py-8 space-y-6"
                 id="quote-success-state"
               >
-                <div className="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mx-auto shadow-lg shadow-primary-container/20">
+                <div className="w-16 h-16 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#D4AF37]/10">
                   <Check className="w-8 h-8 stroke-[3]" />
                 </div>
                 
                 <div className="space-y-2">
-                  <h4 className="font-sans text-2xl font-extrabold text-on-surface">
+                  <h4 className="font-sans text-2xl font-extrabold text-white">
                     Proposal Receipt Logged!
                   </h4>
-                  <p className="text-on-surface-variant text-sm max-w-md mx-auto">
+                  <p className="text-[#BFB9AF] text-sm max-w-md mx-auto">
                     Excellent choice, <strong>{name}</strong>! We have received your parameters and will compile our digital authority roadmap for you within 12 hours.
                   </p>
                 </div>
 
                 {/* Estimate summary layout */}
-                <div className="bg-surface-container-low border border-outline-variant/30 rounded-lg p-5 max-w-md mx-auto text-left text-xs font-sans space-y-3">
-                  <div className="font-bold text-on-surface text-center border-b border-outline-variant/20 pb-2 flex items-center justify-center gap-1.5">
-                    <MessageSquare className="w-4 h-4 text-primary" />
+                <div className="bg-white/[0.02] border border-[#D4AF37]/15 rounded-lg p-5 max-w-md mx-auto text-left text-xs font-sans space-y-3">
+                  <div className="font-bold text-white text-center border-b border-[#D4AF37]/10 pb-2 flex items-center justify-center gap-1.5 font-mono">
+                    <MessageSquare className="w-4 h-4 text-[#D4AF37]" />
                     INQUIRY TICKET OVERVIEW
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-on-surface-variant">Client Name:</span>
-                    <span className="font-semibold text-on-surface">{name}</span>
+                    <span className="text-[#BFB9AF]">Client Name:</span>
+                    <span className="font-semibold text-white">{name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-on-surface-variant">Selected Channels:</span>
-                    <span className="font-semibold text-on-surface">
+                    <span className="text-[#BFB9AF]">Selected Channels:</span>
+                    <span className="font-semibold text-white">
                       {selectedServices.length > 0 
                         ? selectedServices.map(id => SERVICES.find(s => s.id === id)?.title).join(', ')
                         : 'General Inquiry'}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-on-surface-variant">Scope Tier:</span>
-                    <span className="font-semibold text-primary capitalize">{budget} Scale</span>
+                    <span className="text-[#BFB9AF]">Scope Tier:</span>
+                    <span className="font-semibold text-[#D4AF37] capitalize">{budget} Scale</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-on-surface-variant">Contact Response:</span>
-                    <span className="font-semibold text-on-surface">{email}</span>
+                    <span className="text-[#BFB9AF]">Contact Response:</span>
+                    <span className="font-semibold text-white">{email}</span>
                   </div>
                 </div>
 
                 <div className="space-y-4 pt-2">
-                  <p className="text-[11px] text-on-surface-variant uppercase font-mono tracking-widest">
+                  <p className="text-[11px] text-[#BFB9AF] uppercase font-mono tracking-widest">
                     OR REACH US DIRECTLY AT
                   </p>
                   <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-semibold">
-                    <a href={`tel:${AGENCY_DETAILS.phone1}`} className="flex items-center gap-1.5 text-primary hover:underline">
+                    <a href={`tel:${AGENCY_DETAILS.phone1}`} className="flex items-center gap-1.5 text-[#D4AF37] hover:text-[#F5D76E] hover:underline">
                       <Phone className="w-4 h-4" />
                       {AGENCY_DETAILS.phone1}
                     </a>
-                    <a href={`mailto:${AGENCY_DETAILS.email}`} className="flex items-center gap-1.5 text-primary hover:underline">
+                    <a href={`mailto:${AGENCY_DETAILS.email}`} className="flex items-center gap-1.5 text-[#D4AF37] hover:text-[#F5D76E] hover:underline">
                       <Send className="w-4 h-4" />
                       {AGENCY_DETAILS.email}
                     </a>
@@ -324,7 +324,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-2.5 rounded bg-primary text-on-primary hover:bg-primary/90 text-xs font-mono uppercase tracking-wider transition-all cursor-pointer"
+                  className="px-6 py-2.5 rounded bg-white hover:bg-[#D4AF37] text-[#0A0A0A] border border-[#D4AF37]/25 hover:border-[#D4AF37] text-xs font-mono uppercase tracking-wider transition-all duration-300 cursor-pointer"
                   id="quote-success-close-btn"
                 >
                   Return to Site

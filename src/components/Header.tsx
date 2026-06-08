@@ -34,10 +34,10 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
             onTabChange('home');
             setIsMobileMenuOpen(false);
           }}
-          className="font-sans text-2xl font-extrabold text-primary tracking-tight cursor-pointer hover:opacity-90 active:scale-95 transition-transform"
+          className="font-serif text-2xl font-black text-[#D4AF37] hover:text-white tracking-wide cursor-pointer active:scale-95 transition-all"
           id="brand-logo-btn"
         >
-          Renowned Media
+          Renowned <span className="text-white font-sans font-extrabold uppercase text-[15px] tracking-widest pl-1">Media</span>
         </button>
 
         {/* Desktop Navigation */}
@@ -69,7 +69,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
         <div className="hidden md:block">
           <button
             onClick={onRequestQuote}
-            className="bg-primary-container text-white px-6 py-2.5 rounded font-mono text-[11px] font-semibold uppercase tracking-wider hover:bg-primary transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95 duration-200 cursor-pointer"
+            className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] px-6 py-2.5 rounded font-mono text-[10px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_2px_15px_rgba(212,175,55,0.15)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.3)] cursor-pointer"
             id="header-quote-btn"
           >
             REQUEST QUOTE
@@ -120,7 +120,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
                   onRequestQuote();
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full bg-primary-container text-white py-3 px-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2"
+                className="w-full bg-white text-[#0A0A0A] hover:bg-[#D4AF37] border border-[#D4AF37]/30 py-3 px-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300"
                 id="mobile-quote-btn"
               >
                 REQUEST QUOTE <ArrowRight className="w-4 h-4" />

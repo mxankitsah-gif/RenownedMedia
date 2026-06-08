@@ -58,14 +58,14 @@ export default function ContactView() {
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
       {/* Intro Header */}
       <section className="text-center max-w-2xl mx-auto space-y-4">
-        <span className="font-mono text-xs font-bold text-primary bg-primary/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+        <span className="font-sans text-xs font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-4 py-1.5 rounded-full uppercase tracking-widest">
           Get In Touch
         </span>
-        <h2 className="font-sans text-4xl font-extrabold text-on-surface tracking-tight">
+        <h2 className="font-sans text-4xl font-extrabold text-white tracking-tight">
           Initiate Your Growth Routine
         </h2>
-        <p className="font-sans text-body-lg text-on-surface-variant leading-relaxed">
-          Have an upcoming product shoot, rebrand, or keyword authority objective? File your credentials below for continuous performance pipelines.
+        <p className="font-sans text-base text-[#BFB9AF] leading-relaxed">
+          Ready to elevate your digital presence, coordinate premium photography shoots, or establish organic search authority? Connect with us to orchestrate your brand parameters.
         </p>
       </section>
 
@@ -73,31 +73,31 @@ export default function ContactView() {
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Contact details & Map block */}
         <div className="lg:col-span-5 space-y-8">
-          <div className="bg-surface-container border border-outline-variant/30 rounded-xl p-8 space-y-6">
-            <h3 className="font-sans font-extrabold text-lg text-on-surface">Direct Inquiry Channels</h3>
+          <div className="bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 space-y-6">
+            <h3 className="font-sans font-extrabold text-lg text-white">Direct Inquiry Channels</h3>
             
             <div className="space-y-4 text-xs font-sans">
               {/* Mail */}
-              <div className="flex items-start gap-3 p-3 bg-background rounded border border-outline-variant/20 hover:border-primary/40 transition-colors">
-                <Mail className="w-5 h-5 text-primary shrink-0 transition-transform" />
-                <div className="space-y-0.5">
-                  <span className="font-bold text-[9px] text-on-surface-variant uppercase block font-mono">Mail Address</span>
-                  <a href={`mailto:${AGENCY_DETAILS.email}`} className="text-xs font-semibold text-primary hover:underline">
+              <div className="flex items-start gap-4 p-4 bg-black/60 rounded border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors">
+                <Mail className="w-5 h-5 text-[#D4AF37] shrink-0" />
+                <div className="space-y-1">
+                  <span className="font-sans font-bold text-[9px] text-[#BFB9AF] uppercase block tracking-wider">Mail Address</span>
+                  <a href={`mailto:${AGENCY_DETAILS.email}`} className="text-xs font-semibold text-[#D4AF37] hover:text-[#F5D76E] hover:underline">
                     {AGENCY_DETAILS.email}
                   </a>
                 </div>
               </div>
 
               {/* Call */}
-              <div className="flex items-start gap-3 p-3 bg-background rounded border border-outline-variant/20 hover:border-primary/40 transition-colors">
-                <Phone className="w-5 h-5 text-primary shrink-0" />
-                <div className="space-y-0.5">
-                  <span className="font-bold text-[9px] text-on-surface-variant uppercase block font-mono">Operations Phone</span>
+              <div className="flex items-start gap-4 p-4 bg-black/60 rounded border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors">
+                <Phone className="w-5 h-5 text-[#D4AF37] shrink-0" />
+                <div className="space-y-1">
+                  <span className="font-sans font-bold text-[9px] text-[#BFB9AF] uppercase block tracking-wider">Operations Phone</span>
                   <div className="space-y-1">
-                    <a href={`tel:${AGENCY_DETAILS.phone1}`} className="text-xs font-semibold text-primary hover:underline block">
+                    <a href={`tel:${AGENCY_DETAILS.phone1}`} className="text-xs font-semibold text-[#D4AF37] hover:text-[#F5D76E] hover:underline block">
                       {AGENCY_DETAILS.phone1}
                     </a>
-                    <a href={`tel:${AGENCY_DETAILS.phone2}`} className="text-xs font-semibold text-primary hover:underline block">
+                    <a href={`tel:${AGENCY_DETAILS.phone2}`} className="text-xs font-semibold text-[#D4AF37] hover:text-[#F5D76E] hover:underline block">
                       {AGENCY_DETAILS.phone2}
                     </a>
                   </div>
@@ -105,11 +105,11 @@ export default function ContactView() {
               </div>
 
               {/* Headquarters Location */}
-              <div className="flex items-start gap-3 p-3 bg-background rounded border border-outline-variant/20 hover:border-primary/40 transition-colors">
-                <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <div className="space-y-0.5">
-                  <span className="font-bold text-[9px] text-on-surface-variant uppercase block font-mono">Headquarters Location</span>
-                  <span className="text-on-surface font-semibold block leading-relaxed">
+              <div className="flex items-start gap-4 p-4 bg-black/60 rounded border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors">
+                <MapPin className="w-5 h-5 text-[#D4AF37] shrink-0" />
+                <div className="space-y-1">
+                  <span className="font-sans font-bold text-[9px] text-[#BFB9AF] uppercase block tracking-wider">Headquarters Location</span>
+                  <span className="text-[#BFB9AF] font-semibold block leading-relaxed">
                     {AGENCY_DETAILS.address}
                   </span>
                 </div>
@@ -117,29 +117,23 @@ export default function ContactView() {
             </div>
           </div>
 
-          {/* Interactive Office representation illustration */}
-          <div className="bg-surface-container border border-outline-variant/30 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
-            <div className="absolute inset-0 bg-primary/5 select-none pointer-events-none" />
+          {/* Luxury Office Representation Layout without simulated terminal larp */}
+          <div className="bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[#D4AF37]/5 select-none pointer-events-none" />
             <div className="relative space-y-2">
-              <span className="font-mono text-[9px] text-primary font-bold uppercase tracking-widest block">
-                GLOBAL OPERATIONS HUB
+              <span className="font-sans text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest block">
+                Global Operations Hub
               </span>
-              <h4 className="font-sans font-bold text-sm text-on-surface">Ghaziabad, Uttar Pradesh</h4>
-              <p className="font-sans text-[10px] text-on-surface-variant max-w-xs mx-auto leading-relaxed">
-                Seamless digital delivery, secure server-side communications, and continuous creative output from India to global digital sectors.
+              <h4 className="font-sans font-bold text-base text-white">Ghaziabad, Uttar Pradesh</h4>
+              <p className="font-sans text-xs text-[#BFB9AF] max-w-sm mx-auto leading-relaxed">
+                Coordinating high-end digital authority, search strategy, and premium digital assets for corporate sectors internationally.
               </p>
-              
-              {/* Fun visual placeholder representing standard coordinate ping */}
-              <div className="pt-3 flex items-center justify-center gap-1.5 font-mono text-[10px] text-primary">
-                <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
-                <span className="font-extrabold text-[9px]">GHAZIABAD STATION_LIVE (28.6692° N, 77.4538° E)</span>
-              </div>
             </div>
           </div>
         </div>
 
         {/* Contact Form block */}
-        <div className="lg:col-span-7 bg-surface-container border border-outline-variant/30 rounded-xl p-8 shadow-sm">
+        <div className="lg:col-span-7 bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 shadow-xl">
           <AnimatePresence mode="wait">
             {!submitSuccess ? (
               <motion.form
@@ -151,11 +145,11 @@ export default function ContactView() {
                 className="space-y-5"
                 id="contact-form-element"
               >
-                <h3 className="font-sans font-extrabold text-lg text-on-surface">Submit Credentials Log</h3>
+                <h3 className="font-sans font-extrabold text-xl text-white">Secure Strategic Intake</h3>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="contact-name-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                    <label htmlFor="contact-name-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                       Full Name *
                     </label>
                     <input
@@ -165,12 +159,12 @@ export default function ContactView() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Joanne Carter"
-                      className="w-full px-3 py-2 border border-outline-variant/50 rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                      className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-black/40 text-white font-sans"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="contact-email-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                    <label htmlFor="contact-email-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                       Email Address *
                     </label>
                     <input
@@ -180,30 +174,30 @@ export default function ContactView() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="e.g. joanne@company.com"
-                      className="w-full px-3 py-2 border border-outline-variant/50 rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                      className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-black/40 text-white font-sans"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="contact-subject-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                  <label htmlFor="contact-subject-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                     Inquiry Vector
                   </label>
                   <select
                     id="contact-subject-input"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    className="w-full px-3 py-2 border border-outline-variant/50 rounded focus:outline-none focus:border-primary text-sm font-sans bg-background text-on-surface"
+                    className="w-full px-3 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-[#0d0d0d] text-white font-sans"
                   >
-                    <option value="General Partnership" className="bg-background">General Business / Partnership</option>
-                    <option value="Video Shoot Booking" className="bg-background">Video Shoot Production</option>
-                    <option value="Technical SEO Retainer" className="bg-background">Technical SEO Auditing</option>
-                    <option value="Press Visibility" className="bg-background">Digital PR & Placement</option>
+                    <option value="General Partnership" className="bg-[#0d0d0d] text-white">General Business / Partnership</option>
+                    <option value="Video Shoot Booking" className="bg-[#0d0d0d] text-white">Video Shoot Production</option>
+                    <option value="Technical SEO Retainer" className="bg-[#0d0d0d] text-white">Technical SEO Auditing</option>
+                    <option value="Press Visibility" className="bg-[#0d0d0d] text-white">Digital PR & Placement</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message-input" className="block text-xs font-bold text-on-surface-variant mb-1">
+                  <label htmlFor="contact-message-input" className="block text-xs font-bold text-[#BFB9AF] mb-1">
                     Detailed Message & Parameters *
                   </label>
                   <textarea
@@ -213,24 +207,24 @@ export default function ContactView() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Provide your target milestones, timeline limitations, and brand parameters..."
-                    className="w-full px-3 py-2 border border-outline-variant/50 rounded focus:outline-none focus:border-primary text-sm font-sans bg-background"
+                    className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm bg-black/40 text-white font-sans"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting || !name.trim() || !email.trim() || !message.trim()}
-                  className="w-full py-3 bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 rounded hover:bg-primary/95 transition-colors cursor-pointer shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3.5 bg-white hover:bg-[#D4AF37] text-black font-sans text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 rounded hover:shadow-[0_4px_20px_rgba(212,175,55,0.25)] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   id="submit-contact-form-btn"
                 >
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 className="w-4 h-4 animate-spin text-black" />
                       SUBMITTING TRANSMISSION...
                     </>
                   ) : (
                     <>
-                      SEND MESSAGE <Send className="w-4 h-4" />
+                      SEND MESSAGE <Send className="w-4 h-4 text-black" />
                     </>
                   )}
                 </button>
@@ -243,28 +237,28 @@ export default function ContactView() {
                 className="text-center py-8 space-y-5"
                 id="contact-success-state"
               >
-                <div className="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center mx-auto shadow-md">
+                <div className="w-14 h-14 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#D4AF37]/10">
                   <Check className="w-6 h-6 stroke-[3]" />
                 </div>
                 
                 <div className="space-y-1.5">
-                  <h4 className="font-sans text-xl font-extrabold text-on-surface">Inquiry Dispatched Successfully!</h4>
-                  <p className="text-xs text-on-surface-variant max-w-sm mx-auto">
+                  <h4 className="font-sans text-xl font-extrabold text-white">Inquiry Dispatched Successfully!</h4>
+                  <p className="text-xs text-[#BFB9AF] max-w-sm mx-auto">
                     We will analyze your parameters and allocate the key operations squad to your ticket within 12 hours.
                   </p>
                 </div>
 
-                <div className="p-4 bg-surface-container-low rounded border border-outline-variant/20 text-left text-xs font-mono max-w-sm mx-auto space-y-1">
-                  <span className="font-bold block text-primary mb-1">Ticket Reference:</span>
-                  <div>Client: {name}</div>
-                  <div>Subject: {subject}</div>
-                  <div>Status: Processing in Pipeline</div>
+                <div className="p-4 bg-black/40 rounded border border-[#D4AF37]/15 text-left text-xs font-sans max-w-sm mx-auto space-y-1.5">
+                  <span className="font-bold block text-[#D4AF37] border-b border-[#D4AF37]/10 pb-1 uppercase tracking-wider font-mono text-[9px]">Ticket Receipt Logged</span>
+                  <div>Client: <strong className="text-white">{name}</strong></div>
+                  <div>Subject: <strong className="text-white">{subject}</strong></div>
+                  <div>Status: <strong className="text-[#D4AF37]">Processing</strong></div>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-2 bg-primary text-on-primary hover:bg-primary/90 text-xs font-mono uppercase tracking-wider rounded transition-colors cursor-pointer"
+                  className="px-6 py-2.5 bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/25 text-xs font-sans uppercase tracking-wider rounded transition-all cursor-pointer"
                   id="reset-contact-form-btn"
                 >
                   Send Another Inquiry
@@ -276,10 +270,10 @@ export default function ContactView() {
       </section>
 
       {/* Structured FAQ accordion section */}
-      <section className="space-y-8 border-t border-outline-variant/20 pt-16">
+      <section className="space-y-8 border-t border-[#D4AF37]/15 pt-16">
         <div className="text-center max-w-md mx-auto space-y-2">
-          <h3 className="font-sans text-2xl font-extrabold text-on-surface">Frequently Queried Parameters</h3>
-          <p className="text-xs text-on-surface-variant">Review standard operational methodologies prior to blueprint validation.</p>
+          <h3 className="font-sans text-2xl font-extrabold text-white">Frequently Queried Parameters</h3>
+          <p className="text-xs text-[#BFB9AF]">Review standard operational methodologies prior to blueprint validation.</p>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-3" id="faq-accordions">
@@ -288,19 +282,19 @@ export default function ContactView() {
             return (
               <div
                 key={idx}
-                className="bg-surface-container border border-outline-variant/30 rounded-lg overflow-hidden transition-all shadow-sm"
+                className="bg-[#111111] border border-[#D4AF37]/15 rounded-lg overflow-hidden transition-all shadow-sm"
               >
                 <button
                   type="button"
                   onClick={() => setExpandedFaqIdx(isFaqExpanded ? null : idx)}
-                  className="w-full text-left p-4 flex items-center justify-between text-sm font-sans font-bold text-on-surface hover:bg-surface-container-low transition-colors cursor-pointer focus:outline-none"
+                  className="w-full text-left p-4 flex items-center justify-between text-sm font-sans font-bold text-white hover:bg-white/[0.02] transition-colors cursor-pointer focus:outline-none"
                   id={`faq-trigger-${idx}`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <HelpCircle className="w-4 h-4 text-primary shrink-0" />
+                    <HelpCircle className="w-4 h-4 text-[#D4AF37] shrink-0" />
                     <span>{faq.q}</span>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-on-surface-variant transition-transform ${isFaqExpanded ? 'rotate-180 text-primary' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#BFB9AF] transition-transform ${isFaqExpanded ? 'rotate-180 text-[#D4AF37]' : ''}`} />
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -311,7 +305,7 @@ export default function ContactView() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="px-11 pb-4 pt-1 text-xs text-on-surface-variant font-sans leading-relaxed border-t border-outline-variant/10">
+                      <div className="px-11 pb-4 pt-1 text-xs text-[#BFB9AF] font-sans leading-relaxed border-t border-[#D4AF37]/10">
                         {faq.a}
                       </div>
                     </motion.div>

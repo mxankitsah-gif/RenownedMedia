@@ -23,7 +23,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
     { label: 'Services', id: 'services' },
     { label: 'Portfolio', id: 'portfolio' },
     { label: 'Contact', id: 'contact' },
-    { label: 'Blog & CMS', id: 'blog' },
+    { label: 'Blog', id: 'blog' },
   ];
 
   return (
@@ -44,7 +44,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 items-center" id="desktop-nav">
           {navItems.map((item) => {
-            const isTabActive = activeTab === item.id || (item.id === 'blog' && activeTab === 'cms');
+            const isTabActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
@@ -104,7 +104,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navItems.map((item) => {
-                const isTabActive = activeTab === item.id || (item.id === 'blog' && activeTab === 'cms');
+                const isTabActive = activeTab === item.id;
                 return (
                   <button
                     key={item.id}

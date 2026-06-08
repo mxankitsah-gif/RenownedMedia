@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowRight, Quote, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset } from 'lucide-react';
+import { ArrowRight, Quote, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset, BookOpen, ExternalLink, Calendar, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { SERVICES, PROJECTS, TESTIMONIAL, HERO_IMAGE } from '../data';
 import { ProjectItem, ActiveTab } from '../types';
@@ -79,13 +79,22 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
               </p>
             </div>
 
-            <button
-              onClick={onRequestQuote}
-              className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.35)] cursor-pointer"
-              id="hero-growing-btn"
-            >
-              Let's Grow Together
-            </button>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button
+                onClick={onRequestQuote}
+                className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.35)] cursor-pointer animate-pulse-slow"
+                id="hero-growing-btn"
+              >
+                Let's Grow Together
+              </button>
+              <button
+                onClick={() => onTabChange('blog')}
+                className="bg-transparent hover:bg-white/[0.04] text-[#D4AF37] hover:text-white border border-[#D4AF37]/50 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                id="hero-read-blog-btn"
+              >
+                Read Our Blog <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
         {/* Soft bottom fade gradients */}
@@ -295,6 +304,104 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
         </div>
       </section>
 
+      {/* 5.5 NEW LATEST ARTICLES FROM BLOGGER SECTION */}
+      <section className="py-24 bg-[#0a0a0a] border-t border-[#D4AF37]/10" id="home-latest-articles">
+        <div className="max-w-7xl mx-auto px-6 space-y-16 animate-fade-in">
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pb-2">
+            <div className="text-left space-y-4 max-w-2xl">
+              <span className="font-mono text-[9px] font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1">
+                <BookOpen className="w-3 h-3" /> OFFICIAL CHANNELS STREAM
+              </span>
+              <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Latest Articles <span className="text-[#D4AF37]">& Case Studies</span>
+              </h2>
+              <p className="font-sans text-sm text-[#BFB9AF] leading-relaxed">
+                Direct updates and authoritative insight campaigns broadcasted live from our official Blogger timeline for local businesses and builders in India.
+              </p>
+            </div>
+            
+            <button
+              onClick={() => onTabChange('blog')}
+              className="bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/30 hover:border-[#D4AF37] px-6 py-3 rounded font-mono text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer inline-flex items-center gap-1.5 self-start md:self-auto shadow-sm"
+              id="home-view-more-blog-btn"
+            >
+              Read Our Blog <ArrowUpRight className="w-4 h-4 text-[#0A0A0A]" />
+            </button>
+          </div>
+
+          {/* Core articles showcase cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'How Indian Creators are Unlocking Dynamic Reach with Micro-Reels',
+                desc: 'Vertical formatting, immediate visual triggers, and localized hooks tailored to capture mass audience cohorts in Delhi NCR, Bangalore, and Mumbai.',
+                date: 'June 01, 2026',
+                category: 'Content Strategy',
+                img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop&q=80',
+              },
+              {
+                title: 'Ghaziabad & Delhi NCR Local SEO Guide for SME Growth',
+                desc: 'Optimize maps ranking directories, eliminate keyphrase siloing, and maximize Google Maps visibility parameters to land customers with active intent without massive ad spend.',
+                date: 'June 05, 2026',
+                category: 'Local SEO',
+                img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
+              },
+              {
+                title: 'Leveraging WhatsApp Automation for Indian Storefront Conversions',
+                desc: 'Switch from inactive email protocols to real-time webhook chatbots and catalogs that capture consumer curiosity instantly and drive 90%+ immediate read benchmarks.',
+                date: 'June 07, 2026',
+                category: 'Growth Marketing',
+                img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=80',
+              }
+            ].map((art, idx) => (
+              <div
+                key={idx}
+                onClick={() => onTabChange('blog')}
+                className="bg-white/[0.012] hover:bg-white/[0.02] backdrop-blur-md rounded-xl border border-[#D4AF37]/15 hover:border-[#D4AF37]/50 p-0 overflow-hidden transition-all duration-300 group flex flex-col justify-between cursor-pointer text-left"
+                id={`article-card-${idx}`}
+              >
+                <div className="relative h-44 overflow-hidden bg-[#121212]">
+                  <img
+                    src={art.img}
+                    alt={art.title}
+                    className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-102 transition-all duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-3 left-3 bg-[#0a0a0a]/90 text-[#D4AF37] border border-[#D4AF37]/35 text-[9px] font-mono px-2.5 py-0.5 rounded tracking-wider uppercase font-bold">
+                    {art.category}
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 font-mono text-[10px] text-[#BFB9AF]/70">
+                      <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" />
+                      <span>{art.date}</span>
+                      <span>·</span>
+                      <span className="text-white">Admin</span>
+                    </div>
+                    <h4 className="font-sans font-extrabold text-[#D4AF37] text-base group-hover:text-white transition-colors duration-200 line-clamp-2 leading-snug">
+                      {art.title}
+                    </h4>
+                    <p className="font-sans text-xs text-[#BFB9AF] leading-relaxed line-clamp-3">
+                      {art.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-[#D4AF37]/10 flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold text-[#D4AF37] group-hover:underline flex items-center gap-1">
+                      Read on Blogger <ArrowUpRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* 6. CALL TO ACTION SECTION */}
       <section className="py-24 bg-[#0a0a0a] border-t border-[#D4AF37]/15 relative overflow-hidden" id="home-cta-block">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -308,13 +415,22 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
             Partner with us to create a bespoke, high-authority digital strategy that captures target mindshare and creates long-term commercial value.
           </p>
 
-          <button
-            onClick={onRequestQuote}
-            className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/35 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.35)] cursor-pointer"
-            id="cta-bottom-quote-btn"
-          >
-            Get a Quote
-          </button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={onRequestQuote}
+              className="w-full sm:w-auto bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/35 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_35px_rgba(212,175,55,0.35)] cursor-pointer animate-pulse-slow"
+              id="cta-bottom-quote-btn"
+            >
+              Get a Quote
+            </button>
+            <button
+              onClick={() => onTabChange('blog')}
+              className="w-full sm:w-auto bg-transparent hover:bg-white/[0.04] text-[#D4AF37] hover:text-white border border-[#D4AF37]/50 hover:border-[#D4AF37] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+              id="cta-bottom-read-blog-btn"
+            >
+              Read Our Blog <ArrowUpRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </section>
     </div>

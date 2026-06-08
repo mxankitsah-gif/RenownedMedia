@@ -36,6 +36,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
@@ -47,16 +48,53 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim()) return;
+    setError(null);
+
+    // Validation
+    if (!name.trim()) {
+      setError('Please provide your name.');
+      return;
+    }
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError('Please provide a valid email address.');
+      return;
+    }
 
     setIsSubmitting(true);
-    // Simulate API delay
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://formspree.io/renownedmedia@outlook.in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          company: company.trim(),
+          budget: budget,
+          budgetLabel: getBudgetLabel(budget),
+          selectedServices: selectedServices.length > 0 
+            ? selectedServices.map(id => SERVICES.find(s => s.id === id)?.title || id).join(', ')
+            : 'None Selected (General Consultation)',
+          message: message.trim() || 'No custom message provided.',
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setIsSubmitting(false);
+        setError(data.error || 'Failed to submit proposal request. Please review your details and try again.');
+      }
+    } catch (err) {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-    }, 1200);
+      setError('A connection error occurred. Please check your network and try again.');
+    }
   };
 
   const handleReset = () => {
@@ -66,6 +104,7 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
     setBudget('medium');
     setMessage('');
     setSelectedServices([]);
+    setError(null);
     setSubmitSuccess(false);
     onClose();
   };
@@ -246,6 +285,12 @@ export default function QuoteRequestModal({ isOpen, onClose, preselectedServiceI
                     className="w-full px-3 py-2 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-sm font-sans bg-[#0d0d0d] text-white"
                   />
                 </div>
+
+                {error && (
+                  <div className="p-3 bg-red-950/20 border border-red-500/20 text-red-300 rounded text-xs font-sans text-left" id="quote-form-error-banner">
+                    <strong className="text-red-400">Submission Error:</strong> {error}
+                  </div>
+                )}
 
                 {/* Submit Action */}
                 <button

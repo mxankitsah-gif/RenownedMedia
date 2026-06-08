@@ -98,7 +98,6 @@ export default function App() {
           </motion.div>
         );
       case 'blog':
-      case 'cms':
         return (
           <motion.div
             key="blog-view"

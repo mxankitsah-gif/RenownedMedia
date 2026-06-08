@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type ActiveTab = 'home' | 'about' | 'services' | 'portfolio' | 'contact' | 'blog' | 'cms';
+export type ActiveTab = 'home' | 'about' | 'services' | 'portfolio' | 'contact' | 'blog';
 
 export interface ServiceItem {
   id: string;

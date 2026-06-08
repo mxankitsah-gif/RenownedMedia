@@ -16,19 +16,57 @@ export default function ContactView() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // FAQ states
   const [expandedFaqIdx, setExpandedFaqIdx] = useState<number | null>(0);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !email.trim() || !message.trim()) return;
+    setError(null);
+    
+    // Strict validations
+    if (!name.trim()) {
+      setError('Please provide your Full Name.');
+      return;
+    }
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError('Please provide a valid Email Address.');
+      return;
+    }
+    if (!message.trim()) {
+      setError('Please provide a Detailed Message.');
+      return;
+    }
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://formspree.io/renownedmedia@outlook.in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          subject: subject,
+          message: message.trim(),
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setIsSubmitting(false);
+        setError(data.error || 'Failed to submit transmission. Please verify your details and try again.');
+      }
+    } catch (err) {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-    }, 1200);
+      setError('A connection failure occurred. Please check your network and attempt submission again.');
+    }
   };
 
   const handleReset = () => {
@@ -36,6 +74,7 @@ export default function ContactView() {
     setEmail('');
     setSubject('General Partnership');
     setMessage('');
+    setError(null);
     setSubmitSuccess(false);
   };
 
@@ -211,6 +250,12 @@ export default function ContactView() {
                   />
                 </div>
 
+                {error && (
+                  <div className="p-3 bg-red-950/20 border border-red-500/20 text-red-300 rounded text-xs font-sans text-left" id="contact-form-error-banner">
+                    <strong className="text-red-400">Submission Error:</strong> {error}
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   disabled={isSubmitting || !name.trim() || !email.trim() || !message.trim()}
@@ -242,7 +287,7 @@ export default function ContactView() {
                 </div>
                 
                 <div className="space-y-1.5">
-                  <h4 className="font-sans text-xl font-extrabold text-white">Inquiry Dispatched Successfully!</h4>
+                  <h4 className="font-sans text-lg sm:text-xl font-extrabold text-white">Thank you! Your message has been sent successfully.</h4>
                   <p className="text-xs text-[#BFB9AF] max-w-sm mx-auto">
                     We will analyze your parameters and allocate the key operations squad to your ticket within 12 hours.
                   </p>

@@ -3,77 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, FormEvent, useRef } from 'react';
-import { Mail, Phone, MapPin, HelpCircle, ChevronDown, ExternalLink, Send, Check, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, Phone, MapPin, HelpCircle, ChevronDown, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { AGENCY_DETAILS } from '../data';
 
 export default function ContactView() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [subject, setSubject] = useState('Digital Marketing Services');
-  const [message, setMessage] = useState('');
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const hasSubmittedRef = useRef(false);
-
   // FAQ states
   const [expandedFaqIdx, setExpandedFaqIdx] = useState<number | null>(0);
-
-  const handleSubmit = (e: FormEvent) => {
-    setError(null);
-    
-    // Strict client-side validations prior to form post
-    if (!name.trim()) {
-      e.preventDefault();
-      setError('Please provide your Full Name.');
-      return;
-    }
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      e.preventDefault();
-      setError('Please provide a valid Email Address.');
-      return;
-    }
-    if (!message.trim()) {
-      e.preventDefault();
-      setError('Please provide your inquiry details.');
-      return;
-    }
-
-    setIsSubmitting(true);
-    hasSubmittedRef.current = true;
-    
-    // Backup transition timer to guarantee seamless success screen progression
-    setTimeout(() => {
-      if (hasSubmittedRef.current) {
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        hasSubmittedRef.current = false;
-      }
-    }, 1500);
-  };
-
-  const handleIframeLoaded = () => {
-    if (hasSubmittedRef.current) {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      hasSubmittedRef.current = false;
-    }
-  };
-
-  const handleReset = () => {
-    setName('');
-    setEmail('');
-    setPhoneNumber('');
-    setSubject('Digital Marketing Services');
-    setMessage('');
-    setError(null);
-    setSubmitSuccess(false);
-  };
 
   const faqs = [
     {
@@ -169,195 +106,39 @@ export default function ContactView() {
         </div>
 
         {/* Contact Form block */}
-        <div className="lg:col-span-7 bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 shadow-xl space-y-6">
+        <div className="lg:col-span-7 bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
           
           {/* Form Header */}
-          <div className="border-b border-[#D4AF37]/10 pb-5 text-left flex justify-between items-center">
+          <div className="border-b border-[#D4AF37]/10 pb-5 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h3 className="font-sans font-extrabold text-lg text-white">
                 Secure Strategic Intake
               </h3>
               <p className="text-[11px] text-[#BFB9AF] mt-1">
-                Establish direct transmission of target parameters. All payload parameters map directly to secure intake.
+                Complete and submit our secure strategic specifications questionnaire directly inside the portal below.
               </p>
             </div>
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?usp=header" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="text-[10.5px] text-[#D4AF37] hover:text-[#F5D76E] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 underline shrink-0 cursor-pointer"
+            >
+              Open Form <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
 
-          {/* Hidden Iframe to buffer Google Form response without page redirect */}
-          <iframe
-            name="hidden_iframe"
-            id="hidden_iframe"
-            className="hidden"
-            style={{ display: 'none' }}
-            onLoad={handleIframeLoaded}
-            title="hidden-form-carrier"
-          />
-
-          <AnimatePresence mode="wait">
-            {!submitSuccess ? (
-              <motion.form
-                key="contact-form"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                onSubmit={handleSubmit}
-                action="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/formResponse"
-                method="POST"
-                target="hidden_iframe"
-                className="space-y-5 text-left"
-                id="contact-form-element"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="contact-name-input" className="block text-xs font-bold text-[#BFB9AF] mb-1.5 uppercase tracking-wide">
-                      Full Name *
-                    </label>
-                    <input
-                      id="contact-name-input"
-                      name="entry.2005620554"
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Joanne Carter"
-                      className="w-full px-3/5 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-xs bg-black/40 text-white font-sans transition-all placeholder:text-[#BFB9AF]/40"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contact-email-input" className="block text-xs font-bold text-[#BFB9AF] mb-1.5 uppercase tracking-wide">
-                      Email Address *
-                    </label>
-                    <input
-                      id="contact-email-input"
-                      name="entry.1045781291"
-                      type="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="joanne@company.com"
-                      className="w-full px-3/5 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-xs bg-black/40 text-white font-sans transition-all placeholder:text-[#BFB9AF]/40"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="contact-phone-input" className="block text-xs font-bold text-[#BFB9AF] mb-1.5 uppercase tracking-wide">
-                      Phone Number
-                    </label>
-                    <input
-                      id="contact-phone-input"
-                      name="entry.1166974658"
-                      type="tel"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      placeholder="+91 98765 43210"
-                      className="w-full px-3/5 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-xs bg-black/40 text-white font-sans transition-all placeholder:text-[#BFB9AF]/40"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contact-subject-input" className="block text-xs font-bold text-[#BFB9AF] mb-1.5 uppercase tracking-wide">
-                      Inquiry Vector *
-                    </label>
-                    <select
-                      id="contact-subject-input"
-                      name="entry.918346751"
-                      value={subject}
-                      onChange={(e) => setSubject(e.target.value)}
-                      className="w-full px-3 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-xs bg-[#0d0d0d] text-white font-sans cursor-pointer transition-colors"
-                    >
-                      <option value="Digital Marketing Services">Digital Marketing Strategy</option>
-                      <option value="Paid Advertising">Paid Advertising & Campaigns</option>
-                      <option value="SEO Strategy & Optimization">SEO Strategy & Optimization</option>
-                      <option value="Content Production">Content Production & Video editing</option>
-                      <option value="Short Form Content (Reels & Shorts)">Short Form Reels & Shorts</option>
-                      <option value="Website & Development">Website Design & Dev</option>
-                      <option value="Design & Branding">Design & Branding</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="contact-message-input" className="block text-xs font-bold text-[#BFB9AF] mb-1.5 uppercase tracking-wide">
-                    Comments or inquiry specifications *
-                  </label>
-                  <textarea
-                    id="contact-message-input"
-                    name="entry.839337160"
-                    rows={5}
-                    required
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Provide your target milestones, timeline limitations, and brand parameters..."
-                    className="w-full px-3/5 py-2.5 border border-[#D4AF37]/15 focus:border-[#D4AF37] rounded focus:outline-none text-xs bg-black/40 text-white font-sans transition-all placeholder:text-[#BFB9AF]/40 whitespace-pre-wrap"
-                  />
-                </div>
-
-                {error && (
-                  <div className="p-3 bg-red-950/20 border border-red-500/20 text-red-300 rounded text-xs font-sans text-left" id="contact-form-error-banner">
-                    <strong className="text-red-400">ValidationError:</strong> {error}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !name.trim() || !email.trim() || !message.trim()}
-                  className="w-full py-4 bg-white hover:bg-[#D4AF37] text-black font-sans text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 rounded hover:shadow-[0_4px_20px_rgba(212,175,55,0.25)] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                  id="submit-contact-form-btn"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin text-black" />
-                      TRANSMITTING SPECIFICATIONS...
-                    </>
-                  ) : (
-                    <>
-                      SEND SECURE MESSAGE <Send className="w-4 h-4 text-black" />
-                    </>
-                  )}
-                </button>
-              </motion.form>
-            ) : (
-              <motion.div
-                key="contact-success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-8 space-y-6"
-                id="contact-success-state"
-              >
-                <div className="w-14 h-14 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/30 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-[#D4AF37]/10">
-                  <Check className="w-6 h-6 stroke-[3]" />
-                </div>
-                
-                <div className="space-y-2">
-                  <h4 className="font-sans text-lg sm:text-xl font-extrabold text-white">Thank You! Your Inquiry Has Been Transmitted.</h4>
-                  <p className="text-xs text-[#BFB9AF] max-w-sm mx-auto leading-relaxed">
-                    We have successfully synchronized your specifications directly into our strategic intake spreadsheet. A specialist will contact you in under 12 hours.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-black/40 rounded border border-[#D4AF37]/15 text-left text-xs font-sans max-w-sm mx-auto space-y-2">
-                  <span className="font-bold block text-[#D4AF37] border-b border-[#D4AF37]/10 pb-1.5 uppercase tracking-wider font-mono text-[9px]">Receipt Overview</span>
-                  <div className="flex justify-between"><span className="text-[#BFB9AF]/70">Name:</span> <strong className="text-white">{name}</strong></div>
-                  <div className="flex justify-between"><span className="text-[#BFB9AF]/70">Vector:</span> <strong className="text-white">{subject}</strong></div>
-                  <div className="flex justify-between"><span className="text-[#BFB9AF]/70">Transmission:</span> <strong className="text-emerald-400 font-mono">Success (Google Sheets)</strong></div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="button"
-                    onClick={handleReset}
-                    className="px-6 py-2.5 bg-white hover:bg-[#D4AF37] text-black border border-[#D4AF37]/25 text-xs font-sans uppercase tracking-wider rounded transition-all cursor-pointer"
-                    id="reset-contact-form-btn"
-                  >
-                    Send Another Inquiry
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Secure embedded Google Form */}
+          <div className="relative w-full bg-[#111111] border border-[#D4AF37]/10 rounded-lg overflow-hidden h-[820px] sm:h-[900px]">
+            <iframe 
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?embedded=true"
+              className="w-full h-full bg-[#111111] border-none"
+              title="Secure Strategic Intake Questionnaire"
+              referrerPolicy="no-referrer"
+            >
+              Loading…
+            </iframe>
+          </div>
         </div>
       </section>
 

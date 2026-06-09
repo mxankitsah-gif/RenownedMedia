@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ServiceItem, ProjectItem, TeamMember } from './types';
+import { ServiceItem, ProjectItem, TeamMember, PublicFigure } from './types';
 import digitalJockeyLogo from './assets/images/digital_jockey_logo_1781015799371.png';
 import healyLogo from './assets/images/healy_logo_1781016025813.png';
 import acharyaGaneshLogo from './assets/images/acharya_ganesh_logo_1781016220203.png';
@@ -332,3 +332,66 @@ export const AGENCY_DETAILS = {
   phone2: '+91-983-384-9337',
   fullSummary: 'From digital PR to content production, Renowned Media helps brands grow visibility, authority and audience engagement across modern platforms.'
 };
+
+export const PUBLIC_FIGURES: PublicFigure[] = [
+  {
+    id: 'mohit-kamboj-bharatiya',
+    name: 'Mohit Kamboj Bharatiya',
+    category: 'Entrepreneur, Investor & Public Figure',
+    services: [
+      'Public Relations',
+      'Media Management',
+      'Brand Positioning',
+      'Digital Visibility'
+    ],
+    img: ''
+  },
+  {
+    id: 'tushar-kaushik',
+    name: 'Tushar Kaushik',
+    category: 'Digital Creator & Journalist',
+    services: [
+      'Podcast Production',
+      'Content Strategy',
+      'Video Production',
+      'Digital Branding'
+    ],
+    img: ''
+  },
+  {
+    id: 'ranjna-singh-rathore',
+    name: 'Ranjna Singh Rathore',
+    category: 'Journalist & Digital Creator',
+    services: [
+      'Social Media Management',
+      'Content Strategy',
+      'Digital Branding',
+      'Audience Growth'
+    ],
+    img: ''
+  },
+  {
+    id: 'romita-tiwari',
+    name: 'Romita Tiwari',
+    category: 'Journalist & Digital Creator',
+    services: [
+      'Personal Branding',
+      'Content Marketing',
+      'Digital Visibility',
+      'Social Media Growth'
+    ],
+    img: ''
+  },
+  {
+    id: 'ramveer-singh-bidhuri',
+    name: 'Ramveer Singh Bidhuri',
+    category: 'Public Figure',
+    services: [
+      'Public Outreach',
+      'Media Visibility',
+      'Digital Communication',
+      'Social Media Strategy'
+    ],
+    img: ''
+  }
+];

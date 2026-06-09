@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight, Check, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { PROJECTS } from '../data';
+import { PROJECTS, PUBLIC_FIGURES } from '../data';
 import { ProjectItem } from '../types';
 
 interface PortfolioViewProps {
@@ -14,10 +15,176 @@ interface PortfolioViewProps {
 }
 
 export default function PortfolioView({ onSelectProject, onRequestQuote }: PortfolioViewProps) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-slide effect for the Public Figures Carousel
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % PUBLIC_FIGURES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + PUBLIC_FIGURES.length) % PUBLIC_FIGURES.length);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % PUBLIC_FIGURES.length);
+  };
+
   return (
-    <div className="py-16 max-w-7xl mx-auto px-6">
+    <div className="py-16 max-w-7xl mx-auto px-6 space-y-24">
       
-      {/* SECTION: Client Success & Case Studies */}
+      {/* SECTION 1: Featured Public Figures & Media Personalities */}
+      <section
+        className="space-y-10"
+        id="portfolio-public-figures"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Section Title */}
+        <div className="text-left border-l-4 border-[#1d4ed8] pl-4 space-y-2">
+          <span className="font-mono text-[10px] font-bold text-[#1d4ed8] uppercase tracking-wider block">
+            INDIVIDUAL BRANDS & REPRESENTATION
+          </span>
+          <h2 className="font-sans text-3xl font-extrabold text-slate-900 tracking-tight">
+            Featured Public Figures & Media Personalities
+          </h2>
+          <p className="font-sans text-sm text-slate-600 max-w-3xl">
+            Selected public figures, journalists, creators and personalities associated with our media, PR, content and digital visibility work.
+          </p>
+        </div>
+
+        {/* Carousel Slider */}
+        <div className="relative max-w-5xl mx-auto select-none pt-4">
+          <div className="overflow-hidden bg-slate-50/50 backdrop-blur-md rounded-2xl border border-slate-200/50 shadow-[0_15px_50px_rgba(15,23,42,0.05)] p-6 sm:p-8 md:p-10 relative min-h-[380px] md:min-h-[320px] flex items-center">
+            
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center w-full"
+              >
+                {/* Left Column: Styled Avatar Portrait Placeholder */}
+                <div className="md:col-span-5 flex justify-center">
+                  <div className="relative w-56 h-72 sm:w-64 sm:h-80 rounded-2xl overflow-hidden border-4 border-white shadow-xl bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col items-center justify-center p-6 text-center shrink-0 group">
+                    
+                    {/* Blue & Red corner design accents */}
+                    <div className="absolute top-0 left-0 w-3 h-3 bg-[#1d4ed8]" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 bg-[#dc2626]" />
+                    
+                    {PUBLIC_FIGURES[currentSlide].img ? (
+                      <img
+                        src={PUBLIC_FIGURES[currentSlide].img}
+                        alt={PUBLIC_FIGURES[currentSlide].name}
+                        className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-slate-300/60 border border-slate-300 flex items-center justify-center text-slate-500 group-hover:scale-105 group-hover:bg-[#1d4ed8]/10 group-hover:text-[#1d4ed8] transition-all duration-300">
+                          <User className="w-8 h-8" />
+                        </div>
+
+                        <div className="mt-4 space-y-1 col-auto">
+                          <p className="font-mono text-[10px] font-bold text-slate-500 tracking-widest uppercase">
+                            Portrait Placeholder
+                          </p>
+                          <p className="font-sans text-[10px] text-slate-400 max-w-[160px] leading-relaxed mx-auto">
+                            Ready for future representative photo
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Category Pill Overlaid on Photo */}
+                    <div className="absolute bottom-4 left-4 right-4 bg-slate-900/85 backdrop-blur-md border border-slate-700 px-3.5 py-1.5 rounded-lg text-center">
+                      <span className="font-sans text-[9px] font-bold text-white uppercase tracking-wider">
+                        {PUBLIC_FIGURES[currentSlide].category}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Profile details */}
+                <div className="md:col-span-7 flex flex-col justify-center space-y-5 text-left text-slate-900">
+                  <div className="space-y-1">
+                    <span className="font-mono text-[10px] font-bold text-[#dc2626] uppercase tracking-widest block">
+                      MEDIA & PUBLIC REPRESENTATION
+                    </span>
+                    <h3 className="font-sans text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+                      {PUBLIC_FIGURES[currentSlide].name}
+                    </h3>
+                  </div>
+
+                  {/* Services Grid */}
+                  <div className="space-y-3 pt-2">
+                    <h4 className="font-mono text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                      Delivered Core Services
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {PUBLIC_FIGURES[currentSlide].services.map((service, sIdx) => (
+                        <div key={sIdx} className="flex items-center gap-2.5 bg-white border border-slate-200/40 rounded-lg py-2 px-3 shadow-[0_2px_10px_rgba(0,0,0,0.01)]">
+                          <div className="w-4 h-4 rounded-full bg-[#1d4ed8]/5 border border-[#1d4ed8]/10 flex items-center justify-center text-[#1d4ed8]">
+                            <Check className="w-2.5 h-2.5" />
+                          </div>
+                          <span className="font-sans text-xs sm:text-sm font-medium text-slate-700">
+                            {service}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Slide Navigation Chevrons */}
+          <button
+            onClick={handlePrevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-6 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-[#1d4ed8] shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 z-20 cursor-pointer"
+            aria-label="Previous Profile"
+            id="public-figures-carousel-prev"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={handleNextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-6 w-11 h-11 rounded-full bg-white border border-slate-200 text-slate-600 hover:text-[#1d4ed8] shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 z-20 cursor-pointer"
+            aria-label="Next Profile"
+            id="public-figures-carousel-next"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Pagination Bullet Indicators */}
+          <div className="flex justify-center items-center gap-2.5 pt-6">
+            {PUBLIC_FIGURES.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+                  currentSlide === idx 
+                    ? 'w-8 bg-[#1d4ed8]' 
+                    : 'w-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+                aria-label={`Go to profile ${idx + 1}`}
+                id={`public-figures-carousel-dot-${idx}`}
+              />
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* SECTION 2: Client Success & Case Studies */}
       <section className="space-y-10" id="portfolio-case-studies">
         <div className="text-left border-l-4 border-[#1d4ed8] pl-4 space-y-2">
           <span className="font-mono text-[10px] font-bold text-[#1d4ed8] uppercase tracking-wider block">

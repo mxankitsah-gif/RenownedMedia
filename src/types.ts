@@ -59,3 +59,11 @@ export interface BlogPost {
   createdAt: string;
 }
 
+export interface PublicFigure {
+  id: string;
+  name: string;
+  category: string;
+  services: string[];
+  img?: string;
+}
+

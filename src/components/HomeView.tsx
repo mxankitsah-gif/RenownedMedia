@@ -145,9 +145,9 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
 
 
       {/* 3. FEATURED PROJECTS SECTION */}
-      <section className="py-24 bg-white" id="home-projects">
-        <div className="max-w-7xl mx-auto px-6 space-y-16">
-          <div className="text-center max-w-2xl mx-auto space-y-4">
+      <section className="py-16 bg-white" id="home-projects">
+        <div className="max-w-7xl mx-auto px-6 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
             <span className="font-mono text-[10px] font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
               Selected Showcase
             </span>
@@ -159,84 +159,67 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
             </p>
           </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {PROJECTS.map((proj) => (
+          {/* Cards Grid containing top 3 compact cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {PROJECTS.slice(0, 3).map((proj) => (
               <div
                 key={proj.id}
                 onClick={() => onSelectProject(proj)}
                 className="group relative rounded-xl overflow-hidden border border-slate-200/80 hover:border-blue-500 hover:shadow-[0_12px_35px_rgba(29,78,216,0.06)] transition-all duration-500 ease-out cursor-pointer bg-white flex flex-col justify-between"
                 id={`home-project-card-${proj.id}`}
-                style={{ height: '520px' }}
+                style={{ height: '380px' }}
               >
                 {/* Image Section with Overlay */}
-                <div className="relative h-48 overflow-hidden shrink-0">
+                <div className="relative h-40 overflow-hidden shrink-0">
                   <img
                     alt={proj.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     src={proj.img}
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                  <span className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[#1d4ed8] border border-blue-100 text-[9px] font-mono font-bold uppercase py-1 px-3 rounded-full shadow-md">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/45 to-transparent" />
+                  <span className="absolute bottom-3 left-4 bg-white/95 backdrop-blur-sm text-[#1d4ed8] border border-blue-100 text-[9px] font-mono font-bold uppercase py-1 px-3 rounded-full shadow-md z-10">
                     {proj.category}
                   </span>
                 </div>
 
                 {/* Content Space */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                   <div className="space-y-2 text-left">
                     {/* Industry */}
-                    <span className="font-mono text-[9px] text-slate-500 uppercase tracking-widest block">
+                    <span className="font-mono text-[9px] text-[#dc2626] uppercase tracking-widest block">
                       {proj.clientIndustry || 'B2B Enterprise'}
                     </span>
                     
                     {/* Title */}
-                    <h3 className="font-sans text-base font-extrabold text-slate-900 leading-snug tracking-tight group-hover:text-[#1d4ed8] transition-colors duration-200 line-clamp-2">
+                    <h3 className="font-sans text-sm sm:text-base font-extrabold text-slate-900 leading-snug tracking-tight group-hover:text-[#1d4ed8] transition-colors duration-200 line-clamp-2">
                       {proj.title}
                     </h3>
 
                     {/* Brief description */}
-                    <p className="font-sans text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                    <p className="font-sans text-xs text-slate-500 line-clamp-2 leading-relaxed">
                       {proj.description}
                     </p>
+                  </div>
 
-                    {/* Services Delivered */}
-                    {proj.servicesDelivered && proj.servicesDelivered.length > 0 && (
-                      <div className="space-y-1 pt-1">
-                        <span className="text-[9px] font-mono text-[#1d4ed8]/70 uppercase tracking-wider block">Services Delivered:</span>
-                        <div className="flex flex-wrap gap-1 leading-none">
-                          {proj.servicesDelivered.slice(0, 3).map((sd, sIdx) => (
-                            <span key={sIdx} className="bg-blue-50/50 border border-blue-100/30 text-slate-600 text-[9px] px-1.5 py-0.5 rounded">
-                              {sd}
-                            </span>
-                          ))}
-                        </div>
+                  {/* Services Delivered */}
+                  {proj.servicesDelivered && proj.servicesDelivered.length > 0 && (
+                    <div className="space-y-1.5 pt-2 border-t border-slate-100 text-left">
+                      <div className="flex flex-wrap gap-1 leading-none">
+                        {proj.servicesDelivered.slice(0, 3).map((sd, sIdx) => (
+                          <span key={sIdx} className="bg-slate-50 border border-slate-200/50 text-slate-600 text-[9px] px-2 py-1 rounded">
+                            {sd}
+                          </span>
+                        ))}
                       </div>
-                    )}
-                  </div>
-
-                  {/* Performance metric and CTA tag */}
-                  <div className="space-y-3 pt-3 border-t border-slate-100 text-left">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[9px] font-mono text-slate-500 uppercase">Key Results</span>
-                      <span className="bg-red-50 text-[#dc2626] border border-red-100 font-mono text-[10px] font-extrabold px-2 py-0.5 rounded">
-                        {proj.metrics}
-                      </span>
                     </div>
-
-                    <div 
-                      className="w-full text-center bg-[#1d4ed8] group-hover:bg-[#dc2626] text-white py-2.5 rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 inline-flex items-center justify-center gap-1.5"
-                    >
-                      View Case Study <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center pt-2">
             <button
               onClick={() => onTabChange('portfolio')}
               className="bg-white hover:bg-[#dc2626] text-[#1d4ed8] hover:text-white border border-[#1d4ed8]/35 hover:border-transparent px-8 py-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer shadow-[0_2px_15px_rgba(29,78,216,0.05)] hover:shadow-[0_4px_25px_rgba(220,38,38,0.2)]"
@@ -296,8 +279,13 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
                 key={idx}
                 className="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-4 transition-all duration-300"
                 id={`why-choose-card-${idx}`}
+                style={{
+                  width: idx === 4 ? '920px' : undefined
+                }}
               >
-                <div className="space-y-3">
+                <div 
+                  className="space-y-3"
+                >
                   <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center">
                     {item.icon}
                   </div>

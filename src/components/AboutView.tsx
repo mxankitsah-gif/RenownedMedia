@@ -37,9 +37,31 @@ export default function AboutView() {
   ];
 
   const milestones = [
-    { year: '2021', title: 'Agency Blueprint', text: 'Founded with a tight core of 3 artists targeting precision video editing & technical search auditing.' },
-    { year: '2023', title: 'Scalable Production Expansion', text: 'Moved into custom studio shooting layouts. Developed the proprietary "Renowned Velocity" search ranking program.' },
-    { year: '2025', title: 'Global Campaign Execution', text: 'Secured high-concept branding and content production mandates across North America, Europe, and Asia.' },
+    {
+      year: '2019',
+      title: 'Creative Media Services',
+      text: 'Started professional work in video editing, graphic design, content production and digital media support for creators, local businesses and independent brands.'
+    },
+    {
+      year: '2021',
+      title: 'Digital Growth Expansion',
+      text: 'Expanded into social media management, SEO, content strategy and audience growth campaigns across multiple industries.'
+    },
+    {
+      year: '2023',
+      title: 'PR & Media Relations',
+      text: 'Added public relations, media outreach, reputation management and strategic visibility campaigns for entrepreneurs, public figures and organizations.'
+    },
+    {
+      year: '2024',
+      title: 'Political Communication & Outreach',
+      text: 'Worked on political digital outreach initiatives, influencer collaborations, WhatsApp engagement campaigns, content production and online audience development.'
+    },
+    {
+      year: '2025',
+      title: 'Renowned Media',
+      text: 'Unified media production, branding, PR, digital marketing, political communication and content strategy services under the Renowned Media identity.'
+    },
   ];
 
   return (

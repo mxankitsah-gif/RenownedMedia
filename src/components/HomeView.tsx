@@ -280,7 +280,7 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
                 className="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-4 transition-all duration-300"
                 id={`why-choose-card-${idx}`}
                 style={{
-                  width: idx === 4 ? '920px' : undefined
+                  width: idx === 4 ? '449px' : undefined
                 }}
               >
                 <div 
@@ -325,37 +325,7 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
         </div>
       </section>
 
-      {/* 6. CALL TO ACTION SECTION */}
-      <section className="py-24 bg-slate-50/70 border-t border-slate-100 relative overflow-hidden" id="home-cta-block">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#1d4ed8]/4 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1d4ed8]/4 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-        
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-8">
-          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Elevate Your Brand's Digital Authority
-          </h2>
-          <p className="font-sans text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Partner with us to create a bespoke, high-authority digital strategy that captures target mindshare and creates long-term commercial value.
-          </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={onRequestQuote}
-              className="w-full sm:w-auto bg-[#dc2626] hover:bg-[#b91c1c] text-white border-none px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_25px_rgba(220,38,38,0.25)] hover:shadow-[0_8px_35px_rgba(220,38,38,0.4)] cursor-pointer"
-              id="cta-bottom-quote-btn"
-            >
-              Get a Quote
-            </button>
-            <button
-              onClick={() => onTabChange('blog')}
-              className="w-full sm:w-auto bg-transparent hover:bg-slate-100 text-[#1d4ed8] hover:text-[#1e40af] border border-[#1d4ed8]/35 hover:border-[#1d4ed8] px-8 py-4.5 rounded font-mono text-[11px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-              id="cta-bottom-read-blog-btn"
-            >
-              Read Our Blog <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

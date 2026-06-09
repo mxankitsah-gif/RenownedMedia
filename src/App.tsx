@@ -111,7 +111,11 @@ export default function App() {
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="pt-24 min-h-[80vh]"
           >
-            <ServicesView onSelectServiceForQuote={handleSelectServiceForQuote} />
+            <ServicesView 
+              onSelectServiceForQuote={handleSelectServiceForQuote} 
+              onTabChange={handleTabChange}
+              onRequestQuote={handleRequestQuoteGeneral}
+            />
           </motion.div>
         );
       case 'portfolio':
@@ -124,7 +128,7 @@ export default function App() {
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="pt-24 min-h-[80vh]"
           >
-            <PortfolioView onSelectProject={setSelectedProject} />
+            <PortfolioView onSelectProject={setSelectedProject} onRequestQuote={handleRequestQuoteGeneral} />
           </motion.div>
         );
       case 'contact':

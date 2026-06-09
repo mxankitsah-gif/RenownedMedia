@@ -17,98 +17,123 @@ export const HERO_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuC
 
 export const SERVICES: ServiceItem[] = [
   {
-    id: 'digital-marketing',
-    title: 'Digital Marketing Services',
-    description: 'Performance-driven marketing campaigns, brand placement, and local search systems engineered to capture direct market authority.',
-    iconName: 'campaign',
+    id: 'social-media-management',
+    title: 'Social Media Management',
+    description: 'Build a powerful digital presence through strategic social media management. From content planning and publishing to audience engagement and growth campaigns, we manage your brand across all major platforms.',
+    iconName: 'share',
     deliverables: [
-      'SEO Strategy & Optimization',
-      'Local SEO',
-      'Google Business Profile Management',
-      'Social Media Management',
-      'Social Media Marketing',
-      'Influencer Marketing',
-      'Email Marketing',
-      'WhatsApp Marketing',
-      'SMS Marketing',
-      'Online Reputation Management (ORM)'
+      'Instagram Management',
+      'Facebook Management',
+      'LinkedIn Management',
+      'Content Planning',
+      'Community Management',
+      'Growth Campaigns',
+      'Trend Monitoring',
+      'Analytics Reporting'
     ],
-    duration: 'Setup: 3-7 Business Days | Ongoing Management'
+    duration: 'Ongoing Monthly Management'
   },
   {
     id: 'content-production',
-    title: 'Content Production',
-    description: 'Cinematic editing, short-form creative loops, script engineering, and end-to-end studio video/audio storytelling pipelines.',
+    title: 'Content Production & Video Editing',
+    description: 'Professional content creation for YouTube, podcasts, brands and influencers. We transform ideas into engaging visual stories that capture attention and drive results.',
     iconName: 'videocam',
     deliverables: [
-      'Video Editing',
-      'Short Form Content (Reels & Shorts)',
-      'Long Form Video Production',
       'Podcast Production',
-      'Photography',
-      'Product Shoots',
-      'Content Strategy',
-      'Script Writing',
-      'Copywriting'
+      'Video Editing',
+      'Reels Editing',
+      'YouTube Shorts',
+      'Motion Graphics',
+      'Thumbnail Design',
+      'Content Repurposing',
+      'Channel Optimization'
     ],
-    duration: '2-5 Business Days / Asset Delivery'
+    duration: '2-4 Business Days per Deliverable'
   },
   {
-    id: 'design-branding',
-    title: 'Design & Branding',
-    description: 'High-prestige visual style frameworks, core monograms, brand identities, and high-CTR custom digital banners.',
-    iconName: 'lightbulb',
+    id: 'performance-marketing',
+    title: 'Performance Marketing',
+    description: 'Data-driven advertising campaigns designed to generate leads, sales and measurable business growth.',
+    iconName: 'trending_up',
+    deliverables: [
+      'Meta Ads',
+      'Lead Generation',
+      'Retargeting Campaigns',
+      'Conversion Campaigns',
+      'Landing Page Strategy',
+      'WhatsApp Funnels',
+      'Audience Targeting',
+      'Campaign Analytics'
+    ],
+    duration: 'Campaign Setup: 5-7 Business Days'
+  },
+  {
+    id: 'political-campaigns',
+    title: 'Political Digital Campaigns',
+    description: 'Comprehensive digital campaign management for political leaders, candidates and organizations. We combine content, outreach and technology to maximize voter engagement and digital influence.',
+    iconName: 'gavel',
+    deliverables: [
+      'Election Campaign Management',
+      'Digital War Room Setup',
+      'Political Content Production',
+      'Influencer Outreach',
+      'WhatsApp Campaigns',
+      'AI Calling Campaigns',
+      'Online Reputation Management',
+      'Voter Engagement Strategies'
+    ],
+    duration: 'Custom Campaign Retainer'
+  },
+  {
+    id: 'seo-website',
+    title: 'SEO & Website Management',
+    description: 'Improve online visibility and search rankings with strategic SEO and professional website management.',
+    iconName: 'search',
+    deliverables: [
+      'Technical SEO',
+      'Local SEO',
+      'On-Page SEO',
+      'Website Maintenance',
+      'Blog Management',
+      'Search Optimization',
+      'Google Business Profile Optimization',
+      'Website Content Updates'
+    ],
+    duration: '7-14 Business Days Setup'
+  },
+  {
+    id: 'public-relations',
+    title: 'Public Relations & Media Management',
+    description: 'Strengthen your brand reputation through media relations, press coverage and strategic communication.',
+    iconName: 'campaign',
+    deliverables: [
+      'Press Relations',
+      'TV Media Coordination',
+      'Print Media Coverage',
+      'Press Releases',
+      'Event Media Management',
+      'Brand Reputation Building',
+      'Media Outreach',
+      'Public Image Management'
+    ],
+    duration: 'Monthly Campaign Retainer'
+  },
+  {
+    id: 'branding-design',
+    title: 'Branding & Creative Design',
+    description: 'Create memorable brand experiences through impactful design and visual communication.',
+    iconName: 'palette',
     deliverables: [
       'Graphic Design',
-      'Logo Design',
+      'Social Media Creatives',
+      'Campaign Creatives',
+      'Ad Design',
       'Brand Identity Design',
-      'Thumbnail Design'
+      'Marketing Collaterals',
+      'Presentation Design',
+      'Event Branding'
     ],
-    duration: '4-8 Business Days Core Phase'
-  },
-  {
-    id: 'website-development',
-    title: 'Website & Development',
-    description: 'Speed-optimized, responsive, and custom-styled web systems designed to maximize user engagement and intake conversions.',
-    iconName: 'important_devices',
-    deliverables: [
-      'Website Design',
-      'Website Development',
-      'WordPress Development',
-      'Landing Page Design',
-      'E-commerce Website Development',
-      'Website Maintenance',
-      'UI/UX Design'
-    ],
-    duration: '7-14 Business Days Launch Schedule'
-  },
-  {
-    id: 'paid-advertising',
-    title: 'Paid Advertising',
-    description: 'Strategic multi-channel paid ad management designed to acquire high-intent users with absolute budget transparency.',
-    iconName: 'analytics',
-    deliverables: [
-      'Google Ads Management',
-      'Meta Ads Management',
-      'YouTube Ads',
-      'LinkedIn Ads',
-      'Remarketing Campaigns'
-    ],
-    duration: 'Campaign Setup: 3-5 Business Days'
-  },
-  {
-    id: 'analytics-reporting',
-    title: 'Analytics & Reporting',
-    description: 'Granular tracking instrumentation, visitor heat-mapping logs, and clear ROI attribution reporting models.',
-    iconName: 'timeline',
-    deliverables: [
-      'Website Analytics',
-      'SEO Reporting',
-      'Social Media Analytics',
-      'Campaign Performance Reports',
-      'Conversion Tracking'
-    ],
-    duration: 'Bi-Weekly Logs & Real-Time Dashboards'
+    duration: '5-10 Business Days Core Phase'
   }
 ];
 
@@ -201,62 +226,6 @@ export const PROJECTS: ProjectItem[] = [
       'Visual Communication',
       'Digital Asset Creation'
     ]
-  },
-  {
-    id: 'aesthetic-grid',
-    title: 'Aesthetic Grid Supremacy',
-    description: 'Visual identity and growth campaign elevating skin science and premium cosmetics to drive high-intent product sales.',
-    category: 'Social Media Management',
-    img: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=80',
-    client: 'Luminary Skincare',
-    year: '2026',
-    metrics: '+310% Active Reach',
-    challenge: 'Luminary had premium formulas but their grid lacked visual coherence, looking disorganized and failing to convert profile visitors.',
-    solution: 'Curated a pristine 3-grid editorial aesthetic style, automated localized community interaction prompts, and published weekly interactive education guides.',
-    clientIndustry: 'Premium Beauty & Cosmetics',
-    servicesDelivered: ['Grid Aesthetic Architecture', 'Content Calendar Planning', 'Active Community Outreach']
-  },
-  {
-    id: 'residential-launch',
-    title: 'Elite Residential Launch Network',
-    description: 'High-conversion lead capture strategy leveraging automated drip campaigns and webhook instant responses for premium property sales.',
-    category: 'Digital Marketing Campaigns',
-    img: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800&auto=format&fit=crop&q=80',
-    client: 'Elevate Group',
-    year: '2025',
-    metrics: '42 Premium Villa Sales',
-    challenge: 'Elevate was generating a high volume of cold, unqualified inquiries that drained in-house sales team resources.',
-    solution: 'Structured a qualifying chatbot workflow connected with real-time CRM webhooks, combined with highly targeted high-intent email newsletter drip runs.',
-    clientIndustry: 'Luxury Property & Real Estate',
-    servicesDelivered: ['Full-Funnel Campaign Strategy', 'WhatsApp Bot Workflows', 'Email Automation']
-  },
-  {
-    id: 'aerospace-brand',
-    title: 'Brand Identity Systems & Design Suite',
-    description: 'High-prestige corporate visual guidelines and iconic monogram logo suite built for an aerospace research firm.',
-    category: 'Branding & Design',
-    img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=80',
-    client: 'Aether Systems',
-    year: '2026',
-    metrics: 'Unified Brand Launch',
-    challenge: 'Aether Systems was launching a major funding round but lacked a polished corporate visual signature, relying on inconsistent, basic typography.',
-    solution: 'Devised a clean geometric monogram representational of orbital paths, formulated a detailed style guide, and produced presentation slide designs.',
-    clientIndustry: 'Aerospace Deep Tech',
-    servicesDelivered: ['Logo Design Suite', 'Brand Guidelines Manual', 'Investor Slide Designs']
-  },
-  {
-    id: 'performance-ads',
-    title: 'Performance PPC Conquests',
-    description: 'High-intent pay-per-click and retargeting ads optimized to capture and nurture financial services leads.',
-    category: 'Paid Advertising',
-    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
-    client: 'FinNexus Wealth',
-    year: '2025',
-    metrics: '6.5x Ad Spend ROI',
-    challenge: 'FinNexus was experiencing extremely high cost-per-lead rates on general Google search ads with low-quality submission rates.',
-    solution: 'Implemented precise negative keyword siloing, restructured exact-match ad segments, and directed traffic to high-performance landing pages.',
-    clientIndustry: 'Fintech & Asset Management',
-    servicesDelivered: ['Google & Meta Ads Management', 'Retargeting Funnels', 'PPC Silo Architectures']
   },
   {
     id: 'assured-hospitality',

@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset, BookOpen, ExternalLink, Calendar, ArrowUpRight } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { SERVICES, PROJECTS, HERO_IMAGE } from '../data';
 import { ProjectItem, ActiveTab } from '../types';
 import ServiceIcon from './ServiceIcon';
@@ -140,6 +141,8 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
           </div>
         </div>
       </section>
+
+
 
       {/* 3. FEATURED PROJECTS SECTION */}
       <section className="py-24 bg-white" id="home-projects">

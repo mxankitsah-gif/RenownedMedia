@@ -4,6 +4,14 @@
  */
 
 import { ServiceItem, ProjectItem, TeamMember } from './types';
+import digitalJockeyLogo from './assets/images/digital_jockey_logo_1781015799371.png';
+import healyLogo from './assets/images/healy_logo_1781016025813.png';
+import acharyaGaneshLogo from './assets/images/acharya_ganesh_logo_1781016220203.png';
+import politicalCampaignThumbnail from './assets/images/political_campaign_thumbnail_1781016921891.png';
+import periwinkleLogo from './assets/images/periwinkle_logo_1781017276084.png';
+import assuredHospitalityThumbnail from './assets/images/assured_hospitality_thumbnail_1781020648908.png';
+import nyshaaRealtyThumbnail from './assets/images/nyshaa_realty_thumbnail_1781020885688.png';
+import mohitKambojThumbnail from './assets/images/mohit_kamboj_thumbnail_1781021847623.png';
 
 export const HERO_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuCWJLef5fVy7vHZ1E-eIdQ6UwhZkeN3-gLFg4J0IuH31XvANDjVvwLD8kIdBYuqF6vzB9lZ8wQ4ikKkMDugpdwk7usGvM_Jo4eUNdO1SswzBh8Bf0eZ3TczCEUX39273s3QDMwHoFhWoxWQ_sK5ZRXeJ8G_pkVJK_3bRJMAM9HxbRGaRsxvR-enHoBgBBy_M4_RHlxAMJDaStdAhc6QlXRU-E5T7QxpGxSNTycDGwNMHTZS_wvL784yP3wvWgkjL-UpR7tWQZrE9A";
 
@@ -106,60 +114,93 @@ export const SERVICES: ServiceItem[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
-    id: 'seo-local-pack',
-    title: 'Regional Dominance SEO Blueprint',
-    description: 'Multi-location local SEO campaign optimizing regional search rankings and map pack dominance for leading healthcare facilities.',
-    category: 'SEO & Local SEO',
-    img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80',
-    client: 'Apex Healthcare Group',
+    id: 'digital-jockey',
+    title: 'Building a High-Impact Podcast & Digital Content Ecosystem',
+    description: 'Digital Jockey is a rapidly growing podcast and digital media platform founded by journalist and podcaster Tushar Kaushik. The platform focuses on long-form conversations, spirituality, astrology, investigative discussions, social issues, and educational content, reaching audiences across YouTube and social media.',
+    category: 'Podcast Production & Digital Media Growth',
+    img: digitalJockeyLogo,
+    client: 'Digital Jockey',
     year: '2026',
-    metrics: '+245% Search Leads',
-    challenge: 'Apex Healthcare operated 12 premium clinics but had low Google Map rankings and keyphrase visibility against large corporate networks.',
-    solution: 'Configured optimized address directory alignments, established high-authority local citations, structured medical service content pillars, and streamlined active patient reviews funnels.',
-    clientIndustry: 'Healthcare & Wellbeing',
-    servicesDelivered: ['GBP Optimization', 'Local SEO Citations', 'Pillar Content Development', 'Maps Rank Tracking']
+    metrics: 'Scalable Production',
+    challenge: 'Digital Jockey needed to streamline multi-cam recording operations, maximize video retention and watch time within the first few seconds, design high-CTR thumbnails, and establish a high-intensity cross-channel distribution pipeline across YouTube and socials.',
+    solution: 'Renowned Media built a dedicated content production ecosystem featuring high-end video editing workflows, optimized SEO distribution, targeted performance marketing initiatives, and unified creative assets to drive sustainable brand-mindshare growth and consistent audience retention loops.',
+    clientIndustry: 'Podcast & Digital Media Brand',
+    servicesDelivered: ['Video Editing', 'Social Media Management', 'Performance Marketing', 'Content Strategy']
   },
   {
-    id: 'luxury-ecom-web',
-    title: 'Immersive E-commerce Flagship',
-    description: 'A high-performance WebGL-infused luxury e-commerce platform designed to showcase bespoke jewelry collections with ultra-fluid layouts.',
-    category: 'Website Design & Development',
-    img: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=80',
-    client: 'Vespera Lux',
-    year: '2025',
-    metrics: '+52% Conversion Rate',
-    challenge: 'Vespera Lux relied on a slow Shopify template that diluted their high-end branding with choppy animations and slow load times.',
-    solution: 'Engineered a headless custom architecture with Next.js and animated page states, maintaining average load speeds under 1.5 seconds worldwide.',
-    clientIndustry: 'High-End Fashion & Jewelry',
-    servicesDelivered: ['UI/UX Design', 'Next.js Development', 'Speed Optimization', 'Custom Checkout Flows']
-  },
-  {
-    id: 'reels-momentum',
-    title: 'Momentum High-Octane Reel Campaign',
-    description: 'Cinematic micro-reels highlighting elite athletic trainers in high-motion environments engineered for immediate retention spikes.',
-    category: 'Video Editing & Content Production',
-    img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80',
-    client: 'Catalyst Sports',
+    id: 'healy',
+    title: 'Professional Video Editing & Content Enhancement for Wellness Media',
+    description: 'Healy is a global wellness and frequency technology brand focused on innovative digital wellness solutions. Renowned Media supported the brand through professional post-production and content editing workflows designed to improve audience engagement and content quality.',
+    category: 'Video Production & Content Editing',
+    img: healyLogo,
+    client: 'Healy',
     year: '2026',
-    metrics: '4.8M Organic Views',
-    challenge: 'Catalyst Sports struggled to capture immediate viewer attention in the first 3 seconds of their vertical content.',
-    solution: 'Deployed high-cadence kinetic sound hooks, bespoke cinematic color grading, and stylized motion captions with optimized algorithmic formatting.',
-    clientIndustry: 'Premium Athletic Apparel',
-    servicesDelivered: ['Video Editing', 'Short Form Content Curation', 'Script Engineering', 'Audio Design']
+    metrics: 'Enhanced Retention',
+    challenge: 'Healy needed to transition towards high-impact wellness narratives, requiring polished visual storytelling that preserved strict brand-consistent guidelines while optimizing content for multiple digital platforms.',
+    solution: 'Established professional post-production and content editing workflows, focusing on improving the storytelling flow, boosting delivery speed, rendering premium motion graphics, and securing professional production standards.',
+    clientIndustry: 'Wellness Technology Brand',
+    servicesDelivered: ['Video Editing', 'Content Enhancement', 'Post Production', 'Social Media Video Optimization', 'Motion Graphics Support']
   },
   {
-    id: 'executive-podcast',
-    title: 'Prime Podcast Syndicate',
-    description: 'End-to-end launch and production syndication of a high-tier executive podcast interviewing venture capital founders.',
-    category: 'Podcast Production',
-    img: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&auto=format&fit=crop&q=80',
-    client: 'Founders & Builders',
-    year: '2025',
-    metrics: 'Top 10 Business Chart',
-    challenge: 'Founders & Builders needed studio-quality audio-visual capture and a reliable multi-channel distribution model to match their high-status executive guests.',
-    solution: 'Orchestrated professional microphones and cameras in a soundproofed custom studio, mastered dialogue levels, and automated clean snippet exports.',
-    clientIndustry: 'Executive Venture Capital',
-    servicesDelivered: ['Multi-Cam Recording', 'Dialogue Mastering', 'Distribution Setup', 'Social Snippet Crops']
+    id: 'acharya-ganesh',
+    title: 'Building Digital Authority for a Spiritual & Astrology Brand',
+    description: 'Acharya Ganesh is a trusted astrology and spiritual guidance platform helping individuals with personalized consultations, astrological insights, and life guidance. Renowned Media manages the brand\'s digital presence, website performance, search visibility, and social media ecosystem.',
+    category: 'SEO, Website Management & Social Media Growth',
+    img: acharyaGaneshLogo,
+    client: 'Acharya Ganesh',
+    year: '2026',
+    metrics: 'Enhanced Authority',
+    challenge: 'Acharya Ganesh needed to strengthen organic online visibility, resolve technical website speed bottlenecks, optimize spiritual content structures, and maintain a highly credible, consistent search and social media footprint.',
+    solution: 'Partnered to implement advanced search engine optimization (SEO), complete technical SEO speed audits, structured content optimization, and end-to-end social media management to launch a highly scalable, trusted digital ecosystem.',
+    clientIndustry: 'Astrology & Spiritual Guidance Brand',
+    servicesDelivered: ['SEO', 'Website Management', 'Technical SEO', 'Social Media Management']
+  },
+  {
+    id: 'political-campaign',
+    title: 'Political Digital Outreach Campaign',
+    description: 'Executed a large-scale digital outreach campaign focused on voter engagement, content amplification, public awareness, and digital communication. Managed end-to-end campaign operations including content strategy, social media growth, influencer coordination, WhatsApp outreach, and AI-powered communication systems.',
+    category: 'Political Campaign Management',
+    img: politicalCampaignThumbnail,
+    client: 'Political Campaign',
+    year: '2026',
+    metrics: 'Multi-platform Growth',
+    challenge: 'The campaign required coordinating complex, multi-channel public communication systems under tight schedules, combating narrative fatigue, raising high-intensity public awareness, managing large-scale influencer alignments, and reaching millions of voters simultaneously across fragmented social ecosystems.',
+    solution: 'Renowned Media built an end-to-end political outreach architecture. This involved launching automated AI-calling and WhatsApp communication workflows, scaling content production across platforms, running hyper-targeted performance marketing ads, and managing a robust influencer marketing and trend creation engine to drive record voter engagement.',
+    clientIndustry: 'Political Campaign Management',
+    servicesDelivered: [
+      'Political Campaign Strategy',
+      'Social Media Management',
+      'Content Production Management',
+      'Influencer Marketing',
+      'WhatsApp Marketing',
+      'AI Calling & Communication',
+      'Digital Outreach Operations',
+      'Trend Creation & Amplification',
+      'Team Management',
+      'Performance Marketing'
+    ]
+  },
+  {
+    id: 'periwinkle-industrial',
+    title: 'Periwinkle Industrial Services',
+    description: 'Provided professional graphic design and visual branding support for an industrial services company. Created marketing creatives, promotional assets, digital graphics, and brand communication materials to maintain a consistent and professional corporate presence across digital platforms.',
+    category: 'Industrial Services & Corporate Branding',
+    img: periwinkleLogo,
+    client: 'Periwinkle Industrial Services',
+    year: '2026',
+    metrics: 'Unified Identity',
+    challenge: 'Periwinkle Industrial Services required a cohesive and professional corporate brand identity across multiple digital channels, replacing fragmented and inconsistent promotional assets with high-quality, professional marketing creatives.',
+    solution: 'Renowned Media designed a robust visual communication system, delivering a suite of professional graphic designs, corporate social media creatives, promotional digital assets, and marketing materials tailored to their corporate positioning and brand standards.',
+    clientIndustry: 'Industrial Services & Corporate Branding',
+    servicesDelivered: [
+      'Graphic Design',
+      'Corporate Branding',
+      'Marketing Creatives',
+      'Social Media Creatives',
+      'Promotional Design',
+      'Visual Communication',
+      'Digital Asset Creation'
+    ]
   },
   {
     id: 'aesthetic-grid',
@@ -216,6 +257,75 @@ export const PROJECTS: ProjectItem[] = [
     solution: 'Implemented precise negative keyword siloing, restructured exact-match ad segments, and directed traffic to high-performance landing pages.',
     clientIndustry: 'Fintech & Asset Management',
     servicesDelivered: ['Google & Meta Ads Management', 'Retargeting Funnels', 'PPC Silo Architectures']
+  },
+  {
+    id: 'assured-hospitality',
+    title: 'Assured Hospitality',
+    description: 'Provided creative design and marketing support for a hospitality and travel-focused brand. Designed promotional creatives, social media campaigns, marketing assets, and advertising materials to enhance brand visibility and customer engagement.',
+    category: 'Hospitality & Travel Marketing',
+    img: assuredHospitalityThumbnail,
+    client: 'Assured Hospitality',
+    year: '2026',
+    metrics: 'Enhanced Visibility',
+    challenge: 'Assured Hospitality needed high-impact promotional campaigns and consistent digital visual branding to compete in a saturated luxury travel market, requiring professional-grade marketing creatives to capture customer attention.',
+    solution: 'Designed and deployed cohesive social media campaigns, high-CTR advertisement layouts, specialized hospitality marketing strategies, and dynamic promotional creatives that elevated their search presence and drove immediate audience interactions.',
+    clientIndustry: 'Hospitality & Travel Marketing',
+    servicesDelivered: [
+      'Graphic Design',
+      'Social Media Creatives',
+      'Advertisement Design',
+      'Hospitality Marketing',
+      'Brand Promotion',
+      'Digital Marketing Support',
+      'Campaign Creative Design'
+    ]
+  },
+  {
+    id: 'nyshaa-realty',
+    title: 'Nyshaa Realty',
+    description: 'Managed comprehensive media and marketing activities for a premium real estate brand. Coordinated print media coverage, television media relations, social media management, project launch promotions, award show management, and strategic publicity campaigns to increase brand awareness and project visibility.',
+    category: 'Real Estate Media & Marketing',
+    img: nyshaaRealtyThumbnail,
+    client: 'Nyshaa Realty',
+    year: '2026',
+    metrics: 'Enhanced Credibility',
+    challenge: 'Nyshaa Realty needed to synchronize high-impact traditional and digital media campaigns, launch high-value property campaigns, and organize flawless industry events to solidify brand trust and project reach.',
+    solution: 'Designed and executed high-profile television and print media relationships, active social media administration, polished real estate promotional materials, strategic campaign execution, and premium award show organization.',
+    clientIndustry: 'Real Estate Media & Marketing',
+    servicesDelivered: [
+      'Media Management',
+      'Print Media Relations',
+      'TV Media Coverage',
+      'Social Media Management',
+      'Real Estate Project Promotion',
+      'PR & Brand Visibility',
+      'Award Show Management',
+      'Marketing Campaign Execution',
+      'Content Strategy'
+    ]
+  },
+  {
+    id: 'mohit-kamboj',
+    title: 'Mohit Kamboj',
+    description: 'Managed public relations and media coordination activities for a prominent public figure. Worked on media outreach, reputation management, news coverage coordination, strategic communication, and digital visibility initiatives across multiple platforms.',
+    category: 'Public Relations & Media Management',
+    img: mohitKambojThumbnail,
+    client: 'Mohit Kamboj',
+    year: '2026',
+    metrics: 'Enhanced Visibility',
+    challenge: 'A prominent public figure required high-impact, coordinated, and strategic public relations and media alignment across fragmented media channels to build a credible and highly visible reputation.',
+    solution: 'Designed and implemented end-to-end press coordination, strategic media outreach, real-time reputation management, structured news coverage support, and digital visibility programs.',
+    clientIndustry: 'Public Relations & Media Management',
+    servicesDelivered: [
+      'Public Relations (PR)',
+      'Media Management',
+      'Press Coordination',
+      'Reputation Management',
+      'News Coverage Support',
+      'Digital Visibility Strategy',
+      'Media Outreach',
+      'Communication Management'
+    ]
   }
 ];
 

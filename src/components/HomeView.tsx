@@ -225,7 +225,7 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
                     <div 
                       className="w-full text-center bg-[#1d4ed8] group-hover:bg-[#dc2626] text-white py-2.5 rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 inline-flex items-center justify-center gap-1.5"
                     >
-                      View Project <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                      View Case Study <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>
                 </div>

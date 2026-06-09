@@ -2,53 +2,53 @@
 @import "tailwindcss";
 
 @theme {
-  --color-surface-container-high: rgba(255, 255, 255, 0.06);
-  --color-on-primary-container: #0a0a0a;
-  --color-tertiary-container: #141414;
-  --color-surface-tint: #d4af37;
-  --color-primary-fixed-dim: #ebdcb2;
-  --color-primary-fixed: #f5d76e;
-  --color-on-tertiary-container: #ffffff;
-  --color-secondary-container: #141414;
-  --color-on-secondary: #0a0a0a;
-  --color-primary: #d4af37;
-  --color-surface-container: rgba(255, 255, 255, 0.03);
-  --color-background: #0a0a0a;
-  --color-tertiary: #f5d76e;
-  --color-inverse-on-surface: #0a0a0a;
-  --color-on-tertiary-fixed-variant: #ffffff;
-  --color-inverse-primary: #0a0a0a;
-  --color-surface-container-low: rgba(255, 255, 255, 0.015);
-  --color-secondary-fixed-dim: #f5d76e;
-  --color-surface-container-lowest: #050505;
-  --color-surface: #0e0e0e;
-  --color-on-surface: #ffffff;
-  --color-error-container: #4c1110;
-  --color-tertiary-fixed: #fbefa8;
-  --color-inverse-surface: #ffffff;
+  --color-surface-container-high: rgba(0, 0, 0, 0.04);
+  --color-on-primary-container: #ffffff;
+  --color-tertiary-container: #fee2e2;
+  --color-surface-tint: #dc2626;
+  --color-primary-fixed-dim: #93c5fd;
+  --color-primary-fixed: #2563eb;
+  --color-on-tertiary-container: #0f172a;
+  --color-secondary-container: #f1f5f9;
+  --color-on-secondary: #0f172a;
+  --color-primary: #1d4ed8;
+  --color-surface-container: rgba(0, 0, 0, 0.02);
+  --color-background: #ffffff;
+  --color-tertiary: #dc2626;
+  --color-inverse-on-surface: #ffffff;
+  --color-on-tertiary-fixed-variant: #0f172a;
+  --color-inverse-primary: #ffffff;
+  --color-surface-container-low: rgba(0, 0, 0, 0.01);
+  --color-secondary-fixed-dim: #3b82f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface: #ffffff;
+  --color-on-surface: #0f172a;
+  --color-error-container: #fee2e2;
+  --color-tertiary-fixed: #fca5a5;
+  --color-inverse-surface: #0f172a;
   --color-on-error: #ffffff;
-  --color-surface-bright: #141414;
-  --color-on-primary-fixed-variant: #bfb9af;
-  --color-outline-variant: rgba(255, 255, 255, 0.08);
-  --color-on-tertiary: #0a0a0a;
-  --color-on-primary-fixed: #0a0a0a;
-  --color-on-secondary-fixed: #0a0a0a;
-  --color-on-background: #ffffff;
-  --color-on-error-container: #ffdad6;
-  --color-primary-container: #d4af37;
-  --color-outline: rgba(212, 175, 55, 0.2);
-  --color-error: #ffb4ab;
-  --color-on-surface-variant: #bfb9af;
-  --color-surface-container-highest: rgba(255, 255, 255, 0.1);
-  --color-tertiary-fixed-dim: #f5d76e;
-  --color-surface-dim: #050505;
-  --color-on-secondary-container: #f5d76e;
-  --color-secondary: #f5d76e;
-  --color-on-primary: #0a0a0a;
-  --color-secondary-fixed: #fbf5e1;
-  --color-surface-variant: rgba(255, 255, 255, 0.04);
-  --color-on-secondary-fixed-variant: #0a0a0a;
-  --color-on-tertiary-fixed: #0a0a0a;
+  --color-surface-bright: #fafafa;
+  --color-on-primary-fixed-variant: #475569;
+  --color-outline-variant: rgba(0, 0, 0, 0.08);
+  --color-on-tertiary: #ffffff;
+  --color-on-primary-fixed: #ffffff;
+  --color-on-secondary-fixed: #0f172a;
+  --color-on-background: #0f172a;
+  --color-on-error-container: #450a0a;
+  --color-primary-container: #1d4ed8;
+  --color-outline: rgba(29, 78, 216, 0.2);
+  --color-error: #ef4444;
+  --color-on-surface-variant: #334155;
+  --color-surface-container-highest: rgba(0, 0, 0, 0.08);
+  --color-tertiary-fixed-dim: #dc2626;
+  --color-surface-dim: #f1f5f9;
+  --color-on-secondary-container: #0f172a;
+  --color-secondary: #2563eb;
+  --color-on-primary: #ffffff;
+  --color-secondary-fixed: #eff6ff;
+  --color-surface-variant: rgba(0, 0, 0, 0.03);
+  --color-on-secondary-fixed-variant: #0f172a;
+  --color-on-tertiary-fixed: #ffffff;
 
   --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", Georgia, Cambria, "Times New Roman", Times, serif;
@@ -57,17 +57,17 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-background);
-  color: var(--color-on-surface);
+  background-color: #ffffff;
+  color: #0f172a;
 }
 
-/* Elegant scrollbar styling for Sophisticated Dark theme */
+/* Elegant scrollbar styling for High Contast Light theme */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: #ffffff;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-surface-container-highest);
@@ -77,9 +77,90 @@ body {
   background: var(--color-primary);
 }
 
-/* Elite premium styling to convert bright white embedded Google Forms to dark theme with gold/bronze accents */
+/* No-filter native styling to let embedded Google contact forms render in high-fidelity light theme */
 .filter-contact-iframe {
-  filter: invert(0.93) hue-rotate(185deg) saturate(155%) brightness(105%) contrast(102%);
   transition: opacity 0.3s ease;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM (CSS MEDIA QUERIES)
+   Fine-tuned adjustments for Layout, Typography standard scaling, and Image fits
+   ========================================================================== */
+
+/* 1. Mobile Devices (Portrait & Landscape - Up to 640px) */
+@media (max-width: 640px) {
+  /* Adaptive typographic scaling for narrow screens */
+  h1 {
+    font-size: 1.875rem !important; /* 30px */
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em !important;
+  }
+  h2 {
+    font-size: 1.5rem !important; /* 24px */
+    line-height: 1.3 !important;
+    letter-spacing: -0.02em !important;
+  }
+  h3 {
+    font-size: 1.25rem !important; /* 20px */
+  }
+
+  /* Layout container corrections to maintain density */
+  .py-24 {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  .py-20 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .space-y-20 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: 3.5rem !important;
+    margin-bottom: 0px !important;
+  }
+
+  /* Scaling rule for images to prevent ratio breakdown */
+  img {
+    max-height: 240px !important;
+    object-position: center !important;
+  }
+}
+
+/* 2. Tablet Devices (641px to 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Optimized typography sizes for medium screens */
+  h1 {
+    font-size: 2.75rem !important; /* 44px */
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 2.125rem !important; /* 34px */
+  }
+
+  /* Scaled spacer limits to balance visual volume */
+  .py-24 {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+  
+  /* Flex grid enhancements for multi-column columns */
+  .grid-cols-1.md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 3. Desktop Computes (1025px and up) */
+@media (min-width: 1025px) {
+  /* Fluid scaling of main container items */
+  .container {
+    max-width: 1280px !important;
+  }
+
+  /* Majestic display style heading sizes */
+  .lg\:text-7xl {
+    font-size: 4.5rem !important; /* 72px */
+    line-height: 1.1 !important;
+    letter-spacing: -0.03em !important;
+  }
 }
 

@@ -11,7 +11,7 @@ interface RenownedLogoProps {
   textColor?: string;
 }
 
-export default function RenownedLogo({ className = 'h-12', textColor = 'text-white' }: RenownedLogoProps) {
+export default function RenownedLogo({ className = 'h-12', textColor = 'text-[#1d4ed8]' }: RenownedLogoProps) {
   return (
     <svg
       viewBox="0 0 420 120"
@@ -20,51 +20,51 @@ export default function RenownedLogo({ className = 'h-12', textColor = 'text-whi
       className={`${className} select-none`}
       aria-label="Renowned Media"
     >
-      {/* GLOWS & SPARKLES ACCENTS (matching the gold particles from the uploaded logo image) */}
+      {/* GLOWS & SPARKLES ACCENTS (matching the new vibrant red agency highlights) */}
       <g id="sparkle-matrix">
         {/* Sparkle 1 near R */}
-        <circle cx="25" cy="18" r="1.5" fill="#D4AF37" />
-        <line x1="25" y1="13" x2="25" y2="23" stroke="#D4AF37" strokeWidth="0.5" />
-        <line x1="20" y1="18" x2="30" y2="18" stroke="#D4AF37" strokeWidth="0.5" />
+        <circle cx="25" cy="18" r="1.5" fill="#dc2626" />
+        <line x1="25" y1="13" x2="25" y2="23" stroke="#dc2626" strokeWidth="0.5" />
+        <line x1="20" y1="18" x2="30" y2="18" stroke="#dc2626" strokeWidth="0.5" />
 
         {/* Sparkle 2 near first E */}
-        <circle cx="95" cy="40" r="1.5" fill="#D4AF37" />
-        <circle cx="70" cy="15" r="1" fill="#D4AF37" />
+        <circle cx="95" cy="40" r="1.5" fill="#dc2626" />
+        <circle cx="70" cy="15" r="1" fill="#dc2626" />
 
         {/* Sparkle 3 near N */}
-        <circle cx="122" cy="58" r="1.5" fill="#D4AF37" />
-        <line x1="122" y1="54" x2="122" y2="62" stroke="#D4AF37" strokeWidth="0.5" />
-        <line x1="118" y1="58" x2="126" y2="58" stroke="#D4AF37" strokeWidth="0.5" />
+        <circle cx="122" cy="58" r="1.5" fill="#dc2626" />
+        <line x1="122" y1="54" x2="122" y2="62" stroke="#dc2626" strokeWidth="0.5" />
+        <line x1="118" y1="58" x2="126" y2="58" stroke="#dc2626" strokeWidth="0.5" />
 
         {/* Sparkle 4 inside O */}
-        <circle cx="174" cy="40" r="2.5" fill="#D4AF37" className="animate-pulse" />
-        <line x1="174" y1="33" x2="174" y2="47" stroke="#D4AF37" strokeWidth="0.75" />
-        <line x1="167" y1="40" x2="181" y2="40" stroke="#D4AF37" strokeWidth="0.75" />
+        <circle cx="174" cy="40" r="2.5" fill="#dc2626" className="animate-pulse" />
+        <line x1="174" y1="33" x2="174" y2="47" stroke="#dc2626" strokeWidth="0.75" />
+        <line x1="167" y1="40" x2="181" y2="40" stroke="#dc2626" strokeWidth="0.75" />
 
         {/* Sparkle 5 near W */}
-        <circle cx="228" cy="12" r="1.5" fill="#D4AF37" />
-        <circle cx="218" cy="62" r="1" fill="#D4AF37" />
+        <circle cx="228" cy="12" r="1.5" fill="#dc2626" />
+        <circle cx="218" cy="62" r="1" fill="#dc2626" />
 
         {/* Sparkle 6 near second N */}
-        <circle cx="275" cy="22" r="1.5" fill="#D4AF37" />
-        <line x1="275" y1="18" x2="275" y2="26" stroke="#D4AF37" strokeWidth="0.5" />
-        <line x1="271" y1="22" x2="279" y2="22" stroke="#D4AF37" strokeWidth="0.5" />
+        <circle cx="275" cy="22" r="1.5" fill="#dc2626" />
+        <line x1="275" y1="18" x2="275" y2="26" stroke="#dc2626" strokeWidth="0.5" />
+        <line x1="271" y1="22" x2="279" y2="22" stroke="#dc2626" strokeWidth="0.5" />
 
         {/* Sparkle 7 near second E */}
-        <circle cx="318" cy="55" r="2" fill="#D4AF37" />
-        <circle cx="305" cy="10" r="1" fill="#D4AF37" />
+        <circle cx="318" cy="55" r="2" fill="#dc2626" />
+        <circle cx="305" cy="10" r="1" fill="#dc2626" />
 
         {/* Sparkle 8 near D */}
-        <circle cx="365" cy="25" r="2" fill="#D4AF37" />
-        <line x1="365" y1="19" x2="365" y2="31" stroke="#D4AF37" strokeWidth="0.5" />
-        <line x1="359" y1="25" x2="371" y2="25" stroke="#D4AF37" strokeWidth="0.5" />
+        <circle cx="365" cy="25" r="2" fill="#dc2626" />
+        <line x1="365" y1="19" x2="365" y2="31" stroke="#dc2626" strokeWidth="0.5" />
+        <line x1="359" y1="25" x2="371" y2="25" stroke="#dc2626" strokeWidth="0.5" />
 
         {/* Random micro sparkles in background for texture */}
-        <circle cx="45" cy="55" r="1" fill="#D4AF37" opacity="0.6" />
-        <circle cx="140" cy="22" r="0.75" fill="#D4AF37" opacity="0.8" />
-        <circle cx="255" cy="48" r="1" fill="#D4AF37" opacity="0.5" />
-        <circle cx="335" cy="32" r="0.75" fill="#D4AF37" opacity="0.7" />
-        <circle cx="395" cy="60" r="1" fill="#D4AF37" opacity="0.9" />
+        <circle cx="45" cy="55" r="1" fill="#dc2626" opacity="0.6" />
+        <circle cx="140" cy="22" r="0.75" fill="#dc2626" opacity="0.8" />
+        <circle cx="255" cy="48" r="1" fill="#dc2626" opacity="0.5" />
+        <circle cx="335" cy="32" r="0.75" fill="#dc2626" opacity="0.7" />
+        <circle cx="395" cy="60" r="1" fill="#dc2626" opacity="0.9" />
       </g>
 
       {/* CORE LOGO: "R E N O W N E D" */}
@@ -104,7 +104,7 @@ export default function RenownedLogo({ className = 'h-12', textColor = 'text-whi
       </g>
 
       {/* SUB LOGO: "M E D I A" */}
-      {/* Extra tracking, centered, refined thin lines with golden accents */}
+      {/* Extra tracking, centered, refined thin lines with red accents */}
       <g stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={textColor}>
         {/* M (centered under 'O') */}
         <path d="M 142,90 L 142,110 L 149,99 L 156,110 L 156,90" />
@@ -125,12 +125,12 @@ export default function RenownedLogo({ className = 'h-12', textColor = 'text-whi
         <path d="M 250,104 L 260,104" />
       </g>
 
-      {/* Decorative Golden Underline Dots & Accents */}
-      <line x1="60" y1="110" x2="115" y2="110" stroke="#D4AF37" strokeWidth="1" strokeDasharray="3 3" />
-      <circle cx="123" cy="110" r="2.5" fill="#D4AF37" />
+      {/* Decorative Red Underline Dots & Accents */}
+      <line x1="60" y1="110" x2="115" y2="110" stroke="#dc2626" strokeWidth="1" strokeDasharray="3 3" />
+      <circle cx="123" cy="110" r="2.5" fill="#dc2626" />
       
-      <circle cx="280" cy="110" r="2.5" fill="#D4AF37" />
-      <line x1="288" y1="110" x2="343" y2="110" stroke="#D4AF37" strokeWidth="1" strokeDasharray="3 3" />
+      <circle cx="280" cy="110" r="2.5" fill="#dc2626" />
+      <line x1="288" y1="110" x2="343" y2="110" stroke="#dc2626" strokeWidth="1" strokeDasharray="3 3" />
     </svg>
   );
 }

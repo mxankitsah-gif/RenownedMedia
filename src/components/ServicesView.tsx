@@ -59,13 +59,13 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
       {/* Intro Header */}
       <section className="text-center max-w-2xl mx-auto space-y-4">
-        <span className="font-mono text-xs font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+        <span className="font-mono text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider block w-fit mx-auto">
           Our Capabilities
         </span>
-        <h2 className="font-sans text-4xl font-extrabold text-white tracking-tight">
-          Services That Build Direct <span className="text-[#D4AF37]">Leverage</span>
-        </h2>
-        <p className="font-sans text-body-lg text-[#BFB9AF] leading-relaxed">
+        <h1 className="font-sans text-4xl font-extrabold text-slate-900 tracking-tight">
+          Services That Build Direct <span className="text-[#1d4ed8]">Leverage</span>
+        </h1>
+        <p className="font-sans text-body-lg text-slate-600 leading-relaxed">
           We do not deliver superficial vanity stats. Our systems are engineered to help Indian creators, startups, local businesses, coaches, consultants, and SMEs capture consumer focus, secure high-recall mindshare, and transform digital presence into recurring growth assets.
         </p>
       </section>
@@ -73,11 +73,11 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
       {/* Structured Services Grid / Accordions */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-4">
-          <h3 className="font-sans font-extrabold text-xl text-white mb-2 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[#D4AF37]" />
+          <h3 className="font-sans font-extrabold text-xl text-slate-900 mb-2 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-[#1d4ed8]" />
             Interactive Capabilities Playbook
           </h3>
-          <p className="font-sans text-xs text-[#BFB9AF] max-w-md leading-relaxed mb-6">
+          <p className="font-sans text-xs text-slate-600 max-w-md leading-relaxed mb-6">
             Click on any discipline to review core deliverables, standard turnaround parameters, and initiate targeted operational pipelines.
           </p>
 
@@ -90,15 +90,15 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                   key={srv.id}
                   whileHover={{
                     scale: 1.008,
-                    borderColor: isFeatured ? '#D4AF37' : 'rgba(212, 175, 55, 0.4)',
-                    boxShadow: isFeatured ? '0 8px 25px -8px rgba(212, 175, 55, 0.2)' : '0 4px 15px -8px rgba(212, 175, 55, 0.1)'
+                    borderColor: '#1d4ed8',
+                    boxShadow: '0 8px 25px -8px rgba(29, 78, 216, 0.08)'
                   }}
                   whileTap={{ scale: 0.998 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 28 }}
                   className={`border rounded-xl transition-all overflow-hidden ${
                     isExpanded 
-                      ? 'border-[#D4AF37] bg-white/[0.03] ring-1 ring-[#D4AF37]/20 shadow-[0_0_20px_rgba(212,175,55,0.08)]' 
-                      : 'border-[#D4AF37]/15 bg-white/[0.01]'
+                      ? 'border-blue-500 bg-white ring-1 ring-blue-500/20 shadow-[0_10px_25px_rgba(29,78,216,0.06)]' 
+                      : 'border-slate-200 bg-white'
                   }`}
                   id={`service-block-${srv.id}`}
                 >
@@ -111,21 +111,21 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                     <div className="flex items-center gap-4">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all border ${
                         isExpanded 
-                          ? 'bg-[#D4AF37] text-[#0A0A0A] border-[#D4AF37] scale-110 shadow-[0_0_15px_rgba(212,175,55,0.3)]' 
-                          : 'bg-white/[0.04] text-[#D4AF37] border-[#D4AF37]/25'
+                          ? 'bg-[#1d4ed8] text-white border-[#1d4ed8] scale-110 shadow-[0_4px_15px_rgba(29,78,216,0.2)]' 
+                          : 'bg-blue-50 text-[#1d4ed8] border-blue-100'
                       }`}>
                         <ServiceIcon id={srv.id} className="w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="font-sans font-bold text-base text-white leading-tight">
+                        <h4 className="font-sans font-bold text-base text-slate-900 leading-tight">
                           {srv.title}
                         </h4>
-                        <p className="text-xs text-[#BFB9AF] mt-0.5 line-clamp-1 max-w-sm">
+                        <p className="text-xs text-slate-600 mt-0.5 line-clamp-1 max-w-sm">
                           {srv.description}
                         </p>
                       </div>
                     </div>
-                    <ChevronRight className={`w-5 h-5 text-on-surface-variant transition-transform duration-300 ${isExpanded ? 'rotate-90 text-[#D4AF37]' : ''}`} />
+                    <ChevronRight className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${isExpanded ? 'rotate-90 text-[#1d4ed8]' : ''}`} />
                   </button>
 
                   {/* Expanded Content with AnimatePresence */}
@@ -137,16 +137,16 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.25, ease: 'easeInOut' }}
                       >
-                        <div className="px-5 pb-5 pt-1 border-t border-[#D4AF37]/10 space-y-4 text-xs font-sans">
+                        <div className="px-5 pb-5 pt-1 border-t border-slate-100 space-y-4 text-xs font-sans">
                           {/* Deliverables lists */}
                           <div className="space-y-2">
-                            <span className="font-mono text-[9px] text-[#D4AF37] font-bold tracking-wider uppercase block">
+                            <span className="font-mono text-[9px] text-[#1d4ed8] font-bold tracking-wider uppercase block">
                               Key Deliverables & Sub-Services
                             </span>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                               {srv.deliverables.map((deliv, dIdx) => (
-                                <div key={dIdx} className="flex items-center gap-2 text-[#BFB9AF]">
-                                  <CheckCircle className="w-3.5 h-3.5 text-[#D4AF37] shrink-0" />
+                                <div key={dIdx} className="flex items-center gap-2 text-slate-600">
+                                  <CheckCircle className="w-3.5 h-3.5 text-[#1d4ed8] shrink-0" />
                                   <span>{deliv}</span>
                                 </div>
                               ))}
@@ -154,13 +154,13 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                           </div>
 
                           {/* Logistics metrics */}
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 border-t border-[#D4AF37]/10 text-[11px] font-mono gap-3">
-                            <div className="text-[#BFB9AF]">
-                              Estimated Turnaround: <strong className="text-white font-bold">{srv.duration}</strong>
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 border-t border-slate-100 text-[11px] font-mono gap-3">
+                            <div className="text-slate-600">
+                              Estimated Turnaround: <strong className="text-slate-900 font-bold">{srv.duration}</strong>
                             </div>
                             <button
                               onClick={() => onSelectServiceForQuote(srv.id)}
-                              className="px-4 py-2 bg-[#D4AF37]/10 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-black border border-[#D4AF37]/30 hover:border-[#D4AF37] rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer inline-flex items-center gap-1.5 self-start sm:self-auto"
+                              className="px-4 py-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white border-none rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer inline-flex items-center gap-1.5 self-start sm:self-auto shadow-[0_4px_12px_rgba(220,38,38,0.2)]"
                               id={`quote-link-${srv.id}`}
                             >
                               Request Quote
@@ -178,23 +178,23 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
         </div>
 
         {/* Dynamic Calculator Blueprint on the right */}
-        <div className="bg-white/[0.02] backdrop-blur-md border border-[#D4AF37]/15 rounded-xl p-6 md:p-8 space-y-6 flex flex-col justify-between h-full hover:shadow-[0_0_20px_rgba(212,175,55,0.06)] transition-all duration-300" id="service-estimator">
+        <div className="bg-white border border-slate-200/80 rounded-xl p-6 md:p-8 space-y-6 flex flex-col justify-between h-full hover:shadow-[0_12px_30px_rgba(29,78,216,0.04)] transition-all duration-300 mx-auto w-full" id="service-estimator">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 block">
-              <span className="p-2 bg-[#D4AF37]/10 text-[#D4AF37] rounded inline-block mr-2">
+            <div className="flex items-center gap-2">
+              <span className="p-2 bg-blue-50 text-[#1d4ed8] border border-blue-100 rounded inline-block mr-2 shrink-0">
                 <Calculator className="w-5 h-5 font-bold" />
               </span>
               <div>
-                <h4 className="font-sans font-bold text-lg text-white">Campaign Budget Estimator</h4>
-                <p className="text-xs text-[#BFB9AF]">Blueprint customized deliverables to map raw project costs.</p>
+                <h4 className="font-sans font-bold text-lg text-slate-900 leading-tight">Campaign Budget Estimator</h4>
+                <p className="text-xs text-slate-600">Blueprint customized deliverables to map raw project costs.</p>
               </div>
             </div>
 
-            <hr className="border-[#D4AF37]/10 my-2" />
+            <hr className="border-slate-100 my-2" />
 
             {/* Config Step 1: Channels */}
             <div className="space-y-2">
-              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#BFB9AF]">
+              <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500">
                 1. Target Channels
               </label>
               <div className="flex flex-wrap gap-1.5">
@@ -207,8 +207,8 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                       onClick={() => handleCalcToggleChannel(srv.id)}
                       className={`px-3 py-1.5 rounded text-[11px] font-sans font-medium transition-all cursor-pointer ${
                         check
-                          ? 'bg-[#D4AF37] text-[#0A0A0A] shadow shadow-[#D4AF37]/20 border border-[#D4AF37]'
-                          : 'bg-white/[0.04] text-[#BFB9AF] border border-[#D4AF37]/15 hover:border-[#D4AF37]/45'
+                          ? 'bg-[#1d4ed8] text-white shadow shadow-blue-500/20 border border-[#1d4ed8]'
+                          : 'bg-slate-50 text-slate-700 border border-slate-200 hover:border-slate-300'
                       }`}
                       id={`calc-channel-${srv.id}`}
                     >
@@ -221,9 +221,9 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
 
             {/* Config Step 2: Content Scale */}
             <div className="space-y-2">
-              <div className="flex justify-between items-center text-[10px] font-bold uppercase text-[#BFB9AF]">
+              <div className="flex justify-between items-center text-[10px] font-bold uppercase text-slate-500">
                 <span>2. Deliverables Volume scale ({calcScale}x)</span>
-                <span className="text-[#D4AF37] font-mono">{calcScale * 2} assets / mo</span>
+                <span className="text-[#1d4ed8] font-mono">{calcScale * 2} assets / mo</span>
               </div>
               <input
                 type="range"
@@ -231,10 +231,10 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                 max="10"
                 value={calcScale}
                 onChange={(e) => setCalcScale(Number(e.target.value))}
-                className="w-full h-2 rounded-lg cursor-pointer bg-white/[0.05] accent-[#D4AF37] border border-white/[0.05] hover:accent-[#F5D76E]"
+                className="w-full h-2 rounded-lg cursor-pointer bg-slate-100 accent-[#1d4ed8] border border-slate-200 hover:accent-[#1e40af]"
                 id="calc-assets-range"
               />
-              <div className="flex justify-between text-[9px] font-mono text-[#BFB9AF]">
+              <div className="flex justify-between text-[9px] font-mono text-slate-400">
                 <span>Micro Campaign (2 assets)</span>
                 <span>Dominion Level (20 assets)</span>
               </div>
@@ -242,9 +242,9 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
 
             {/* Config Step 3: Intensity Tier */}
             <div className="space-y-2">
-              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#BFB9AF] flex items-center gap-1">
+              <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
                 3. Campaign Velocity Pace
-                <HelpCircle className="w-3 h-3 text-[#BFB9AF]/40" title="Velocity of iterations, feedback cycles, and campaign speed." />
+                <HelpCircle className="w-3 h-3 text-slate-400" title="Velocity of iterations, feedback cycles, and campaign speed." />
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -252,13 +252,13 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                   onClick={() => setCalcTier('standard')}
                   className={`p-3 rounded-lg border text-left cursor-pointer transition-all ${
                     calcTier === 'standard'
-                      ? 'border-[#D4AF37] bg-[#D4AF37]/5 text-[#D4AF37] font-bold'
-                      : 'border-[#D4AF37]/15 bg-white/[0.01] hover:bg-white/[0.03] text-[#BFB9AF]'
+                      ? 'border-[#1d4ed8] bg-blue-500/5 text-[#1d4ed8] font-bold'
+                      : 'border-slate-200 bg-white hover:bg-slate-50/50 text-slate-700'
                   }`}
                   id="calc-tier-standard"
                 >
                   <span className="font-sans text-xs block font-extrabold">Standard Retainer</span>
-                  <span className="text-[9px] leading-tight block text-[#BFB9AF] mt-0.5">Continuous pace with steady monthly output adjustments.</span>
+                  <span className="text-[9px] leading-tight block text-slate-600 mt-0.5">Continuous pace with steady monthly output adjustments.</span>
                 </button>
 
                 <button
@@ -266,49 +266,49 @@ export default function ServicesView({ onSelectServiceForQuote }: ServicesViewPr
                   onClick={() => setCalcTier('high-velocity')}
                   className={`p-3 rounded-lg border text-left cursor-pointer transition-all ${
                     calcTier === 'high-velocity'
-                      ? 'border-[#F5D76E] bg-[#F5D76E]/5 text-[#F5D76E] font-bold shadow-[0_0_15px_rgba(245,215,110,0.15)]'
-                      : 'border-[#D4AF37]/15 bg-[#0A0A0A] hover:bg-white/[0.03] text-[#BFB9AF]'
+                      ? 'border-red-500 bg-red-500/5 text-[#dc2626] font-bold shadow-[0_4px_15px_rgba(220,38,38,0.1)]'
+                      : 'border-slate-200 bg-white hover:bg-slate-50/50 text-slate-700'
                   }`}
                   id="calc-tier-velocity"
                 >
                   <span className="font-sans text-xs block font-extrabold">High Velocity Rush</span>
-                  <span className="text-[9px] leading-tight block text-[#BFB9AF] mt-0.5">Expedited timelines, prioritized focus slots, and maximum execution push.</span>
+                  <span className="text-[9px] leading-tight block text-slate-700 mt-0.5">Expedited timelines, prioritized focus slots, and maximum execution push.</span>
                 </button>
               </div>
             </div>
           </div>
 
           {/* Results Summary Box */}
-          <div className="bg-[#0A0A0A]/60 rounded-lg p-5 border border-[#D4AF37]/15 shadow-sm space-y-4 mt-6">
-            <div className="text-center space-y-1 pb-1 border-b border-[#D4AF37]/10">
-              <span className="font-mono text-[9px] text-[#BFB9AF] uppercase tracking-widest font-bold block">
+          <div className="bg-slate-50/90 rounded-lg p-5 border border-slate-200/80 shadow-sm space-y-4 mt-6">
+            <div className="text-center space-y-1 pb-1 border-b border-slate-200">
+              <span className="font-mono text-[9px] text-slate-500 uppercase tracking-widest font-bold block">
                 ESTIMATED PROJECT ALLOCATION
               </span>
-              <span className="font-sans text-xs text-[#D4AF37] font-bold block uppercase tracking-wide">
+              <span className="font-sans text-xs text-[#1d4ed8] font-bold block uppercase tracking-wide">
                 {projectAllocationName} List ({projectAllocationRange})
               </span>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-center divide-x divide-[#D4AF37]/15">
+            <div className="grid grid-cols-2 gap-4 text-center divide-x divide-slate-250">
               <div>
-                <span className="text-xl font-extrabold text-white tracking-tight font-mono">{calculatedHours} hrs</span>
-                <p className="text-[9px] font-sans text-[#BFB9AF] uppercase block mt-1">Operational Hours</p>
+                <span className="text-xl font-extrabold text-slate-950 tracking-tight font-mono">{calculatedHours} hrs</span>
+                <p className="text-[9px] font-sans text-slate-500 uppercase block mt-1">Operational Hours</p>
               </div>
               <div>
-                <span className="text-xl font-extrabold text-[#D4AF37] tracking-tight font-mono">{formattedPriceEstimate}</span>
-                <p className="text-[10px] font-sans text-[#BFB9AF] uppercase block mt-1">Est. Retainer / mo</p>
+                <span className="text-xl font-extrabold text-[#dc2626] tracking-tight font-mono">{formattedPriceEstimate}</span>
+                <p className="text-[10px] font-sans text-slate-500 uppercase block mt-1">Est. Retainer / mo</p>
               </div>
             </div>
             
-            <p className="text-[10px] text-justify text-[#BFB9AF] leading-relaxed font-sans bg-white/[0.01] p-2.5 rounded border border-[#D4AF37]/10">
+            <p className="text-[10px] text-justify text-slate-500 leading-relaxed font-sans bg-white p-2.5 rounded border border-slate-200/60">
               *Disclaimer: This calculator yields estimations of cost based on average agency work scales. Submit a formal query to get certified campaign pricing models.
             </p>
 
             <button
                onClick={() => onSelectServiceForQuote(calcChannels[0] || '')}
-               className="w-full py-3.5 bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] font-mono text-[11px] font-bold uppercase tracking-wider rounded flex items-center justify-center gap-1.5 transition-all shadow-[0_4px_20px_rgba(212,175,55,0.15)] hover:shadow-[0_8px_30px_rgba(212,175,55,0.35)] cursor-pointer"
+               className="w-full py-3.5 bg-[#dc2626] hover:bg-[#b91c1c] text-white border-none font-mono text-[11px] font-bold uppercase tracking-wider rounded flex items-center justify-center gap-1.5 transition-all shadow-[0_4px_25px_rgba(220,38,38,0.25)] hover:shadow-[0_8px_30px_rgba(220,38,38,0.4)] cursor-pointer"
                id="calc-submit-quote-btn"
             >
-              Order This Custom Campaign Blueprint <Play className="w-3 h-3 fill-current text-current" />
+              Order This Custom Campaign Blueprint <Play className="w-3 h-3 fill-current text-white" />
             </button>
           </div>
         </div>

@@ -28,7 +28,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/40 shadow-sm transition-all duration-300">
+    <header className="fixed top-0 w-full z-50 bg-[#ffffff]/90 backdrop-blur-xl border-b border-slate-100 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
         {/* Logo Brand */}
         <button
@@ -36,10 +36,10 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
             onTabChange('home');
             setIsMobileMenuOpen(false);
           }}
-          className="flex items-center justify-start cursor-pointer active:scale-95 transition-all text-white hover:text-[#D4AF37]"
+          className="flex items-center justify-start cursor-pointer active:scale-95 transition-all text-[#1d4ed8] hover:text-[#dc2626]"
           id="brand-logo-btn"
         >
-          <RenownedLogo className="h-9 sm:h-11 w-auto" />
+          <RenownedLogo className="h-9 sm:h-11 w-auto" textColor="text-[#1d4ed8]" />
         </button>
 
         {/* Desktop Navigation */}
@@ -52,8 +52,8 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
                 onClick={() => onTabChange(item.id)}
                 className={`font-sans text-[15px] font-medium transition-all py-1 relative cursor-pointer ${
                   isTabActive
-                    ? 'text-[#D4AF37] font-bold'
-                    : 'text-[#BFB9AF] hover:text-[#D4AF37]'
+                    ? 'text-[#1d4ed8] font-bold'
+                    : 'text-[#475569] hover:text-[#1d4ed8]'
                 }`}
                 id={`nav-item-${item.id}`}
               >
@@ -61,7 +61,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
                 {isTabActive && (
                   <motion.div
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37] rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#1d4ed8]"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -74,7 +74,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
         <div className="hidden md:block">
           <button
             onClick={onRequestQuote}
-            className="bg-white hover:bg-[#D4AF37] text-[#0A0A0A] hover:text-[#0A0A0A] border border-[#D4AF37]/30 hover:border-[#D4AF37] px-6 py-2.5 rounded font-mono text-[10px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_2px_15px_rgba(212,175,55,0.15)] hover:shadow-[0_4px_25px_rgba(212,175,55,0.3)] cursor-pointer"
+            className="bg-[#dc2626] hover:bg-[#b91c1c] text-white border border-[#dc2626]/20 px-6 py-2.5 rounded font-mono text-[10px] font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_4px_15px_rgba(220,38,38,0.2)] hover:shadow-[0_6px_25px_rgba(220,38,38,0.35)] cursor-pointer"
             id="header-quote-btn"
           >
             REQUEST QUOTE
@@ -103,7 +103,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
             className="md:hidden bg-surface-container border-b border-outline-variant/40 overflow-hidden"
             id="mobile-menu-drawer"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-4 flex flex-col gap-4 bg-white">
               {navItems.map((item) => {
                 const isTabActive = activeTab === item.id;
                 return (
@@ -114,7 +114,7 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
                       setIsMobileMenuOpen(false);
                     }}
                     className={`text-left font-sans text-base py-2 font-medium ${
-                      isTabActive ? 'text-[#D4AF37] font-bold' : 'text-[#BFB9AF]'
+                      isTabActive ? 'text-[#1d4ed8] font-bold' : 'text-[#475569]'
                     }`}
                     id={`mobile-nav-${item.id}`}
                   >
@@ -122,13 +122,13 @@ export default function Header({ activeTab, onTabChange, onRequestQuote }: Heade
                   </button>
                 );
               })}
-              <hr className="border-outline-variant/20 my-1" />
+              <hr className="border-slate-100 my-1" />
               <button
                 onClick={() => {
                   onRequestQuote();
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full bg-white text-[#0A0A0A] hover:bg-[#D4AF37] border border-[#D4AF37]/30 py-3 px-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300"
+                className="w-full bg-[#dc2626] text-white hover:bg-[#b91c1c] py-3 px-4 rounded font-mono text-[11px] font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 shadow-[0_4px_15px_rgba(220,38,38,0.2)] border-none"
                 id="mobile-quote-btn"
               >
                 REQUEST QUOTE <ArrowRight className="w-4 h-4" />

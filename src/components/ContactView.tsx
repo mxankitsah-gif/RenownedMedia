@@ -33,13 +33,13 @@ export default function ContactView() {
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
       {/* Intro Header */}
       <section className="text-center max-w-2xl mx-auto space-y-4">
-        <span className="font-sans text-xs font-bold text-[#D4AF37] bg-[#D4AF37]/10 px-4 py-1.5 rounded-full uppercase tracking-widest">
+        <span className="font-sans text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-4 py-1.5 rounded-full uppercase tracking-widest block w-fit mx-auto">
           Get In Touch
         </span>
-        <h2 className="font-sans text-4xl font-extrabold text-white tracking-tight">
+        <h1 className="font-sans text-4xl font-extrabold text-slate-900 tracking-tight">
           Initiate Your Growth Routine
-        </h2>
-        <p className="font-sans text-base text-[#BFB9AF] leading-relaxed">
+        </h1>
+        <p className="font-sans text-base text-slate-600 leading-relaxed">
           Ready to elevate your digital presence, coordinate premium photography shoots, or establish organic search authority? We partner with leading Indian creators, startups, coaches, local businesses, and SMEs to orchestrate elite digital growth channels.
         </p>
       </section>
@@ -48,31 +48,31 @@ export default function ContactView() {
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         {/* Contact details & Map block */}
         <div className="lg:col-span-4 space-y-8">
-          <div className="bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-8 space-y-6">
-            <h3 className="font-sans font-extrabold text-lg text-white">Direct Inquiry Channels</h3>
+          <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-8 space-y-6">
+            <h3 className="font-sans font-extrabold text-lg text-slate-900">Direct Inquiry Channels</h3>
             
             <div className="space-y-4 text-xs font-sans">
               {/* Mail */}
-              <div className="flex items-start gap-4 p-4 bg-black/60 rounded border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors">
-                <Mail className="w-5 h-5 text-[#D4AF37] shrink-0" />
+              <div className="flex items-start gap-4 p-4 bg-white rounded border border-slate-150 hover:border-blue-300 transition-colors shadow-sm">
+                <Mail className="w-5 h-5 text-[#1d4ed8] shrink-0" />
                 <div className="space-y-1">
-                  <span className="font-sans font-bold text-[9px] text-[#BFB9AF] uppercase block tracking-wider">Mail Address</span>
-                  <a href={`mailto:${AGENCY_DETAILS.email}`} className="text-xs font-semibold text-[#D4AF37] hover:text-[#F5D76E] hover:underline">
+                  <span className="font-sans font-bold text-[9px] text-slate-500 uppercase block tracking-wider">Mail Address</span>
+                  <a href={`mailto:${AGENCY_DETAILS.email}`} className="text-xs font-semibold text-[#1d4ed8] hover:text-[#1e40af] hover:underline">
                     {AGENCY_DETAILS.email}
                   </a>
                 </div>
               </div>
 
               {/* Call */}
-              <div className="flex items-start gap-4 p-4 bg-black/60 rounded border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors">
-                <Phone className="w-5 h-5 text-[#D4AF37] shrink-0" />
+              <div className="flex items-start gap-4 p-4 bg-white rounded border border-slate-150 hover:border-blue-300 transition-colors shadow-sm">
+                <Phone className="w-5 h-5 text-[#1d4ed8] shrink-0" />
                 <div className="space-y-1">
-                  <span className="font-sans font-bold text-[9px] text-[#BFB9AF] uppercase block tracking-wider">Operations Phone</span>
+                  <span className="font-sans font-bold text-[9px] text-slate-500 uppercase block tracking-wider">Operations Phone</span>
                   <div className="space-y-1">
-                    <a href={`tel:${AGENCY_DETAILS.phone1}`} className="text-xs font-semibold text-[#D4AF37] hover:text-[#F5D76E] hover:underline block">
+                    <a href={`tel:${AGENCY_DETAILS.phone1}`} className="text-xs font-semibold text-[#1d4ed8] hover:text-[#1e40af] hover:underline block font-sans">
                       {AGENCY_DETAILS.phone1}
                     </a>
-                    <a href={`tel:${AGENCY_DETAILS.phone2}`} className="text-xs font-semibold text-[#D4AF37] hover:text-[#F5D76E] hover:underline block">
+                    <a href={`tel:${AGENCY_DETAILS.phone2}`} className="text-xs font-semibold text-[#1d4ed8] hover:text-[#1e40af] hover:underline block font-sans">
                       {AGENCY_DETAILS.phone2}
                     </a>
                   </div>
@@ -80,11 +80,11 @@ export default function ContactView() {
               </div>
 
               {/* Headquarters Location */}
-              <div className="flex items-start gap-4 p-4 bg-black/60 rounded border border-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-colors">
-                <MapPin className="w-5 h-5 text-[#D4AF37] shrink-0" />
+              <div className="flex items-start gap-4 p-4 bg-white rounded border border-slate-150 hover:border-blue-300 transition-colors shadow-sm">
+                <MapPin className="w-5 h-5 text-[#1d4ed8] shrink-0" />
                 <div className="space-y-1">
-                  <span className="font-sans font-bold text-[9px] text-[#BFB9AF] uppercase block tracking-wider">Headquarters Location</span>
-                  <span className="text-[#BFB9AF] font-semibold block leading-relaxed">
+                  <span className="font-sans font-bold text-[9px] text-slate-500 uppercase block tracking-wider">Headquarters Location</span>
+                  <span className="text-slate-600 font-semibold block leading-relaxed font-sans">
                     {AGENCY_DETAILS.address}
                   </span>
                 </div>
@@ -92,33 +92,33 @@ export default function ContactView() {
             </div>
           </div>
 
-          {/* Luxury Office Representation Layout without simulated terminal larp */}
-          <div className="bg-[#111111] border border-[#D4AF37]/15 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[#D4AF37]/5 select-none pointer-events-none" />
+          {/* Location details card */}
+          <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-6 text-center space-y-4 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[#1d4ed8]/4 select-none pointer-events-none" />
             <div className="relative space-y-2">
-              <span className="font-sans text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest block">
+              <span className="font-sans text-[10px] text-[#1d4ed8] font-bold uppercase tracking-widest block">
                 Global Operations Hub
               </span>
-              <h4 className="font-sans font-bold text-base text-white">Ghaziabad, Uttar Pradesh</h4>
-              <p className="font-sans text-xs text-[#BFB9AF] max-w-sm mx-auto leading-relaxed">
+              <h4 className="font-sans font-bold text-base text-slate-900">Ghaziabad, Uttar Pradesh</h4>
+              <p className="font-sans text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
                 Coordinating high-end digital authority, search strategy, and premium digital assets for corporate sectors internationally.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Contact Form block - Redesigned Gold Glassmorphism */}
+        {/* Contact Form block */}
         <div 
-          className="lg:col-span-8 bg-black/40 backdrop-blur-xl border border-[#D4AF37]/30 shadow-[0_15px_50px_rgba(212,175,55,0.06)] p-6 sm:p-10 space-y-8 hover:border-[#D4AF37]/50 transition-colors duration-300"
+          className="lg:col-span-8 bg-white border border-slate-200/80 shadow-[0_12px_35px_rgba(29,78,216,0.04)] p-6 sm:p-10 space-y-8 hover:border-blue-400 transition-colors duration-300"
           style={{ borderRadius: '20px' }}
         >
           {/* Form Header */}
-          <div className="border-b border-[#D4AF37]/20 pb-6 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="border-b border-slate-100 pb-6 text-left flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <h3 className="font-serif font-extrabold text-2xl text-white tracking-tight">
+              <h3 className="font-sans font-extrabold text-2xl text-slate-900 tracking-tight">
                 Request a Consultation
               </h3>
-              <p className="text-xs text-[#BFB9AF] leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 Tell us about your project and our team will get back to you.
               </p>
             </div>
@@ -127,7 +127,7 @@ export default function ContactView() {
               target="_blank" 
               rel="noreferrer" 
               onClick={() => trackFormSubmission('direct_form_link_click')}
-              className="text-xs text-[#D4AF37] hover:text-[#F0CE62] font-mono font-bold uppercase tracking-widest flex items-center gap-2 underline shrink-0 cursor-pointer self-start sm:self-auto transition-colors"
+              className="text-xs text-[#1d4ed8] hover:text-[#1e40af] font-mono font-bold uppercase tracking-widest flex items-center gap-2 underline shrink-0 cursor-pointer self-start sm:self-auto transition-colors"
             >
               Open Direct Form <ExternalLink className="w-4 h-4" />
             </a>
@@ -135,19 +135,19 @@ export default function ContactView() {
 
           {/* Secure embedded Google Form customized to blend perfectly */}
           <div 
-            className="relative w-full bg-[#0a0a0a]/80 border border-[#D4AF37]/15 overflow-hidden h-[740px] sm:h-[840px] shadow-2xl"
+            className="relative w-full bg-slate-50 border border-slate-200 h-[740px] sm:h-[840px] shadow-sm overflow-hidden"
             style={{ borderRadius: '15px' }}
           >
             {/* Elegant premium loading background */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0d0d0d] gap-4 text-xs text-[#BFB9AF]">
-              <div className="w-8 h-8 rounded-full border-2 border-[#D4AF37]/20 border-t-[#D4AF37] animate-spin" />
-              <span className="font-mono tracking-widest text-[10px] text-[#D4AF37]/80 uppercase">Establishing Encrypted Connection...</span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 gap-4 text-xs text-slate-600">
+              <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#1d4ed8] animate-spin" />
+              <span className="font-mono tracking-widest text-[10px] text-[#1d4ed8]/80 uppercase">Establishing Secure Connection...</span>
             </div>
 
             {/* Shift and wrap iframe to hide the header of the Google Form, inverted color scheme via custom CSS */}
             <iframe 
               src="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?embedded=true"
-              className="absolute left-0 top-[-135px] w-full h-[calc(100%+145px)] bg-transparent border-none filter-contact-iframe z-10"
+              className="absolute left-0 top-[-135px] w-full h-[calc(100%+145px)] bg-transparent border-none z-10"
               title="Request a Consultation Secure Form"
               referrerPolicy="no-referrer"
               onLoad={() => {
@@ -167,10 +167,10 @@ export default function ContactView() {
       </section>
 
       {/* Structured FAQ accordion section */}
-      <section className="space-y-8 border-t border-[#D4AF37]/15 pt-16">
+      <section className="space-y-8 border-t border-slate-100 pt-16">
         <div className="text-center max-w-md mx-auto space-y-2">
-          <h3 className="font-sans text-2xl font-extrabold text-white">Frequently Queried Parameters</h3>
-          <p className="text-xs text-[#BFB9AF]">Review standard operational methodologies prior to blueprint validation.</p>
+          <h3 className="font-sans text-2xl font-extrabold text-slate-900">Frequently Queried Parameters</h3>
+          <p className="text-xs text-slate-600">Review standard operational methodologies prior to blueprint validation.</p>
         </div>
 
         <div className="max-w-3xl mx-auto space-y-3" id="faq-accordions">
@@ -179,19 +179,19 @@ export default function ContactView() {
             return (
               <div
                 key={idx}
-                className="bg-[#111111] border border-[#D4AF37]/15 rounded-lg overflow-hidden transition-all shadow-sm"
+                className="bg-white border border-slate-200/85 rounded-lg overflow-hidden transition-all shadow-sm hover:border-blue-300"
               >
                 <button
                   type="button"
                   onClick={() => setExpandedFaqIdx(isFaqExpanded ? null : idx)}
-                  className="w-full text-left p-4 flex items-center justify-between text-sm font-sans font-bold text-white hover:bg-white/[0.02] transition-colors cursor-pointer focus:outline-none"
+                  className="w-full text-left p-4 flex items-center justify-between text-sm font-sans font-bold text-slate-900 hover:bg-slate-50/50 transition-colors cursor-pointer focus:outline-none"
                   id={`faq-trigger-${idx}`}
                 >
                   <div className="flex items-center gap-2.5">
-                    <HelpCircle className="w-4 h-4 text-[#D4AF37] shrink-0" />
+                    <HelpCircle className="w-4 h-4 text-[#1d4ed8] shrink-0" />
                     <span>{faq.q}</span>
                   </div>
-                  <ChevronDown className={`w-4 h-4 text-[#BFB9AF] transition-transform ${isFaqExpanded ? 'rotate-180 text-[#D4AF37]' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isFaqExpanded ? 'rotate-180 text-[#1d4ed8]' : ''}`} />
                 </button>
 
                 <AnimatePresence initial={false}>
@@ -202,7 +202,7 @@ export default function ContactView() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <div className="px-11 pb-4 pt-1 text-xs text-[#BFB9AF] font-sans leading-relaxed border-t border-[#D4AF37]/10">
+                      <div className="px-11 pb-4 pt-1 text-xs text-slate-600 font-sans leading-relaxed border-t border-slate-100">
                         {faq.a}
                       </div>
                     </motion.div>

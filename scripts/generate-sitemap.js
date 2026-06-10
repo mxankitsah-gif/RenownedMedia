@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const DOMAIN = 'https://renownedmedia.vercel.app';
+const DOMAIN = 'https://renownedmedia.in';
 const currentDate = new Date().toISOString().split('T')[0];
 
 const pages = [

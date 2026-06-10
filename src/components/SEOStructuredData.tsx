@@ -13,13 +13,13 @@ export default function SEOStructuredData() {
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://renownedmedia.vercel.app/#organization",
+          "@id": "https://renownedmedia.in/#organization",
           "name": "Renowned Media",
-          "url": "https://renownedmedia.vercel.app",
+          "url": "https://renownedmedia.in",
           "logo": {
             "@type": "ImageObject",
-            "@id": "https://renownedmedia.vercel.app/#logo",
-            "url": "https://renownedmedia.vercel.app/logo.png",
+            "@id": "https://renownedmedia.in/#logo",
+            "url": "https://renownedmedia.in/logo.png",
             "caption": "Renowned Media Logo"
           },
           "email": "renownedmedia@outlook.in",
@@ -43,25 +43,25 @@ export default function SEOStructuredData() {
           ],
           "founder": {
             "@type": "Person",
-            "@id": "https://renownedmedia.vercel.app/#ankit-sah"
+            "@id": "https://renownedmedia.in/#ankit-sah"
           }
         },
         {
           "@type": "Person",
-          "@id": "https://renownedmedia.vercel.app/#ankit-sah",
+          "@id": "https://renownedmedia.in/#ankit-sah",
           "name": "Ankit Sah",
           "jobTitle": "Founder & Owner",
           "worksFor": {
             "@type": "Organization",
-            "@id": "https://renownedmedia.vercel.app/#organization"
+            "@id": "https://renownedmedia.in/#organization"
           },
           "description": "Founder and lead coordinator at Renowned Media, driving elite branding, digital PR, and organic search authority for media personalities, political figures, and businesses in India."
         },
         {
           "@type": "ProfessionalService",
-          "@id": "https://renownedmedia.vercel.app/#local-business",
+          "@id": "https://renownedmedia.in/#local-business",
           "name": "Renowned Media - Ghaziabad Office",
-          "image": "https://renownedmedia.vercel.app/logo.png",
+          "image": "https://renownedmedia.in/logo.png",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "887, Nitikhand-1, Indirapuram",
@@ -71,7 +71,7 @@ export default function SEOStructuredData() {
             "addressCountry": "IN"
           },
           "telephone": "+91-882-899-8296",
-          "url": "https://renownedmedia.vercel.app",
+          "url": "https://renownedmedia.in",
           "priceRange": "$$",
           "geo": {
             "@type": "GeoCoordinates",
@@ -96,7 +96,7 @@ export default function SEOStructuredData() {
         },
         {
           "@type": "FAQPage",
-          "@id": "https://renownedmedia.vercel.app/#faq",
+          "@id": "https://renownedmedia.in/#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -126,7 +126,7 @@ export default function SEOStructuredData() {
         },
         {
           "@type": "ItemList",
-          "@id": "https://renownedmedia.vercel.app/#services-list",
+          "@id": "https://renownedmedia.in/#services-list",
           "name": "Renowned Media Services",
           "itemListElement": [
             {
@@ -138,7 +138,7 @@ export default function SEOStructuredData() {
                 "description": "Build a powerful digital presence through strategic social media management. From content planning and publishing to audience engagement and growth campaigns, we manage your brand across all major platforms.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             },
@@ -151,7 +151,7 @@ export default function SEOStructuredData() {
                 "description": "Professional content creation for YouTube, podcasts, brands and influencers. We transform ideas into engaging visual stories that capture attention and drive results.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             },
@@ -164,7 +164,7 @@ export default function SEOStructuredData() {
                 "description": "Data-driven advertising campaigns designed to generate leads, sales and measurable business growth.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             },
@@ -177,7 +177,7 @@ export default function SEOStructuredData() {
                 "description": "Comprehensive digital campaign management for political leaders, candidates and organizations. We combine content, outreach and technology to maximize voter engagement and digital influence.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             },
@@ -190,7 +190,7 @@ export default function SEOStructuredData() {
                 "description": "Improve online visibility and search rankings with strategic SEO and professional website management.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             },
@@ -203,7 +203,7 @@ export default function SEOStructuredData() {
                 "description": "Strengthen your brand reputation through media relations, press coverage and strategic communication.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             },
@@ -216,7 +216,7 @@ export default function SEOStructuredData() {
                 "description": "Create memorable brand experiences through impactful design and visual communication.",
                 "provider": {
                   "@type": "Organization",
-                  "@id": "https://renownedmedia.vercel.app/#organization"
+                  "@id": "https://renownedmedia.in/#organization"
                 }
               }
             }

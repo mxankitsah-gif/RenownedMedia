@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://renownedmedia.vercel.app/sitemap.xml
+Sitemap: https://renownedmedia.in/sitemap.xml

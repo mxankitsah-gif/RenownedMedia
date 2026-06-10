@@ -4,11 +4,110 @@
  */
 
 import { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset, BookOpen, ExternalLink, Calendar, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Sparkles, Award, Star, Trophy, Clock, Coins, Flame, TrendingUp, Headset, BookOpen, ExternalLink, Calendar, ArrowUpRight, Share2, Video, Search, Megaphone, Palette, Mic, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SERVICES, PROJECTS, HERO_IMAGE } from '../data';
 import { ProjectItem, ActiveTab } from '../types';
-import ServiceIcon from './ServiceIcon';
+
+const HOME_SERVICES = [
+  {
+    id: 'social-media-management',
+    title: 'Social Media Management',
+    description: 'Build a powerful digital presence through strategic social media management. From content planning and publishing to audience engagement and growth campaigns, we manage your brand across all major platforms.',
+    icon: Share2,
+  },
+  {
+    id: 'content-production',
+    title: 'Content Production & Video Editing',
+    description: 'Professional content creation for YouTube, podcasts, brands and influencers. We transform ideas into engaging visual stories that capture attention and drive results.',
+    icon: Video,
+  },
+  {
+    id: 'performance-marketing',
+    title: 'Paid Advertising & Lead Generation',
+    description: 'Data-driven Meta, Google and YouTube advertising campaigns designed to generate leads, sales and measurable business growth.',
+    icon: TrendingUp,
+  },
+  {
+    id: 'political-campaigns',
+    title: 'Political Digital Campaigns',
+    description: 'Comprehensive digital campaign management for political leaders, candidates and organizations. We combine content, outreach and technology to maximize voter engagement and digital influence.',
+    icon: Award,
+  },
+  {
+    id: 'seo-website',
+    title: 'SEO & Website Management',
+    description: 'Improve online visibility and search rankings through strategic SEO, technical optimization, website management and GEO-ready content structures.',
+    icon: Search,
+  },
+  {
+    id: 'public-relations',
+    title: 'Public Relations & Media Management',
+    description: 'Strengthen your reputation through media relations, press coverage, reputation management and strategic communication campaigns.',
+    icon: Megaphone,
+  },
+  {
+    id: 'branding-design',
+    title: 'Branding & Creative Design',
+    description: 'Develop a memorable brand identity through logo design, visual systems, marketing creatives, presentation decks and brand communication assets.',
+    icon: Palette,
+  },
+  {
+    id: 'podcast-production',
+    title: 'Podcast Production & Distribution',
+    description: 'End-to-end podcast production including recording consultation, editing, thumbnail design, platform distribution, YouTube optimization and audience growth strategies.',
+    icon: Mic,
+  },
+  {
+    id: 'personal-branding',
+    title: 'Personal Branding & Influencer Management',
+    description: 'Build authority and visibility for entrepreneurs, journalists, creators, politicians and public figures through strategic content, media positioning and personal brand development.',
+    icon: Users,
+  },
+];
+
+const WHY_CHOOSE_ITEMS = [
+  {
+    title: 'Fast Delivery',
+    icon: Clock,
+    desc: 'Rapid execution with professional quality while maintaining strict delivery timelines.',
+  },
+  {
+    title: 'Affordable Pricing',
+    icon: Coins,
+    desc: 'Flexible and transparent pricing models suitable for creators, startups, businesses and public figures.',
+  },
+  {
+    title: 'Strategy Before Execution',
+    icon: TrendingUp,
+    desc: 'Every project begins with audience research, planning and platform-specific strategy before implementation.',
+  },
+  {
+    title: 'Content That Performs',
+    icon: Flame,
+    desc: 'Content designed for reach, engagement, retention and measurable business outcomes.',
+  },
+  {
+    title: 'PR & Media Understanding',
+    icon: Megaphone,
+    desc: 'Strong expertise in media visibility, reputation management, public relations and communication strategy.',
+  },
+  {
+    title: 'SEO Focus',
+    icon: Search,
+    desc: 'Technical SEO, content optimization and search visibility strategies designed for long-term organic growth.',
+  },
+  {
+    title: 'Direct Client Support',
+    icon: Headset,
+    desc: 'Dedicated communication and regular project updates throughout the engagement.',
+  },
+  {
+    title: 'End-to-End Execution',
+    icon: Award,
+    desc: 'From planning and production to publishing, promotion and reporting — everything managed under one roof.',
+  },
+];
 
 interface HomeViewProps {
   onTabChange: (tab: ActiveTab) => void;
@@ -17,6 +116,14 @@ interface HomeViewProps {
 }
 
 export default function HomeView({ onTabChange, onSelectProject, onRequestQuote }: HomeViewProps) {
+  const [activeWhyChooseIndex, setActiveWhyChooseIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveWhyChooseIndex((prev) => (prev + 1) % 8);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
   
   // Tag labels for the hero section
   const heroTags = ['SEO', 'Social Media', 'Video Editing', 'Production', 'Branding'];
@@ -109,22 +216,17 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SERVICES.map((srv) => {
-              const bentoClass = getBentoClasses(srv.id);
-              const isSpecialBrand = false;
-
-              return (
-                <div
-                  key={srv.id}
-                  onClick={() => onTabChange('services')}
-                  className={`bg-white border border-slate-200/60 hover:border-blue-500 rounded-xl p-8 hover:-translate-y-2.5 transition-all duration-500 ease-out group cursor-pointer hover:shadow-[0_12px_30px_rgba(29,78,216,0.06)] ${bentoClass}`}
-                  id={`home-service-card-${srv.id}`}
-                >
-                  <div className={`rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1d4ed8] group-hover:bg-[#1d4ed8] group-hover:text-white transition-all duration-300 shrink-0 ${
-                    isSpecialBrand ? 'w-16 h-16' : 'w-12 h-12 mb-6'
-                  }`}>
-                    <ServiceIcon id={srv.id} className={isSpecialBrand ? 'w-8 h-8' : 'w-6 h-6'} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+            {HOME_SERVICES.map((srv) => (
+              <div
+                key={srv.id}
+                onClick={() => onTabChange('services')}
+                className="bg-white border border-slate-200/60 hover:border-blue-500 rounded-xl p-8 hover:-translate-y-1.5 transition-all duration-500 ease-out group cursor-pointer hover:shadow-[0_12px_30px_rgba(29,78,216,0.06)] flex flex-col justify-between h-full text-left"
+                id={`home-service-card-${srv.id}`}
+              >
+                <div className="space-y-6">
+                  <div className="w-12 h-12 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-[#1d4ed8] group-hover:bg-[#1d4ed8] group-hover:text-white transition-all duration-300 shrink-0">
+                    <srv.icon className="w-6 h-6" />
                   </div>
 
                   <div className="space-y-2">
@@ -136,8 +238,8 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
                     </p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -246,54 +348,34 @@ export default function HomeView({ onTabChange, onSelectProject, onRequestQuote 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-            {[
-              {
-                title: 'Fast Delivery',
-                icon: <Clock className="w-5 h-5 text-[#1d4ed8]" />,
-                desc: 'Rapid execution with cinematic quality within standard turnaround guidelines.',
-              },
-              {
-                title: 'Affordable Pricing',
-                icon: <Coins className="w-5 h-5 text-[#1d4ed8]" />,
-                desc: 'Transparent localized price tiers starting scaling dynamically from ₹5,000 to ₹50,000/month.',
-              },
-              {
-                title: 'Creative Content',
-                icon: <Flame className="w-5 h-5 text-[#1d4ed8]" />,
-                desc: 'Reject generic templates. Custom visual assets crafted to lock in consumer memory.',
-              },
-              {
-                title: 'SEO Focus',
-                icon: <TrendingUp className="w-5 h-5 text-[#1d4ed8]" />,
-                desc: 'Rigorous technical and keyphrase audits to build resilient, compound search traffic assets.',
-              },
-              {
-                title: 'Dedicated Support',
-                icon: <Headset className="w-5 h-5 text-[#1d4ed8]" />,
-                desc: 'Direct comms channel with lead campaign coordinators to supervise your strategy.',
-              }
-            ].map((item, idx) => (
-              <motion.div
-                whileHover={{ y: -5, borderColor: '#1d4ed8', boxShadow: '0 10px 25px rgba(29, 78, 216, 0.05)' }}
-                key={idx}
-                className="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-4 transition-all duration-300"
-                id={`why-choose-card-${idx}`}
-                style={{
-                  width: idx === 4 ? '449px' : undefined
-                }}
-              >
-                <div 
-                  className="space-y-3"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            {WHY_CHOOSE_ITEMS.map((item, idx) => {
+              const isActive = idx === activeWhyChooseIndex;
+              const IconComponent = item.icon;
+              return (
+                <div
+                  key={idx}
+                  className={`bg-white rounded-xl border p-6 flex flex-col justify-between transition-all duration-500 text-left h-full ${
+                    isActive
+                      ? 'border-[#1d4ed8] shadow-[0_4px_25px_rgba(29,78,216,0.12)] scale-[1.01]'
+                      : 'border-slate-200/80 hover:border-[#1d4ed8]/40 shadow-sm hover:shadow-md'
+                  }`}
+                  id={`why-choose-card-${idx}`}
                 >
-                  <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center">
-                    {item.icon}
+                  <div className="space-y-4">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-500 ${
+                      isActive ? 'bg-[#1d4ed8] text-white border border-[#1d4ed8]' : 'bg-blue-50 text-[#1d4ed8] border border-blue-100'
+                    }`}>
+                      <IconComponent className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-2">
+                      <h4 className="font-sans font-extrabold text-base text-slate-900 leading-tight">{item.title}</h4>
+                      <p className="font-sans text-xs text-slate-600 leading-relaxed min-h-[48px]">{item.desc}</p>
+                    </div>
                   </div>
-                  <h4 className="font-sans font-extrabold text-base text-slate-900">{item.title}</h4>
-                  <p className="font-sans text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

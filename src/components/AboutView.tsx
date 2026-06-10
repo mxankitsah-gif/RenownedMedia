@@ -3,14 +3,65 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
-import { Award, Zap, Sparkles, Clock, Globe, ArrowRight, Coins, Flame, TrendingUp, Headset } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Award, Zap, Sparkles, Clock, Globe, ArrowRight, Coins, Flame, TrendingUp, Headset, Megaphone, Search } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AGENCY_DETAILS } from '../data';
 import ankitSahPortrait from '../assets/images/ankit_sah_portrait_1781117389997.png';
 
+const WHY_CHOOSE_ITEMS = [
+  {
+    title: 'Fast Delivery',
+    icon: Clock,
+    desc: 'Rapid execution with professional quality while maintaining strict delivery timelines.',
+  },
+  {
+    title: 'Affordable Pricing',
+    icon: Coins,
+    desc: 'Flexible and transparent pricing models suitable for creators, startups, businesses and public figures.',
+  },
+  {
+    title: 'Strategy Before Execution',
+    icon: TrendingUp,
+    desc: 'Every project begins with audience research, planning and platform-specific strategy before implementation.',
+  },
+  {
+    title: 'Content That Performs',
+    icon: Flame,
+    desc: 'Content designed for reach, engagement, retention and measurable business outcomes.',
+  },
+  {
+    title: 'PR & Media Understanding',
+    icon: Megaphone,
+    desc: 'Strong expertise in media visibility, reputation management, public relations and communication strategy.',
+  },
+  {
+    title: 'SEO Focus',
+    icon: Search,
+    desc: 'Technical SEO, content optimization and search visibility strategies designed for long-term organic growth.',
+  },
+  {
+    title: 'Direct Client Support',
+    icon: Headset,
+    desc: 'Dedicated communication and regular project updates throughout the engagement.',
+  },
+  {
+    title: 'End-to-End Execution',
+    icon: Award,
+    desc: 'From planning and production to publishing, promotion and reporting — everything managed under one roof.',
+  },
+];
+
 export default function AboutView() {
   const [selectedCoreValue, setSelectedCoreValue] = useState<number | null>(null);
+  const [activeWhyChooseIndex, setActiveWhyChooseIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveWhyChooseIndex((prev) => (prev + 1) % 8);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const stats = [
     { value: '150+', label: 'Brands Propelled', desc: 'From local startups to venture-backed global enterprises.' },
@@ -68,31 +119,9 @@ export default function AboutView() {
   return (
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
       {/* Introduction Hero Block & Founder Showcase */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left" id="about-hero-section">
-        {/* Left Side: Professional compact founder portrait card (35-40% width) */}
-        <div className="lg:col-span-4 md:col-span-5 col-span-12 flex justify-center lg:justify-start" id="founder-image-column">
-          <div className="w-full max-w-xs sm:max-w-sm lg:max-w-none bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm relative overflow-hidden group">
-            {/* Subtle blue top border accent */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-[#1d4ed8]" />
-            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
-            
-            {/* Rounded corners portrait wrapper */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50">
-              <img
-                src={ankitSahPortrait}
-                alt="Ankit Sah - Founder of Renowned Media"
-                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-3 left-3 bg-[#1d4ed8]/95 text-white px-3 py-1 rounded-full text-[9px] font-mono uppercase tracking-widest font-bold">
-                Founder
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side: Primary Content & Signature (60-65% width) */}
-        <div className="lg:col-span-8 md:col-span-7 col-span-12 space-y-6">
+      <section className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center text-left" id="about-hero-section">
+        {/* Left Side: Primary Content & Signature (60-65% width) */}
+        <div className="lg:col-span-3 col-span-12 order-2 lg:order-1 space-y-6">
           <div className="space-y-4">
             <span className="font-mono text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block">
               ABOUT RENOWNED MEDIA
@@ -121,6 +150,28 @@ export default function AboutView() {
             <p className="font-sans text-xs text-slate-500 font-medium leading-relaxed pt-1">
               7+ Years Experience in Media, Branding & Digital Growth
             </p>
+          </div>
+        </div>
+
+        {/* Right Side: Professional compact founder portrait card (35-40% width) */}
+        <div className="lg:col-span-2 col-span-12 order-1 lg:order-2 flex justify-center lg:justify-end" id="founder-image-column">
+          <div className="w-full max-w-[360px] bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm relative overflow-hidden group">
+            {/* Subtle blue top border accent */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-[#1d4ed8]" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
+            
+            {/* Rounded corners portrait wrapper */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50 max-h-[420px]">
+              <img
+                src={ankitSahPortrait}
+                alt="Ankit Sah - Founder of Renowned Media"
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute bottom-3 left-3 bg-[#1d4ed8]/95 text-white px-3 py-1 rounded-full text-[9px] font-mono uppercase tracking-widest font-bold">
+                Founder
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -230,49 +281,34 @@ export default function AboutView() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {[
-            {
-              title: 'Fast Delivery',
-              icon: <Clock className="w-5 h-5 text-[#1d4ed8]" />,
-              desc: 'Rapid execution with cinematic quality within standard turnaround guidelines.',
-            },
-            {
-              title: 'Affordable Pricing',
-              icon: <Coins className="w-5 h-5 text-[#1d4ed8]" />,
-              desc: 'Transparent localized price tiers starting scaling dynamically from ₹5,000 to ₹50,000/month.',
-            },
-            {
-              title: 'Creative Content',
-              icon: <Flame className="w-5 h-5 text-[#1d4ed8]" />,
-              desc: 'Reject generic templates. Custom visual assets crafted to lock in consumer memory.',
-            },
-            {
-              title: 'SEO Focus',
-              icon: <TrendingUp className="w-5 h-5 text-[#1d4ed8]" />,
-              desc: 'Rigorous technical and keyphrase audits to build resilient, compound search traffic assets.',
-            },
-            {
-              title: 'Dedicated Support',
-              icon: <Headset className="w-5 h-5 text-[#1d4ed8]" />,
-              desc: 'Direct comms channel with lead campaign coordinators to supervise your strategy.',
-            }
-          ].map((item, idx) => (
-            <motion.div
-              whileHover={{ y: -5, borderColor: '#1d4ed8', boxShadow: '0 10px 25px rgba(29, 78, 216, 0.05)' }}
-              key={idx}
-              className="bg-white rounded-xl border border-slate-200/80 p-6 flex flex-col justify-between space-y-4 transition-all duration-300"
-              id={`about-why-choose-card-${idx}`}
-            >
-              <div className="space-y-3">
-                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center">
-                  {item.icon}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {WHY_CHOOSE_ITEMS.map((item, idx) => {
+            const isActive = idx === activeWhyChooseIndex;
+            const IconComponent = item.icon;
+            return (
+              <div
+                key={idx}
+                className={`bg-white rounded-xl border p-6 flex flex-col justify-between transition-all duration-500 text-left h-full ${
+                  isActive
+                    ? 'border-[#1d4ed8] shadow-[0_4px_25px_rgba(29,78,216,0.12)] scale-[1.01]'
+                    : 'border-slate-200/80 hover:border-[#1d4ed8]/40 shadow-sm hover:shadow-md'
+                }`}
+                id={`about-why-choose-card-${idx}`}
+              >
+                <div className="space-y-4">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-500 ${
+                    isActive ? 'bg-[#1d4ed8] text-white border border-[#1d4ed8]' : 'bg-blue-50 text-[#1d4ed8] border border-blue-100'
+                  }`}>
+                    <IconComponent className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-sans font-extrabold text-base text-slate-900 leading-tight">{item.title}</h4>
+                    <p className="font-sans text-xs text-slate-600 leading-relaxed min-h-[48px]">{item.desc}</p>
+                  </div>
                 </div>
-                <h4 className="font-sans font-extrabold text-base text-slate-900">{item.title}</h4>
-                <p className="font-sans text-xs text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>

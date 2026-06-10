@@ -7,7 +7,7 @@ const currentDate = new Date().toISOString().split('T')[0];
 const pages = [
   { path: '/', changefreq: 'daily', priority: '1.0' },
   { path: '/about', changefreq: 'monthly', priority: '0.8' },
-  { path: '/services', changefreq: 'monthly', priority: '0.8' },
+  { path: '/service', changefreq: 'monthly', priority: '0.8' },
   { path: '/portfolio', changefreq: 'monthly', priority: '0.8' },
   { path: '/contact', changefreq: 'weekly', priority: '0.9' },
   { path: '/blog', changefreq: 'daily', priority: '0.8' }

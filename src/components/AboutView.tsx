@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Award, Zap, Sparkles, Clock, Globe, ArrowRight, Coins, Flame, TrendingUp, Headset } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AGENCY_DETAILS } from '../data';
+import ankitSahPortrait from '../assets/images/ankit_sah_portrait_1781117389997.png';
 
 export default function AboutView() {
   const [selectedCoreValue, setSelectedCoreValue] = useState<number | null>(null);
@@ -66,34 +67,60 @@ export default function AboutView() {
 
   return (
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
-      {/* Introduction Hero Block */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-7 space-y-6">
-          <span className="font-mono text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-            Who We Are
-          </span>
-          <h1 className="font-sans text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
-            We synthesize strategy, <span className="text-[#1d4ed8]">aesthetics</span>, and high-performance search execution.
-          </h1>
-          <p className="font-sans text-body-lg text-slate-600 max-w-2xl leading-relaxed">
-            {AGENCY_DETAILS.fullSummary} We operate at the intersection of cinematic video production and empirical SEO engineering. Our mission is direct: construct high-authority identities that capture instant user trust.
-          </p>
+      {/* Introduction Hero Block & Founder Showcase */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center text-left" id="about-hero-section">
+        {/* Left Side: Professional compact founder portrait card (35-40% width) */}
+        <div className="lg:col-span-4 md:col-span-5 col-span-12 flex justify-center lg:justify-start" id="founder-image-column">
+          <div className="w-full max-w-xs sm:max-w-sm lg:max-w-none bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm relative overflow-hidden group">
+            {/* Subtle blue top border accent */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-[#1d4ed8]" />
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
+            
+            {/* Rounded corners portrait wrapper */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50">
+              <img
+                src={ankitSahPortrait}
+                alt="Ankit Sah - Founder of Renowned Media"
+                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute bottom-3 left-3 bg-[#1d4ed8]/95 text-white px-3 py-1 rounded-full text-[9px] font-mono uppercase tracking-widest font-bold">
+                Founder
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="lg:col-span-5 bg-slate-50 border border-slate-200/60 rounded-xl p-8 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/5 rounded-full blur-2xl pointer-events-none" />
-          <h3 className="font-sans font-bold text-lg text-slate-900 mb-4">Our Operations Headquarters</h3>
-          <p className="font-sans text-sm text-slate-600 leading-relaxed mb-6">
-            Establishing our creative hub in Ghaziabad, we service brands globally with continuous high-volume digital assets.
-          </p>
-          <div className="space-y-3 font-mono text-xs text-slate-700">
-            <div className="flex items-center gap-2">
-              <Globe className="w-4 h-4 text-[#1d4ed8] shrink-0" />
-              <span>{AGENCY_DETAILS.address}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#1d4ed8] shrink-0" />
-              <span>Standard Operations: 09:00 - 18:00 IST</span>
-            </div>
+
+        {/* Right Side: Primary Content & Signature (60-65% width) */}
+        <div className="lg:col-span-8 md:col-span-7 col-span-12 space-y-6">
+          <div className="space-y-4">
+            <span className="font-mono text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block">
+              ABOUT RENOWNED MEDIA
+            </span>
+            <h1 className="font-sans text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight">
+              Elevating Brands through <span className="text-[#1d4ed8]">Creativity</span> & Strategic Growth
+            </h1>
+          </div>
+          
+          <div className="space-y-4 font-sans text-sm md:text-base text-slate-600 leading-relaxed">
+            <p>
+              Founded by Ankit Sah, Renowned Media is a results-driven media, branding and digital growth agency built on over 7 years of hands-on experience in content creation, audience development, public relations, social media management and digital marketing.
+            </p>
+            <p>
+              We work with businesses, creators, entrepreneurs, public figures and organizations to build stronger digital visibility, meaningful audience engagement and long-term brand authority. Our expertise spans content production, video editing, podcast services, SEO, social media management, public relations, political communication and performance-focused marketing strategies.
+            </p>
+            <p>
+              At Renowned Media, we believe that growth comes from the right combination of creativity, communication and execution. Every project is approached with a practical mindset focused on delivering measurable value rather than vanity metrics.
+            </p>
+          </div>
+
+          {/* Professional Credentials Signature */}
+          <div className="pt-6 border-t border-slate-200/80 space-y-1">
+            <h3 className="font-sans text-xl font-bold text-slate-900 leading-tight">Ankit Sah</h3>
+            <p className="font-sans text-xs font-semibold text-[#1d4ed8]">Founder, Renowned Media</p>
+            <p className="font-sans text-xs text-slate-500 font-medium leading-relaxed pt-1">
+              7+ Years Experience in Media, Branding & Digital Growth
+            </p>
           </div>
         </div>
       </section>

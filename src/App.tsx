@@ -18,13 +18,47 @@ import { ActiveTab, ProjectItem } from './types';
 import { initGA, trackPageView, trackQuoteClick } from './lib/analytics';
 import SEOStructuredData from './components/SEOStructuredData';
 
+const pathToTab: Record<string, ActiveTab> = {
+  '/': 'home',
+  '/service': 'services',
+  '/portfolio': 'portfolio',
+  '/about': 'about',
+  '/contact': 'contact',
+  '/blog': 'blog'
+};
+
+const tabToPath: Record<ActiveTab, string> = {
+  'home': '/',
+  'services': '/service',
+  'portfolio': '/portfolio',
+  'about': '/about',
+  'contact': '/contact',
+  'blog': '/blog'
+};
+
+const getTabFromPath = (path: string): ActiveTab => {
+  const cleanPath = path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path;
+  return pathToTab[cleanPath] || 'home';
+};
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('home');
+  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
+    return getTabFromPath(window.location.pathname);
+  });
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   // Load Google Analytics 4 tag script globally on mount
   useEffect(() => {
     initGA();
+  }, []);
+
+  // Listen to browser forward/backward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      setActiveTab(getTabFromPath(window.location.pathname));
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   // Auto-scroll to top, track SPA page views, and update SEO metadata when activeTab changes
@@ -73,17 +107,21 @@ export default function App() {
   }, [activeTab]);
 
   const handleTabChange = (tab: ActiveTab) => {
+    const targetPath = tabToPath[tab] || '/';
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ tab }, '', targetPath);
+    }
     setActiveTab(tab);
   };
 
   const handleSelectServiceForQuote = (serviceId: string) => {
     trackQuoteClick(`service_request_${serviceId}`);
-    setActiveTab('contact');
+    handleTabChange('contact');
   };
 
   const handleRequestQuoteGeneral = () => {
     trackQuoteClick('general_cta');
-    setActiveTab('contact');
+    handleTabChange('contact');
   };
 
   // Select view renderer

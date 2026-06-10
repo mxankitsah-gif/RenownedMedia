@@ -16,7 +16,7 @@ import mohitKambojPortrait from './assets/images/regenerated_image_1781028443131
 import tusharKaushikPortrait from './assets/images/tushar_kaushik_portrait_1781073129545.png';
 import ranjnaSinghRathorePortrait from './assets/images/ranjna_singh_rathore_portrait_1781073269809.png';
 import romitaTiwariPortrait from './assets/images/romita_tiwari_portrait_1781073383788.png';
-import ramveerBidhuriPortrait from './assets/images/ramveer_bidhuri_portrait_1781073503340.png';
+import ramveerBidhuriPortrait from './assets/images/ramveer_bidhuri_portrait_1781104024334.png';
 
 export const HERO_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuCWJLef5fVy7vHZ1E-eIdQ6UwhZkeN3-gLFg4J0IuH31XvANDjVvwLD8kIdBYuqF6vzB9lZ8wQ4ikKkMDugpdwk7usGvM_Jo4eUNdO1SswzBh8Bf0eZ3TczCEUX39273s3QDMwHoFhWoxWQ_sK5ZRXeJ8G_pkVJK_3bRJMAM9HxbRGaRsxvR-enHoBgBBy_M4_RHlxAMJDaStdAhc6QlXRU-E5T7QxpGxSNTycDGwNMHTZS_wvL784yP3wvWgkjL-UpR7tWQZrE9A";
 

@@ -12,7 +12,6 @@ import { trackFormSubmission } from '../lib/analytics';
 export default function ContactView() {
   // FAQ states
   const [expandedFaqIdx, setExpandedFaqIdx] = useState<number | null>(0);
-  const [iframeLoadCount, setIframeLoadCount] = useState(0);
 
   const faqs = [
     {
@@ -133,35 +132,39 @@ export default function ContactView() {
             </a>
           </div>
 
-          {/* Secure embedded Google Form customized to blend perfectly */}
+          {/* Clean website-styled contact CTA card */}
           <div 
-            className="relative w-full bg-slate-50 border border-slate-200 h-[740px] sm:h-[840px] shadow-sm overflow-hidden"
+            className="w-full bg-slate-50 border border-slate-200 py-16 px-6 text-center space-y-6 flex flex-col items-center justify-center relative overflow-hidden"
             style={{ borderRadius: '15px' }}
           >
-            {/* Elegant premium loading background */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 gap-4 text-xs text-slate-600">
-              <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-[#1d4ed8] animate-spin" />
-              <span className="font-mono tracking-widest text-[10px] text-[#1d4ed8]/80 uppercase">Establishing Secure Connection...</span>
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-50 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="relative space-y-4 max-w-lg mx-auto">
+              <div className="w-12 h-12 bg-[#1d4ed8]/5 border border-[#1d4ed8]/10 rounded-full flex items-center justify-center mx-auto text-[#1d4ed8]">
+                <ExternalLink className="w-5 h-5" />
+              </div>
+              
+              <h4 className="font-sans font-extrabold text-xl text-slate-900 tracking-tight">
+                Submit Your Project Inquiry
+              </h4>
+              <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Click the button below to open our secure consultation form in a new tab.
+              </p>
+              
+              <div className="pt-2">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?usp=header"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackFormSubmission('direct_form_button_click')}
+                  className="inline-flex items-center gap-2 bg-[#dc2626] hover:bg-[#b91c1c] text-white px-8 py-3.5 rounded font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_4px_15px_rgba(220,38,38,0.2)] hover:shadow-[0_6px_20px_rgba(220,38,38,0.3)] cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  Open Direct Form <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
-
-            {/* Shift and wrap iframe to hide the header of the Google Form, inverted color scheme via custom CSS */}
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSfPnoUEiAsg5aaFFP7J0BkSpcRD-dDV3Eg4Ur3kMWIuGk1jdw/viewform?embedded=true"
-              className="absolute left-0 top-[-135px] w-full h-[calc(100%+145px)] bg-transparent border-none z-10"
-              title="Request a Consultation Secure Form"
-              referrerPolicy="no-referrer"
-              onLoad={() => {
-                setIframeLoadCount(prev => {
-                  const nextCount = prev + 1;
-                  if (nextCount > 1) {
-                    trackFormSubmission('embedded_iframe_submit');
-                  }
-                  return nextCount;
-                });
-              }}
-            >
-              Loading…
-            </iframe>
           </div>
         </div>
       </section>

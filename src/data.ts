@@ -12,6 +12,11 @@ import periwinkleLogo from './assets/images/periwinkle_logo_1781017276084.png';
 import assuredHospitalityThumbnail from './assets/images/assured_hospitality_thumbnail_1781020648908.png';
 import nyshaaRealtyThumbnail from './assets/images/nyshaa_realty_thumbnail_1781020885688.png';
 import mohitKambojThumbnail from './assets/images/mohit_kamboj_thumbnail_1781021847623.png';
+import mohitKambojPortrait from './assets/images/regenerated_image_1781028443131.png';
+import tusharKaushikPortrait from './assets/images/tushar_kaushik_portrait_1781073129545.png';
+import ranjnaSinghRathorePortrait from './assets/images/ranjna_singh_rathore_portrait_1781073269809.png';
+import romitaTiwariPortrait from './assets/images/romita_tiwari_portrait_1781073383788.png';
+import ramveerBidhuriPortrait from './assets/images/ramveer_bidhuri_portrait_1781073503340.png';
 
 export const HERO_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuCWJLef5fVy7vHZ1E-eIdQ6UwhZkeN3-gLFg4J0IuH31XvANDjVvwLD8kIdBYuqF6vzB9lZ8wQ4ikKkMDugpdwk7usGvM_Jo4eUNdO1SswzBh8Bf0eZ3TczCEUX39273s3QDMwHoFhWoxWQ_sK5ZRXeJ8G_pkVJK_3bRJMAM9HxbRGaRsxvR-enHoBgBBy_M4_RHlxAMJDaStdAhc6QlXRU-E5T7QxpGxSNTycDGwNMHTZS_wvL784yP3wvWgkjL-UpR7tWQZrE9A";
 
@@ -344,7 +349,7 @@ export const PUBLIC_FIGURES: PublicFigure[] = [
       'Brand Positioning',
       'Digital Visibility'
     ],
-    img: ''
+    img: mohitKambojPortrait
   },
   {
     id: 'tushar-kaushik',
@@ -356,7 +361,7 @@ export const PUBLIC_FIGURES: PublicFigure[] = [
       'Video Production',
       'Digital Branding'
     ],
-    img: ''
+    img: tusharKaushikPortrait
   },
   {
     id: 'ranjna-singh-rathore',
@@ -368,7 +373,7 @@ export const PUBLIC_FIGURES: PublicFigure[] = [
       'Digital Branding',
       'Audience Growth'
     ],
-    img: ''
+    img: ranjnaSinghRathorePortrait
   },
   {
     id: 'romita-tiwari',
@@ -380,7 +385,7 @@ export const PUBLIC_FIGURES: PublicFigure[] = [
       'Digital Visibility',
       'Social Media Growth'
     ],
-    img: ''
+    img: romitaTiwariPortrait
   },
   {
     id: 'ramveer-singh-bidhuri',
@@ -392,6 +397,6 @@ export const PUBLIC_FIGURES: PublicFigure[] = [
       'Digital Communication',
       'Social Media Strategy'
     ],
-    img: ''
+    img: ramveerBidhuriPortrait
   }
 ];

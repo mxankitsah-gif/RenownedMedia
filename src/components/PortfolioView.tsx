@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ArrowRight, ChevronLeft, ChevronRight, Check, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS, PUBLIC_FIGURES } from '../data';
@@ -16,16 +16,6 @@ interface PortfolioViewProps {
 
 export default function PortfolioView({ onSelectProject, onRequestQuote }: PortfolioViewProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-slide effect for the Public Figures Carousel
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % PUBLIC_FIGURES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isPaused]);
 
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + PUBLIC_FIGURES.length) % PUBLIC_FIGURES.length);
@@ -42,8 +32,6 @@ export default function PortfolioView({ onSelectProject, onRequestQuote }: Portf
       <section
         className="space-y-10"
         id="portfolio-public-figures"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
         {/* Section Title */}
         <div className="text-left border-l-4 border-[#1d4ed8] pl-4 space-y-2">

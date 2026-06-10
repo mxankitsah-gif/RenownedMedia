@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { Award, Zap, Sparkles, Clock, Globe, ArrowRight, Coins, Flame, TrendingUp, Headset, Megaphone, Search } from 'lucide-react';
 import { motion } from 'motion/react';
 import { AGENCY_DETAILS } from '../data';
-import ankitSahPortrait from '../assets/images/ankit_sah_portrait_1781117389997.png';
 
 const WHY_CHOOSE_ITEMS = [
   {
@@ -118,60 +117,54 @@ export default function AboutView() {
 
   return (
     <div className="py-12 space-y-20 max-w-7xl mx-auto px-6">
-      {/* Introduction Hero Block & Founder Showcase */}
-      <section className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 items-center text-left" id="about-hero-section">
-        {/* Left Side: Primary Content & Signature (60-65% width) */}
-        <div className="lg:col-span-3 col-span-12 order-2 lg:order-1 space-y-6">
-          <div className="space-y-4">
-            <span className="font-mono text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block">
-              ABOUT RENOWNED MEDIA
-            </span>
-            <h1 className="font-sans text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight">
-              Elevating Brands through <span className="text-[#1d4ed8]">Creativity</span> & Strategic Growth
-            </h1>
-          </div>
-          
-          <div className="space-y-4 font-sans text-sm md:text-base text-slate-600 leading-relaxed">
-            <p>
-              Founded by Ankit Sah, Renowned Media is a results-driven media, branding and digital growth agency built on over 7 years of hands-on experience in content creation, audience development, public relations, social media management and digital marketing.
-            </p>
-            <p>
-              We work with businesses, creators, entrepreneurs, public figures and organizations to build stronger digital visibility, meaningful audience engagement and long-term brand authority. Our expertise spans content production, video editing, podcast services, SEO, social media management, public relations, political communication and performance-focused marketing strategies.
-            </p>
-            <p>
-              At Renowned Media, we believe that growth comes from the right combination of creativity, communication and execution. Every project is approached with a practical mindset focused on delivering measurable value rather than vanity metrics.
-            </p>
-          </div>
-
-          {/* Professional Credentials Signature */}
-          <div className="pt-6 border-t border-slate-200/80 space-y-1">
-            <h3 className="font-sans text-xl font-bold text-slate-900 leading-tight">Ankit Sah</h3>
-            <p className="font-sans text-xs font-semibold text-[#1d4ed8]">Founder, Renowned Media</p>
-            <p className="font-sans text-xs text-slate-500 font-medium leading-relaxed pt-1">
-              7+ Years Experience in Media, Branding & Digital Growth
-            </p>
-          </div>
+      {/* Introduction Hero Block & Centered Content */}
+      <section className="max-w-3xl mx-auto space-y-12 text-center" id="about-hero-section">
+        <div className="space-y-6">
+          <span className="font-mono text-xs font-bold text-[#1d4ed8] bg-[#1d4ed8]/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-block">
+            ABOUT RENOWNED MEDIA
+          </span>
+          <h1 className="font-sans text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight tracking-tight">
+            Elevating Brands through <span className="text-[#1d4ed8]">Creativity</span> & Strategic Growth
+          </h1>
+        </div>
+        
+        <div className="space-y-6 font-sans text-sm md:text-base text-slate-600 leading-relaxed text-left">
+          <p>
+            Renowned Media is a full-service media, branding and digital growth agency dedicated to helping creators, public figures, businesses and organizations build visibility, authority and audience trust in the digital era.
+          </p>
+          <p>
+            Founded on years of practical experience in media, content production and digital communication, Renowned Media brings together strategy, creativity and execution under one roof. Our team works across content creation, social media management, public relations, SEO, political communication, personal branding and audience growth initiatives.
+          </p>
+          <p>
+            We believe that strong brands are not built through content alone. They are built through consistent messaging, strategic positioning, meaningful audience engagement and long-term credibility. Every project we undertake is designed to strengthen brand perception, increase visibility and create measurable business impact.
+          </p>
+          <p>
+            From entrepreneurs and creators to journalists, public figures and growing businesses, we help our clients navigate the evolving digital landscape with clarity, creativity and purpose.
+          </p>
         </div>
 
-        {/* Right Side: Professional compact founder portrait card (35-40% width) */}
-        <div className="lg:col-span-2 col-span-12 order-1 lg:order-2 flex justify-center lg:justify-end" id="founder-image-column">
-          <div className="w-full max-w-[360px] bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm relative overflow-hidden group">
-            {/* Subtle blue top border accent */}
+        {/* Vision & Mission grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-slate-200 text-left">
+          <div className="space-y-3 bg-slate-50/50 rounded-xl p-6 border border-slate-200/60 shadow-sm relative overflow-hidden group">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-[#1d4ed8]" />
-            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-xl pointer-events-none" />
-            
-            {/* Rounded corners portrait wrapper */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl border border-slate-100 shadow-sm bg-slate-50 max-h-[420px]">
-              <img
-                src={ankitSahPortrait}
-                alt="Ankit Sah - Founder of Renowned Media"
-                className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-3 left-3 bg-[#1d4ed8]/95 text-white px-3 py-1 rounded-full text-[9px] font-mono uppercase tracking-widest font-bold">
-                Founder
-              </div>
-            </div>
+            <h3 className="font-sans text-base font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1d4ed8]" />
+              OUR VISION
+            </h3>
+            <p className="font-sans text-xs text-slate-600 leading-relaxed">
+              To become a trusted media and digital growth partner for brands, creators and organizations seeking meaningful visibility and sustainable growth.
+            </p>
+          </div>
+          
+          <div className="space-y-3 bg-slate-50/50 rounded-xl p-6 border border-slate-200/60 shadow-sm relative overflow-hidden group">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-[#1d4ed8]" />
+            <h3 className="font-sans text-base font-extrabold text-[#1d4ed8] tracking-tight flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1d4ed8]" />
+              OUR MISSION
+            </h3>
+            <p className="font-sans text-xs text-slate-600 leading-relaxed">
+              To combine media expertise, strategic communication and creative execution to help clients build influence, expand reach and establish lasting authority across modern digital platforms.
+            </p>
           </div>
         </div>
       </section>

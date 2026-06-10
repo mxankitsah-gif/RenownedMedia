@@ -145,7 +145,7 @@ export const SERVICES: ServiceItem[] = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: 'digital-jockey',
-    title: 'Building a High-Impact Podcast & Digital Content Ecosystem',
+    title: 'Digital Jockey',
     description: 'Digital Jockey is a rapidly growing podcast and digital media platform founded by journalist and podcaster Tushar Kaushik. The platform focuses on long-form conversations, spirituality, astrology, investigative discussions, social issues, and educational content, reaching audiences across YouTube and social media.',
     category: 'Podcast Production & Digital Media Growth',
     img: digitalJockeyLogo,
@@ -158,22 +158,8 @@ export const PROJECTS: ProjectItem[] = [
     servicesDelivered: ['Video Editing', 'Social Media Management', 'Performance Marketing', 'Content Strategy']
   },
   {
-    id: 'healy',
-    title: 'Professional Video Editing & Content Enhancement for Wellness Media',
-    description: 'Healy is a global wellness and frequency technology brand focused on innovative digital wellness solutions. Renowned Media supported the brand through professional post-production and content editing workflows designed to improve audience engagement and content quality.',
-    category: 'Video Production & Content Editing',
-    img: healyLogo,
-    client: 'Healy',
-    year: '2026',
-    metrics: 'Enhanced Retention',
-    challenge: 'Healy needed to transition towards high-impact wellness narratives, requiring polished visual storytelling that preserved strict brand-consistent guidelines while optimizing content for multiple digital platforms.',
-    solution: 'Established professional post-production and content editing workflows, focusing on improving the storytelling flow, boosting delivery speed, rendering premium motion graphics, and securing professional production standards.',
-    clientIndustry: 'Wellness Technology Brand',
-    servicesDelivered: ['Video Editing', 'Content Enhancement', 'Post Production', 'Social Media Video Optimization', 'Motion Graphics Support']
-  },
-  {
     id: 'acharya-ganesh',
-    title: 'Building Digital Authority for a Spiritual & Astrology Brand',
+    title: 'Acharya Ganesh',
     description: 'Acharya Ganesh is a trusted astrology and spiritual guidance platform helping individuals with personalized consultations, astrological insights, and life guidance. Renowned Media manages the brand\'s digital presence, website performance, search visibility, and social media ecosystem.',
     category: 'SEO, Website Management & Social Media Growth',
     img: acharyaGaneshLogo,
@@ -186,12 +172,36 @@ export const PROJECTS: ProjectItem[] = [
     servicesDelivered: ['SEO', 'Website Management', 'Technical SEO', 'Social Media Management']
   },
   {
+    id: 'nyshaa-realty',
+    title: 'Nyshaa Realty',
+    description: 'Managed comprehensive media and marketing activities for a premium real estate brand. Coordinated print media coverage, television media relations, social media management, project launch promotions, award show management, and strategic publicity campaigns to increase brand awareness and project visibility.',
+    category: 'Real Estate Media & Marketing',
+    img: nyshaaRealtyThumbnail,
+    client: 'Nyshaa Realty',
+    year: '2026',
+    metrics: 'Enhanced Credibility',
+    challenge: 'Nyshaa Realty needed to synchronize high-impact traditional and digital media campaigns, launch high-value property campaigns, and organize flawless industry events to solidify brand trust and project reach.',
+    solution: 'Designed and executed high-profile television and print media relationships, active social media administration, polished real estate promotional materials, strategic campaign execution, and premium award show organization.',
+    clientIndustry: 'Real Estate Media & Marketing',
+    servicesDelivered: [
+      'Media Management',
+      'Print Media Relations',
+      'TV Media Coverage',
+      'Social Media Management',
+      'Real Estate Project Promotion',
+      'PR & Brand Visibility',
+      'Award Show Management',
+      'Marketing Campaign Execution',
+      'Content Strategy'
+    ]
+  },
+  {
     id: 'political-campaign',
-    title: 'Political Digital Outreach Campaign',
+    title: 'Maharashtra Election Digital Outreach Campaign',
     description: 'Executed a large-scale digital outreach campaign focused on voter engagement, content amplification, public awareness, and digital communication. Managed end-to-end campaign operations including content strategy, social media growth, influencer coordination, WhatsApp outreach, and AI-powered communication systems.',
     category: 'Political Campaign Management',
     img: politicalCampaignThumbnail,
-    client: 'Political Campaign',
+    client: 'Maharashtra Election Digital Outreach Campaign',
     year: '2026',
     metrics: 'Multi-platform Growth',
     challenge: 'The campaign required coordinating complex, multi-channel public communication systems under tight schedules, combating narrative fatigue, raising high-intensity public awareness, managing large-scale influencer alignments, and reaching millions of voters simultaneously across fragmented social ecosystems.',
@@ -208,6 +218,43 @@ export const PROJECTS: ProjectItem[] = [
       'Trend Creation & Amplification',
       'Team Management',
       'Performance Marketing'
+    ]
+  },
+  {
+    id: 'healy',
+    title: 'Healy',
+    description: 'Healy is a global wellness and frequency technology brand focused on innovative digital wellness solutions. Renowned Media supported the brand through professional post-production and content editing workflows designed to improve audience engagement and content quality.',
+    category: 'Video Production & Content Editing',
+    img: healyLogo,
+    client: 'Healy',
+    year: '2026',
+    metrics: 'Enhanced Retention',
+    challenge: 'Healy needed to transition towards high-impact wellness narratives, requiring polished visual storytelling that preserved strict brand-consistent guidelines while optimizing content for multiple digital platforms.',
+    solution: 'Established professional post-production and content editing workflows, focusing on improving the storytelling flow, boosting delivery speed, rendering premium motion graphics, and securing professional production standards.',
+    clientIndustry: 'Wellness Technology Brand',
+    servicesDelivered: ['Video Editing', 'Content Enhancement', 'Post Production', 'Social Media Video Optimization', 'Motion Graphics Support']
+  },
+  {
+    id: 'mohit-kamboj',
+    title: 'Mohit Kamboj',
+    description: 'Managed public relations and media coordination activities for a prominent public figure. Worked on media outreach, reputation management, news coverage coordination, strategic communication, and digital visibility initiatives across multiple platforms.',
+    category: 'Public Relations & Media Management',
+    img: mohitKambojThumbnail,
+    client: 'Mohit Kamboj',
+    year: '2026',
+    metrics: 'Enhanced Visibility',
+    challenge: 'A prominent public figure required high-impact, coordinated, and strategic public relations and media alignment across fragmented media channels to build a credible and highly visible reputation.',
+    solution: 'Designed and implemented end-to-end press coordination, strategic media outreach, real-time reputation management, structured news coverage support, and digital visibility programs.',
+    clientIndustry: 'Public Relations & Media Management',
+    servicesDelivered: [
+      'Public Relations (PR)',
+      'Media Management',
+      'Press Coordination',
+      'Reputation Management',
+      'News Coverage Support',
+      'Digital Visibility Strategy',
+      'Media Outreach',
+      'Communication Management'
     ]
   },
   {
@@ -252,53 +299,6 @@ export const PROJECTS: ProjectItem[] = [
       'Brand Promotion',
       'Digital Marketing Support',
       'Campaign Creative Design'
-    ]
-  },
-  {
-    id: 'nyshaa-realty',
-    title: 'Nyshaa Realty',
-    description: 'Managed comprehensive media and marketing activities for a premium real estate brand. Coordinated print media coverage, television media relations, social media management, project launch promotions, award show management, and strategic publicity campaigns to increase brand awareness and project visibility.',
-    category: 'Real Estate Media & Marketing',
-    img: nyshaaRealtyThumbnail,
-    client: 'Nyshaa Realty',
-    year: '2026',
-    metrics: 'Enhanced Credibility',
-    challenge: 'Nyshaa Realty needed to synchronize high-impact traditional and digital media campaigns, launch high-value property campaigns, and organize flawless industry events to solidify brand trust and project reach.',
-    solution: 'Designed and executed high-profile television and print media relationships, active social media administration, polished real estate promotional materials, strategic campaign execution, and premium award show organization.',
-    clientIndustry: 'Real Estate Media & Marketing',
-    servicesDelivered: [
-      'Media Management',
-      'Print Media Relations',
-      'TV Media Coverage',
-      'Social Media Management',
-      'Real Estate Project Promotion',
-      'PR & Brand Visibility',
-      'Award Show Management',
-      'Marketing Campaign Execution',
-      'Content Strategy'
-    ]
-  },
-  {
-    id: 'mohit-kamboj',
-    title: 'Mohit Kamboj',
-    description: 'Managed public relations and media coordination activities for a prominent public figure. Worked on media outreach, reputation management, news coverage coordination, strategic communication, and digital visibility initiatives across multiple platforms.',
-    category: 'Public Relations & Media Management',
-    img: mohitKambojThumbnail,
-    client: 'Mohit Kamboj',
-    year: '2026',
-    metrics: 'Enhanced Visibility',
-    challenge: 'A prominent public figure required high-impact, coordinated, and strategic public relations and media alignment across fragmented media channels to build a credible and highly visible reputation.',
-    solution: 'Designed and implemented end-to-end press coordination, strategic media outreach, real-time reputation management, structured news coverage support, and digital visibility programs.',
-    clientIndustry: 'Public Relations & Media Management',
-    servicesDelivered: [
-      'Public Relations (PR)',
-      'Media Management',
-      'Press Coordination',
-      'Reputation Management',
-      'News Coverage Support',
-      'Digital Visibility Strategy',
-      'Media Outreach',
-      'Communication Management'
     ]
   }
 ];
